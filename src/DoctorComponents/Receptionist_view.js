@@ -6,7 +6,7 @@ import SideNavContent from '../DoctorComponents/SideNavContent';
 import DashboardOverview from '../DoctorComponents/DashboardOverview';
 import AddPatient from '../DoctorComponents/AddPatient';
 import CreateAppointment from '../DoctorComponents/CreateAppointment';
-// import AddEnquiry from '../DoctorComponents/AddEnquiries';
+import AddEnquiry from '../DoctorComponents/AddEnquiries';
 import AllPatients from '../DoctorComponents/AllPatients';
 
 function ReceptionistView() {
@@ -18,31 +18,31 @@ function ReceptionistView() {
           number: '1',
           name: 'Dashboard',
           icon: 'fas fa-home', 
-          url: '/dashboard-overview',
+          url: '/DoctorDashboard/dashboard-overview',
         },
         {
           number: '2',
           name: 'All patient',
           icon: 'fas fa-user', 
-          url: '/AllPatient',
+          url: '/DoctorDashboard/AllPatient',
         },
         {
           number: '3',
           name: 'Create Appointment',
           icon: 'fas fa-calendar-check', 
-          url: '/create-appointment',
+          url: '/DoctorDashboard/create-appointment',
         },
         {
           number: '4',
           name: 'Add Enquiries',
           icon: 'fas fa-question-circle', 
-          url: '/AddEnquiry',
+          url: '/DoctorDashboard/AddEnquiry',
         },
         {
           number: '5',
           name: 'Add patient',
           icon: 'fas fa-user-plus', 
-          url: '/add-patient',
+          url: '/DoctorDashboard/add-patient',
         },
       ];
     
@@ -67,10 +67,10 @@ function ReceptionistView() {
                         <Routes>
                             <Route path="/" element={< DashboardOverview />} />
                             <Route path="/DashboardOverview" element={< DashboardOverview />} />
-                            <Route path="/AllPatients" element={< AllPatients />} />
-                            <Route path="/AddPatient" element={<AddPatient />} />
-                            <Route path="/CreateAppointment" element={<CreateAppointment />} />
-                            {/* <Route path="/AddEnquiry" element={<AddEnquiry />} /> */}
+                            <Route path="/AllPatient" element={< AllPatients />} />
+                            <Route path="/add-patient" element={<AddPatient />} />
+                            <Route path="/create-appointment" element={<CreateAppointment />} />
+                            <Route path="/AddEnquiry" element={<AddEnquiry />} />
                         </Routes>
                     </div>
                     </div>

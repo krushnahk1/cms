@@ -10,10 +10,10 @@ const SideNavContent = ({ sideNavStatus, list, navigateUrl }) => {
     <div className={`side-nav-content ${sideNavStatus ? 'nav-list-open' : ''}`}>
       <ul className={`nav-list`}>
         {list.map((item, index) => (
-          <li className="nav-list-item" key={index}>
+          <li className="nav-list-item" key={index} onClick={() => navigate(item.url)}>
             <i className={`${item.icon} p-3`}></i>
             <span>
-              <a onClick={() => navigate(item.url)}>{item.name}</a>
+              <a >{item.name}</a>
             </span>
           </li>
         ))}

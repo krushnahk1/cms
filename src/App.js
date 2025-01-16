@@ -66,14 +66,10 @@ function App() {
           
         } />
           <Route path="/DoctorLoginForm" element={<DoctorLoginForm />} /> 
-          <Route path="/DoctorDashboard" element={<Doctordashboard/>} /> 
+          <Route path="/DoctorDashboard/*" element={<Doctordashboard/>} /> 
           <Route path="/NurseLoginForm" element={<NurseLoginForm />} />
           <Route path="/NurseDashboard" element={<NurseDashboard/>} />
           <Route path="/AllPatient" element={<AllPatient/>} />
-          
-          {/* <Route path="/" element={< DashboardOverview />} /> */}
-          {/* <Route path="/dashboard-overview" element={< DashboardOverview />} /> */}
-          {/* <Route path="/all-patient" element={< AllPatients />} /> */}
           <Route path="/add-patient" element={<AddPatient />} />
           <Route path="/create-appointment" element={<CreateAppointment />} />
           <Route path="/add-enquiries" element={<AddEnquiries />} />     

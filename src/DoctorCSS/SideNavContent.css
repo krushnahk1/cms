@@ -7,10 +7,8 @@
     transition: width 0.3s ease;
 }
 
-
 .nav-list {
     list-style: none;
-    /* border: 2px solid yellow; */
     width: 100%;
     padding: 0;
 }
@@ -18,19 +16,16 @@
 .nav-list-item {
     padding: 10px;
     width: 100%;
-    /* border: 1px solid red; */
     color: white;
     text-align: left;
     white-space: nowrap;
     overflow: hidden;
     transition: background-color 0.3s ease;
-
 }
 
 .nav-list-item:hover {
     color: white;
     background-color: blue;
-   
 }
 
 .side-nav-content:not(.nav-list-open) {
@@ -41,7 +36,25 @@
     display: none;
 }
 
-
 .side-nav-content.nav-list-open .nav-list .nav-list-item span {
     display: inline-block;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .side-nav-content {
+        width: 60px; /* Collapsed state by default on smaller screens */
+    }
+
+    .side-nav-content.nav-list-open {
+        width: 100%; /* Expand to full width on toggle */
+    }
+
+    .nav-list-item {
+        padding: 8px; /* Adjust padding for smaller screens */
+    }
+
+    .nav-list-item:hover {
+        background-color: darkblue; /* Slightly different hover effect */
+    }
 }
