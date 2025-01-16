@@ -1,0 +1,77 @@
+/* Importing Bootstrap directly for the sake of completeness */
+
+/* Full height and centered form container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  color: #5731ee; /* Full viewport height */
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Styling for the form */
+form {
+  margin-top:50px;
+  padding: 2rem;
+  background-color: #bae9f7;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px; /* Limit the width for better aesthetics */
+}
+/* Form label styling */
+.form-labelemail{
+  font-weight: bold;
+  color: #333;
+  /* margin-left: 30px; */
+}
+.form-labelpassword {
+  font-weight: bold;
+  color: #333;
+ 
+}
+
+/* Form control customization */
+.form-control {
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  padding: 10px;
+  margin-top:10px;
+}
+
+/* Button customization */
+.btn-primary {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100px;
+  background-color: #ef332d;
+  border-color: #007bff;
+  font-size: 1rem;
+  font-weight: bold;
+  
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+/* Responsive design for small screens */
+@media (max-width: 576px) {
+  .form-card {
+    padding: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+  }
+
+  .form-control {
+    font-size: 0.9rem;
+  }
+}
