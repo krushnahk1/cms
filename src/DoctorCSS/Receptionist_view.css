@@ -1,7 +1,7 @@
 .main-view {
     background-color: #f9f9f9;
     height: calc(100vh - 60px);
-    width: calc(100vw - 0px);
+    width: calc(100vw - 17px);
     /* border: 10px solid black; */
 }
 
@@ -14,16 +14,32 @@
 .main-content {
     background-color: #f9f9f9;
     height: calc(100vh - 60px);
-    width: calc(100vw - 0px);
-
+    width: calc(100vw - 17px);
+    
 }
 
 .main-content-routes {
     position: relative;
-    left: 10%;
+    left: 60px;
     height: calc(100vh - 60px);
-    width: calc(100vw - 230px);
+    width: calc(100vw - 77px);
     overflow-y: scroll;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none;
 }
+.main-content-routes::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Edge */
+}
+
+@media (max-width: 870px) {
+    .main-content-routes {
+        position: relative;
+        /* left: 10%; */
+        height: calc(100vh - 60px);
+        width: calc(100vw - 60px);
+        overflow-y: scroll;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;
+    }
+}
+
