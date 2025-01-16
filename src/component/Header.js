@@ -18,6 +18,7 @@ const Header = ({ scollTODoctor }) => {
 
  const [isMainMenuOpen, setisMainMenuOpen]=useState(false);
  const toggleMainMenu = () => {
+  setIsMenuOpen(false);
   setisMainMenuOpen(!isMainMenuOpen);
   console.log('Menu button clicked, isMainMenuOpen:', isMainMenuOpen);
 };
@@ -93,12 +94,12 @@ const navigate = useNavigate();
 )}
 </button>
 
-
+<div className='mmi-container'>
 <div className="mobile-menu-icon" onClick={toggleMainMenu}>
   <span></span>
   <span></span>
   <span></span>
-
+</div>
 {isMainMenuOpen && (
   <div className="mobile-menu">
     <nav className="mobile-nav">
@@ -125,12 +126,12 @@ const navigate = useNavigate();
         <li><a href="#">Health Packages</a></li>
         <li><a href="#international-patients">International Patients</a></li>
         <li><a href="#">Find A Doctor</a></li>
-        <li>
-          <button className="menu btn btn-primary" onClick={toggleMenu}>
+        <li className="LoginMenuDrop">
+          <button className="Loginmenu btn btn-primary" onClick={toggleMenu}>
             ☰ Login
           </button>
           {isMenuOpen && (
-            <div className="menu-dropdown dropdown-menu show">
+            <div className="menu-dropdown dropdown-menu show" onClick={toggleMainMenu}>
               <ul className="list-unstyled">
                 <li><Link to="/DoctorLoginForm" className="dropdown-item">Doctor</Link></li>
                 <li><Link to="/NurseLoginForm" className="dropdown-item">Nurse</Link></li>
