@@ -15,14 +15,14 @@ import DoctorLoginForm from './component/DoctorLoginForm'
 import Login from './component/DoctorLoginForm';
 import Doctordashboard from '../src/DoctorComponents/Receptionist_view';
 import NurseLoginForm from '../src/component/NurseLoginForm'
-import NurseDashboard from '../src/component/Nursedashboard'
+// import NurseDashboard from '../src/component/Nursedashboard'
 // import DoctorsInfo from './component/DoctorsInfo'
 // import DashboardOverview from '../src/DoctorComponents/DashboardOverview';
 import AddPatient from '../src/DoctorComponents/AddPatient';
 import CreateAppointment from '../src/DoctorComponents/CreateAppointment';
 import AddEnquiries from '../src/DoctorComponents/AddEnquiries';
 import AllPatient from '../src/DoctorComponents/AllPatients';
-
+import NurseDashboard from "../src/receptionist/components/Receptionist_view";
 
 
 function App() {
@@ -68,7 +68,7 @@ function App() {
           <Route path="/DoctorLoginForm" element={<DoctorLoginForm />} /> 
           <Route path="/DoctorDashboard" element={<Doctordashboard/>} /> 
           <Route path="/NurseLoginForm" element={<NurseLoginForm />} />
-          <Route path="/NurseDashboard" element={<NurseDashboard/>} />
+          <Route path="/rec/*" element={<NurseDashboard/>} />
           <Route path="/AllPatient" element={<AllPatient/>} />
           
           {/* <Route path="/" element={< DashboardOverview />} /> */}
