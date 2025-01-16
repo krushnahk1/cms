@@ -17,9 +17,7 @@ class AppServices {
 
   updateappointments(appointmentId, appointment) {
     return axios.put(
-      BASE_REST_API_URL + "appointments/" + appointmentId,
-      appointment
-    );
+      BASE_REST_API_URL + "appointments/" + appointmentId, appointment );
   }
 
   getAppointmentById(appointmentId) {

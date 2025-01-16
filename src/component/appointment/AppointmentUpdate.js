@@ -15,7 +15,7 @@ const AppointmentUpdate = () => {
     e.preventDefault();
     const appointment = { title, dateTime, description };
 
-    AppServices.updateappointments(appointment).then((response) => {
+    AppServices.updateappointments(id,appointment).then((response) => {
       console.log(response.data);
       navigate("/list-appointment");
     });
@@ -51,7 +51,7 @@ const AppointmentUpdate = () => {
                     name="name"
                     className="form-control"
                     value={id}
-                    // onChange={(e) => setId(e.target.value)}
+                   
                     disabled
                   />
                 </div>
@@ -66,17 +66,7 @@ const AppointmentUpdate = () => {
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
-                {/* <div className="form-group mb-2">
-                                    <label className="form-label">Age:</label>
-                                    <input
-                                        type="text"
-                                        placeholder="Enter age"
-                                        name="age"
-                                        className="form-control"
-                                        value={age}
-                                        onChange={(e) => setAge(e.target.value)}
-                                    />
-                                </div> */}
+          
 
                 <div className="mb-3">
                   <label htmlFor="dateTime" className="form-label">
