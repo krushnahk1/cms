@@ -14,7 +14,7 @@ const Login = () => {
     if (email === 'nurse@gmail.com' && password === 'pass123') {
       // Save login state (e.g., using local storage or a global state)
       localStorage.setItem('isLoggedIn', true);
-      navigate('/Nursedashboard'); // Redirect to the dashboard
+      navigate('/receptionist'); // Redirect to the dashboard
     } else {
       alert('Invalid credentials');
     }
