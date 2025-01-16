@@ -14,7 +14,9 @@ const Login = () => {
     // Example login validation (replace with real authentication logic)
     if (email === 'doctor@gmail.com' && password === 'pass123') {
       // Save login state (e.g., using local storage or a global state)
+      alert('Login successful');
       localStorage.setItem('isLoggedIn', true);
+      
       navigate('/doctordashboard'); // Redirect to the dashboard
     } else {
       alert('Invalid credentials');

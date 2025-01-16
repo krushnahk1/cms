@@ -22,6 +22,10 @@ import AddPatient from '../src/DoctorComponents/AddPatient';
 import CreateAppointment from '../src/DoctorComponents/CreateAppointment';
 import AddEnquiries from '../src/DoctorComponents/AddEnquiries';
 import AllPatient from '../src/DoctorComponents/AllPatients';
+import Appointment from './component/appointment/Appointment';
+import AppointmentsAdd from './component/appointment/AppointmentsAdd';
+import AppointmentUpdate from './component/appointment/AppointmentUpdate';
+import AppointmentViewById from './component/appointment/AppointmentViewById';
 
 
 
@@ -77,6 +81,10 @@ function App() {
           <Route path="/add-patient" element={<AddPatient />} />
           <Route path="/create-appointment" element={<CreateAppointment />} />
           <Route path="/add-enquiries" element={<AddEnquiries />} />     
+          <Route path="/list-appointment" element={<Appointment/>} />     
+          <Route path="/add-appointment" element={<AppointmentsAdd/>} />     
+          <Route path="/edit-appointment/:id" element={<AppointmentUpdate/>} />     
+          <Route path="/view-appointment/:id" element={<AppointmentViewById/>} />     
         </Routes>
       </Router>
       
