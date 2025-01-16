@@ -4,12 +4,10 @@ import { Route, Routes } from 'react-router-dom';
 import "../patient-css/Patient_view.css"
 import SideNavContent from './SideNavContent';
 import DashboardOverview from './DashboardOverview';
-import AddPatient from './AddPatient';
 import CreateAppointment from './CreateAppointment';
 import AddEnquiry from './AddEnquiries';
-import AllPatients from './AllPatients';
 
-function ReceptionistView() {
+function PatientView() {
 
     const [sideNavStatus, setSideNavStatus] = useState(false);
  
@@ -22,27 +20,15 @@ function ReceptionistView() {
         },
         {
           number: '2',
-          name: 'View patient',
-          icon: 'fas fa-user', 
-          url: '/patient/all-patient',
-        },
-        {
-          number: '3',
           name: 'Create Appointment',
           icon: 'fas fa-calendar-check', 
           url: '/patient/create-appointment',
         },
         {
-          number: '4',
+          number: '3',
           name: 'Add Enquiries',
           icon: 'fas fa-question-circle', 
           url: '/patient/add-enquiries',
-        },
-        {
-          number: '5',
-          name: 'Add patient',
-          icon: 'fas fa-user-plus', 
-          url: '/patient/add-patient',
         },
       ];
     
@@ -67,8 +53,6 @@ function ReceptionistView() {
                         <Routes>
                             <Route path="/" element={< DashboardOverview />} />
                             <Route path="/dashboard-overview" element={< DashboardOverview />} />
-                            <Route path="/all-patient" element={< AllPatients />} />
-                            <Route path="/add-patient" element={<AddPatient />} />
                             <Route path="/create-appointment" element={<CreateAppointment />} />
                             <Route path="/add-enquiries" element={<AddEnquiry />} />
                         </Routes>
@@ -80,4 +64,4 @@ function ReceptionistView() {
     )
 }
 
-export default ReceptionistView;
+export default PatientView;

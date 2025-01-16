@@ -17,7 +17,7 @@ function Navbar({changeSideNavStatus}) {
 
                     <div className='nav-name-routes d-flex justify-content-between'>
                     <Link to="#" className="navbar-brand px-1">
-                        RECEPTIONIST DASHBOARD
+                        PATIENT DASHBOARD
                     </Link>
 
                     <div className="navbar-collapse1 ">
