@@ -1,0 +1,24 @@
+/* .navbar-collapse1  {
+    position: relative ;
+    padding-right: 0px;
+
+} */
+
+.side-nav-button  {
+    cursor: pointer;
+}
+
+/* .navbar-brand {
+    overflow-y: scroll;
+} */
+
+.nav-name-routes {
+    width: 100%;
+    overflow: hidden;
+}
+
+@media (max-width: 350px) {
+    .navbar-brand {
+        font-size: 100%;
+    }
+}
