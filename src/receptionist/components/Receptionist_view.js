@@ -18,31 +18,31 @@ function ReceptionistView() {
           number: '1',
           name: 'Dashboard',
           icon: 'fas fa-home', 
-          url: '/rec/dashboard-overview',
+          url: '/receptionist/dashboard-overview',
         },
         {
           number: '2',
           name: 'View patient',
           icon: 'fas fa-user', 
-          url: '/rec/all-patient',
+          url: '/receptionist/all-patient',
         },
         {
           number: '3',
           name: 'Create Appointment',
           icon: 'fas fa-calendar-check', 
-          url: '/rec/create-appointment',
+          url: '/receptionist/create-appointment',
         },
         {
           number: '4',
           name: 'Add Enquiries',
           icon: 'fas fa-question-circle', 
-          url: '/rec/add-enquiries',
+          url: '/receptionist/add-enquiries',
         },
         {
           number: '5',
           name: 'Add patient',
           icon: 'fas fa-user-plus', 
-          url: '/rec/add-patient',
+          url: '/receptionist/add-patient',
         },
       ];
     
