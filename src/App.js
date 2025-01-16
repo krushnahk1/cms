@@ -29,6 +29,7 @@ import PatientView from './patient/components/Patient_view';
 function App() {
   const LocationRef = useRef(null);
   const PackageRef = useRef(null);
+  const whyChooseRef = useRef(null);
 
   const scollTODoctor=()=>{
     if (LocationRef.current){
@@ -40,12 +41,17 @@ function App() {
       PackageRef.current.scrollIntoView({behavior:'smooth'});
     }  
   }
+  const scrollToWhyChoose=()=>{
+    if (whyChooseRef.current){
+      whyChooseRef.current.scrollIntoView({behavior:'smooth'});
+    }  
+  }
 
   return (
     <div className="App">
       <>
       <Router>
-      <Header scollTODoctor={scollTODoctor}/>
+      <Header scollTODoctor={scollTODoctor} scrollToWhyChoose={scrollToWhyChoose} scollTOPackage={scollTOPackage}/>
         <Routes>
           <Route path="/" element={
             <>
@@ -59,7 +65,9 @@ function App() {
               <HealthPackage  />
               </div>
               <PatientExperience />
-              <WhyChoose/>
+              <div ref={whyChooseRef}>
+                <WhyChoose />
+              </div> 
               <Footer/>
 
               
