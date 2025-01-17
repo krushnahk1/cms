@@ -70,8 +70,8 @@ const navigate = useNavigate();
                   </div>
                 )}
               </li>
-              <li><a href="#" onClick={scollTOPackage}>Health Packages</a></li>
-              <li><a href="#international-patients">International Patients</a></li>
+              <li><a href="#">Health Packages</a></li>
+              <li><a href="#">International Patients</a></li>
               <li><a href="#">Find A Doctor</a></li>
             
           </ul>
@@ -85,7 +85,7 @@ const navigate = useNavigate();
   {isMenuOpen && (
   <div className="menu-dropdown dropdown-menu show">
     <ul className="list-unstyled">
-   < li><Link to="/DoctorLoginForm" className="dropdown-item">Doctor</Link></li>
+   < li><Link to="/DoctorLoginForm" className="dropdown-item" >Doctor</Link></li>
     
         <li><Link to="/NurseLoginForm" className="dropdown-item">Nurse</Link></li>
         <li><Link to="#" className="dropdown-item">Patient</Link></li>
