@@ -70,7 +70,7 @@ const navigate = useNavigate();
                   </div>
                 )}
               </li>
-              <li><a href="#">Health Packages</a></li>
+              <li><a href="#" onClick={scollTOPackage}>Health Packages</a></li>
               <li><a href="#">International Patients</a></li>
               <li><a href="#">Find A Doctor</a></li>
             
