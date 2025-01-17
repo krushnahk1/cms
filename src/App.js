@@ -24,7 +24,7 @@ import AddEnquiries from '../src/DoctorComponents/AddEnquiries';
 import AllPatient from '../src/DoctorComponents/AllPatients';
 import Nursedashboard from "../src/receptionist/components/Receptionist_view";
 import PatientView from './patient/components/Patient_view';
-
+import About from './component/abouts';
 
 function App() {
   const LocationRef = useRef(null);
@@ -48,19 +48,21 @@ function App() {
   }
 
   return (
+    
     <div className="App">
       <>
+      
       <Router>
-      <Header scollTODoctor={scollTODoctor} scrollToWhyChoose={scrollToWhyChoose} scollTOPackage={scollTOPackage}/>
+        
         <Routes>
           <Route path="/" element={
             <>
-            
+             <Header scollTODoctor={scollTODoctor} scrollToWhyChoose={scrollToWhyChoose} scollTOPackage={scollTOPackage}/>
             <div>
               <Hero />
-             
+            
               </div>
-              
+              <About/>
               <div ref={PackageRef}>
               <HealthPackage  />
               </div>

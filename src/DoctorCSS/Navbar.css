@@ -2,6 +2,10 @@
 .navbar {
     padding: 10px 20px;
 }
+.backbutton{
+    position: relative;
+    right:0px;
+}
 
 .navbar-brand {
     font-size: 1.5rem;
