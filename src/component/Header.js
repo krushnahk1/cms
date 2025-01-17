@@ -124,8 +124,8 @@ const navigate = useNavigate();
           )}
         </li>
         <li><a href="#">Health Packages</a></li>
-        <li><a href="#international-patients">International Patients</a></li>
-        <li><a href="#">Find A Doctor</a></li>
+        <li><a href="#">Rooms</a></li>
+        <li><a href="#">Doctors</a></li>
         <li className="LoginMenuDrop">
           <button className="Loginmenu btn btn-primary" onClick={toggleMenu}>
             ☰ Login
