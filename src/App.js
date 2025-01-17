@@ -22,7 +22,7 @@ import AddPatient from '../src/DoctorComponents/AddPatient';
 import CreateAppointment from '../src/DoctorComponents/CreateAppointment';
 import AddEnquiries from '../src/DoctorComponents/AddEnquiries';
 import AllPatient from '../src/DoctorComponents/AllPatients';
-import NurseDashboard from "../src/receptionist/components/Receptionist_view";
+import Nursedashboard from "../src/receptionist/components/Receptionist_view";
 import PatientView from './patient/components/Patient_view';
 
 
@@ -77,7 +77,7 @@ function App() {
           <Route path="/DoctorLoginForm" element={<DoctorLoginForm />} /> 
           <Route path="/DoctorDashboard/*" element={<Doctordashboard/>} /> 
           <Route path="/NurseLoginForm" element={<NurseLoginForm />} />
-          <Route path="/receptionist/*" element={<NurseDashboard/>} />
+          <Route path="/Nursedashboard" element={<Nursedashboard/>} />
           <Route path="/AllPatient" element={<AllPatient/>} />
           <Route path="/add-patient" element={<AddPatient />} />
           <Route path="/create-appointment" element={<CreateAppointment />} />
