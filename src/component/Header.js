@@ -5,7 +5,7 @@ import Maulilogo from '../assets/Images/mauli_logo.webp';
 import { useNavigate } from 'react-router-dom';
 
 
-const Header = ({ scollTODoctor }) => {
+const Header = ({ scollTODoctor, scrollToWhyChoose, scollTOPackage }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const toggleDropdown = (status) => {
     setIsDropdownOpen(status);
@@ -50,7 +50,7 @@ const navigate = useNavigate();
            <Link to="/"><div>Mauli Hospital</div></Link> 
             <div className="headerspace"></div>
             
-              <li onClick={scollTODoctor}><a href="#">Hospital</a></li>
+              <li onClick={scrollToWhyChoose}><a href="#">Hospital</a></li>
               <li
                 className="nav-item dropdown"
                 onMouseEnter={() => toggleDropdown(true)}
@@ -71,8 +71,8 @@ const navigate = useNavigate();
                 )}
               </li>
               <li><a href="#">Health Packages</a></li>
-              <li><a href="#international-patients">Room</a></li>
-              <li><a href="#"> Doctors</a></li>
+              <li><a href="#">International Patients</a></li>
+              <li><a href="#">Find A Doctor</a></li>
             
           </ul>
         </nav>
