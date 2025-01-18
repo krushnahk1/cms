@@ -1,5 +1,5 @@
 .h3 {
-  color: #bf1717;
+  color: #6ed1f6;
 }
 
 /* Banner start */
@@ -51,7 +51,7 @@
 .healthcare-sidebar {
   width: 100%;
   max-width: 350px;
-  background: #efeaea;
+  background:#e6f8f4;
   padding: 20px;
   margin-top: 20px;
   border-radius: 10px;
@@ -75,16 +75,16 @@
 
 .healthcare-location-item:hover,
 .healthcare-location-item.active {
-  background: #f0444c;
+  background: #85ead4;
   color: #fff;
-  border-color: #f0444c;
+  border-color: #85ead4;
  
 }
 
 .healthcare-main-content {
   flex-grow: 1;
   padding: 20px;
-  background-color: #e9e0e0;
+  background-color:#eaf8f5;
   border: 1px solid grey;
   border-radius: 10px;
 }
@@ -100,7 +100,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #f0444c;
+  background-color: #85ead4;
   color: white;
   border-radius: 8px;
   margin-bottom: 5px;
@@ -114,7 +114,7 @@
 }
 
 .healthcare-package-header-right .btn {
-  background: #f85c63;
+  background: #85ead4;
   color: #fff;
   border: 1px solid white;
   padding: 5px 10px;

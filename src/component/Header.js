@@ -5,7 +5,7 @@ import Maulilogo from '../assets/Images/mauli_logo.webp';
 import { useNavigate } from 'react-router-dom';
 
 
-const Header = ({ scollTODoctor }) => {
+const Header = ({ scollTODoctor, scrollToWhyChoose, scollTOPackage, scrollToServices }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const toggleDropdown = (status) => {
     setIsDropdownOpen(status);
@@ -18,6 +18,7 @@ const Header = ({ scollTODoctor }) => {
 
  const [isMainMenuOpen, setisMainMenuOpen]=useState(false);
  const toggleMainMenu = () => {
+  setIsMenuOpen(false);
   setisMainMenuOpen(!isMainMenuOpen);
   console.log('Menu button clicked, isMainMenuOpen:', isMainMenuOpen);
 };
@@ -40,7 +41,7 @@ const navigate = useNavigate();
           <NavLink className="nav-link active btn-danger" style={{ color: 'red' }} to={'/list-appointment'}>Appointment List</NavLink>
 
         </div>
-      </div>
+      </div> 
 
       <div className="header-main">
         <div className="logo">
@@ -52,8 +53,8 @@ const navigate = useNavigate();
            <Link to="/"><div>Mauli Hospital</div></Link> 
             <div className="headerspace"></div>
             
-              <li onClick={scollTODoctor}><a href="#">Hospital</a></li>
-              <li
+              <li onClick={scrollToWhyChoose}><a href="#">Hospital</a></li>
+              <li onClick={scrollToServices}
                 className="nav-item dropdown"
                 onMouseEnter={() => toggleDropdown(true)}
                 onMouseLeave={() => toggleDropdown(false)}
@@ -72,8 +73,8 @@ const navigate = useNavigate();
                   </div>
                 )}
               </li>
-              <li><a href="#">Health Packages</a></li>
-              <li><a href="#international-patients">International Patients</a></li>
+              <li><a href="#" onClick={scollTOPackage}>Health Packages</a></li>
+              <li><a href="#">International Patients</a></li>
               <li><a href="#">Find A Doctor</a></li>
             
           </ul>
@@ -87,7 +88,7 @@ const navigate = useNavigate();
   {isMenuOpen && (
   <div className="menu-dropdown dropdown-menu show">
     <ul className="list-unstyled">
-   < li><Link to="/DoctorLoginForm" className="dropdown-item">Doctor</Link></li>
+   < li><Link to="/DoctorLoginForm" className="dropdown-item" >Doctor</Link></li>
     
         <li><Link to="/NurseLoginForm" className="dropdown-item">Nurse</Link></li>
         <li><Link to="#" className="dropdown-item">Patient</Link></li>
@@ -96,12 +97,12 @@ const navigate = useNavigate();
 )}
 </button>
 
-
+<div className='mmi-container'>
 <div className="mobile-menu-icon" onClick={toggleMainMenu}>
   <span></span>
   <span></span>
   <span></span>
-
+</div>
 {isMainMenuOpen && (
   <div className="mobile-menu">
     <nav className="mobile-nav">
@@ -126,14 +127,14 @@ const navigate = useNavigate();
           )}
         </li>
         <li><a href="#">Health Packages</a></li>
-        <li><a href="#international-patients">International Patients</a></li>
-        <li><a href="#">Find A Doctor</a></li>
-        <li>
-          <button className="menu btn btn-primary" onClick={toggleMenu}>
+        <li><a href="#">Rooms</a></li>
+        <li><a href="#">Doctors</a></li>
+        <li className="LoginMenuDrop">
+          <button className="Loginmenu btn btn-primary" onClick={toggleMenu}>
             ☰ Login
           </button>
           {isMenuOpen && (
-            <div className="menu-dropdown dropdown-menu show">
+            <div className="menu-dropdown dropdown-menu show" onClick={toggleMainMenu}>
               <ul className="list-unstyled">
                 <li><Link to="/DoctorLoginForm" className="dropdown-item">Doctor</Link></li>
                 <li><Link to="/NurseLoginForm" className="dropdown-item">Nurse</Link></li>

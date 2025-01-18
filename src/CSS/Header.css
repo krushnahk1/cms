@@ -50,6 +50,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: #85ead4;
 }
 
 .logo img {
@@ -73,6 +74,7 @@
 .header-buttons {
   display: flex;
   gap: 15px;
+  
 }
 
 .mobile-menu-icon {
@@ -89,13 +91,19 @@
   background-color: #333;
 }
 
+.mmi-container {
+  
+  visibility: hidden;
+}
+
 /* Dropdown menu styling */
 .nav-item.dropdown {
   position: relative;
 }
 
 .nav-item .dropdown-menu {
-  display: none;
+  display: flex;
+  flex-direction: column;
   position: absolute;
   top: 100%;
   left: 0;
@@ -106,7 +114,10 @@
   border-radius: 4px;
 }
 
-.nav-item:hover .dropdown-menu,
+.nav-item:hover .dropdown-menu{
+ display: flex;
+ flex-direction: column;
+}
 .nav-item.dropdown.open .dropdown-menu {
   display: flex;
   flex-direction: column;
@@ -116,6 +127,8 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .dropdown-column li {
@@ -156,6 +169,7 @@
 .mobile-menu .mobile-nav li {
   padding: 10px 0;
   text-align: center;
+  
 }
 
 .menu-dropdown {
@@ -182,6 +196,9 @@
 .menu-dropdown ul li a {
   text-decoration: none;
   color: #333;
+}
+.menu.btn.btn-primary{
+  position: relative;
 }
 
 /* Responsive behavior */
@@ -237,20 +254,32 @@
 
   .mobile-menu .mobile-nav li a {
     padding: 10px;
+
   }
 }
-@media screen and (max-width: 1008px) {
+@media screen and (max-width: 1024px) {
   .menu.btn.btn-primary {
     visibility: hidden;
     
   }
-  .mobile-menu-icon {
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 5px;
-    cursor: pointer;
-    position: relative;
+.LoginMenuDrop .menu-dropdown{    
+    position:absolute;
+    right: 160px;
+    top:250px;
 
+}
+  .mmi-container {
+    display: flex;
+    flex-direction: row-reverse;
+    position: relative;
+    right: 0;
+    visibility: visible;
   }
-  
+  .mmi-container .mobile-menu {
+    position: absolute;
+    right: 0px;
+    top: 10;
+    width: 200px;
+    transition: all 2.5s ease-in-out;
+  }
 }
