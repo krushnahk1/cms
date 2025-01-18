@@ -36,18 +36,24 @@ function ReceptionistView() {
         },
         {
           number: '4',
+          name: 'view Appointment',
+          icon: 'fas fa-calendar-check', 
+          url: '/DoctorDashboard/view-appointment',
+        },
+        {
+          number: '5',
           name: 'Add Enquiries',
           icon: 'fas fa-question-circle', 
           url: '/DoctorDashboard/AddEnquiry',
         },
         {
-          number: '5',
+          number: '6',
           name: 'Add patient',
           icon: 'fas fa-user-plus', 
           url: '/DoctorDashboard/add-patient',
         },
         {
-          number: '6',
+          number: '7',
           name: 'room',
           icon: 'fa-solid fa-hospital',
           url: '/DoctorDashboard/room',
