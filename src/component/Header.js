@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../CSS/Header.css';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Maulilogo from '../assets/Images/mauli_logo.webp';
 import { useNavigate } from 'react-router-dom';
 
@@ -35,10 +35,13 @@ const navigate = useNavigate();
             <a href="tel:+918888822222">+91 88888 22222</a>
             <a href="tel:+918888822222">+91 99999 55555</a>
             <a href="tel:+918888822222">+91 91999 22222</a>
-          </div>
-          <button className="appointment">Appointment</button>
+          </div> 
+           <button className="appointment">Appointment</button>
+          <NavLink className="nav-link active btn-danger" style={{ color: 'red' }} to={'/add-appointment'}>Appointment</NavLink>
+          <NavLink className="nav-link active btn-danger" style={{ color: 'red' }} to={'/list-appointment'}>Appointment List</NavLink>
+
         </div>
-      </div> */}
+      </div>  */}
 
       <div className="header-main">
         <div className="logo">

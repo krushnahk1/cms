@@ -5,10 +5,14 @@ import "../DoctorCSS/Receptionist_view.css"
 import SideNavContent from '../DoctorComponents/SideNavContent';
 import DashboardOverview from '../DoctorComponents/DashboardOverview';
 import AddPatient from '../DoctorComponents/AddPatient';
-import CreateAppointment from '../DoctorComponents/CreateAppointment';
+// import CreateAppointment from '../DoctorComponents/CreateAppointment';
 import AddEnquiry from '../DoctorComponents/AddEnquiries';
 import AllPatients from '../DoctorComponents/AllPatients';
 import Room from '../RoomComponents/Rooms'
+import AppointmentsAdd from '../component/appointment/AppointmentsAdd';
+import AppointmentViewById from '../component/appointment/AppointmentViewById';
+import Appointment from '../component/appointment/Appointment';
+import AppointmentUpdate from '../component/appointment/AppointmentUpdate';
 
 function ReceptionistView() {
 
@@ -39,11 +43,14 @@ function ReceptionistView() {
           icon: 'fas fa-calendar-check', 
           url: '/DoctorDashboard/create-appointment',
         },
+
+       
+
         {
-          number: '4',
-          name: 'view Appointment',
+          number: '3',
+          name: 'All-Appointment',
           icon: 'fas fa-calendar-check', 
-          url: '/DoctorDashboard/view-appointment',
+          url: '/DoctorDashboard/list-appointment',
         },
         {
           number: '5',
@@ -53,7 +60,7 @@ function ReceptionistView() {
         },
         
         {
-          number: '7',
+          number: '6',
           name: 'room',
           icon: 'fa-solid fa-hospital',
           url: '/DoctorDashboard/room',
@@ -83,7 +90,10 @@ function ReceptionistView() {
                             <Route path="/DashboardOverview" element={< DashboardOverview />} />
                             <Route path="/AllPatient" element={< AllPatients />} />
                             <Route path="/add-patient" element={<AddPatient />} />
-                            <Route path="/create-appointment" element={<CreateAppointment />} />
+                            <Route path="/create-appointment" element={<AppointmentsAdd/>} />
+                            <Route path="/list-appointment" element={<Appointment/>} />
+                            <Route path="/view-appointment/:id" element={<AppointmentViewById/>} />
+                            <Route path="/edit-appointment/:id" element={<AppointmentUpdate/>} /> 
                             <Route path="/AddEnquiry" element={<AddEnquiry />} />
                             <Route path="/Room" element={<Room />} />
                         </Routes>
