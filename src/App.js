@@ -105,7 +105,42 @@ function App() {
           <Route path="/view-appointment/:id" element={<AppointmentViewById/>} />     
         </Routes>
       </Router>
-      
+      <Router>
+        
+        <Routes>
+          <Route path="/admin" element={
+            <>
+             <Header scollTODoctor={scollTODoctor} scrollToWhyChoose={scrollToWhyChoose} scollTOPackage={scollTOPackage}/>
+            <div>
+              {/* <Hero /> */}
+            <Home/>
+              </div>
+              <About/>
+              <div ref={PackageRef}>
+              <HealthPackage  />
+              </div>
+              <Services/>
+              <DoctorInfo/>
+              <PatientExperience />
+              <div ref={whyChooseRef}>
+                <WhyChoose />
+              </div> 
+              <Footer/>
+
+              
+            </>
+          
+        } />
+          <Route path="/DoctorLoginForm" element={<DoctorLoginForm />} /> 
+          <Route path="/DoctorDashboard/*" element={<Doctordashboard/>} /> 
+          <Route path="/NurseLoginForm" element={<NurseLoginForm />} />
+          <Route path="/Nursedashboard/*" element={<Nursedashboard/>} />
+          <Route path="/AllPatient" element={<AllPatient/>} />
+          <Route path="/add-patient" element={<AddPatient />} />
+          <Route path="/create-appointment" element={<CreateAppointment />} />
+          <Route path="/add-enquiries" element={<AddEnquiries />} />     
+        </Routes>
+      </Router>
     <Router>
       <Routes>
         <Route path="/Adminlogin" element={<Login />} />

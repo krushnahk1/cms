@@ -20,7 +20,7 @@ function Navbar({changeSideNavStatus}) {
                     <Link to="#" className="navbar-brand px-1">
                         RECEPTIONIST DASHBOARD
                     </Link>
-                    
+                    <Link to="/"><button className='backbutton'>home</button></Link>
                     <div className="navbar-collapse1 ">
                         {/* <form action="" className="d-flex me-5">
                             <input type="search" placeholder="search" className="form-control me-2" />
