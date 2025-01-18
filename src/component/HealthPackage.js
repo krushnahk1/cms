@@ -145,7 +145,7 @@ const HealthcarePackages = () => {
 
     return (
         <div className="healthcare-page">
-            <div className="healthcare-banner-container">
+            {/* <div className="healthcare-banner-container">
                 <div className="healthcare-banner-content">
                     <h1 className="healthcare-banner-title">Welcome to Mauli Hospital
                     Pune's Best</h1>
@@ -158,7 +158,7 @@ const HealthcarePackages = () => {
                     alt="Health Packages"
                     className="healthcare-banner-image"
                 />
-            </div>
+            </div> */}
             <div className="healthcare-location-with-packages">
                 <div className="healthcare-sidebar">
                     <h3>Health Packages</h3>

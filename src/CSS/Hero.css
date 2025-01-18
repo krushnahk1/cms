@@ -41,16 +41,19 @@
     max-width: 600px;
   }
   
-  .hero-content h1 {
+  .home-heading {
     font-size: 3.5rem;
     margin-bottom: 1rem;
     animation: slideInLeft 1s ease-out;
+    font-family:'Times New Roman', Times, serif;
+   
   }
-  
-  .hero-content p {
+
+  .Paragraph {
     font-size: 1.2rem;
     margin-bottom: 2rem;
     animation: slideInLeft 1s ease-out 0.2s backwards;
+    font-family: 'Times New Roman', Times, serif;
   }
   
   .hero-cta {
