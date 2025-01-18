@@ -10,6 +10,9 @@ import AddEnquiry from '../DoctorComponents/AddEnquiries';
 import AllPatients from '../DoctorComponents/AllPatients';
 import Room from '../RoomComponents/Rooms'
 import AppointmentsAdd from '../component/appointment/AppointmentsAdd';
+import AppointmentViewById from '../component/appointment/AppointmentViewById';
+import Appointment from '../component/appointment/Appointment';
+import AppointmentUpdate from '../component/appointment/AppointmentUpdate';
 
 function ReceptionistView() {
 
@@ -33,6 +36,15 @@ function ReceptionistView() {
           name: 'Create Appointment',
           icon: 'fas fa-calendar-check', 
           url: '/DoctorDashboard/create-appointment',
+        },
+
+       
+
+        {
+          number: '3',
+          name: 'All-Appointment',
+          icon: 'fas fa-calendar-check', 
+          url: '/DoctorDashboard/list-appointment',
         },
         {
           number: '4',
@@ -78,6 +90,9 @@ function ReceptionistView() {
                             <Route path="/AllPatient" element={< AllPatients />} />
                             <Route path="/add-patient" element={<AddPatient />} />
                             <Route path="/create-appointment" element={<AppointmentsAdd/>} />
+                            <Route path="/list-appointment" element={<Appointment/>} />
+                            <Route path="/view-appointment/:id" element={<AppointmentViewById/>} />
+                            <Route path="/edit-appointment/:id" element={<AppointmentUpdate/>} /> 
                             <Route path="/AddEnquiry" element={<AddEnquiry />} />
                             <Route path="/Room" element={<Room />} />
                         </Routes>
