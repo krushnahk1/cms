@@ -4,10 +4,15 @@
  width: 500px;
  /* margin-left: 500px; */
 }
-/* Apply margin-top for the main container */
+form{
+  margin-top:0px;
+  margin-left:50px;
+}
+
 .container {
   margin-top: 20px; /* Adjusted for better visibility */
   display: inline;
+ 
 }
 
 /* Small devices (phones, 600px and below) */

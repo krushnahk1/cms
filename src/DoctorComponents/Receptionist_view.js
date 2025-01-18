@@ -22,8 +22,14 @@ function ReceptionistView() {
           url: '/DoctorDashboard/dashboard-overview',
         },
         {
+          number: '6',
+          name: 'Add patient',
+          icon: 'fas fa-user-plus', 
+          url: '/DoctorDashboard/add-patient',
+        },
+        {
           number: '2',
-          name: 'All patient',
+          name: 'view patient',
           icon: 'fas fa-user', 
           url: '/DoctorDashboard/AllPatient',
         },
@@ -41,16 +47,11 @@ function ReceptionistView() {
         },
         {
           number: '5',
-          name: 'Add Enquiries',
+          name: 'view Enquiries',
           icon: 'fas fa-question-circle', 
           url: '/DoctorDashboard/AddEnquiry',
         },
-        {
-          number: '6',
-          name: 'Add patient',
-          icon: 'fas fa-user-plus', 
-          url: '/DoctorDashboard/add-patient',
-        },
+        
         {
           number: '7',
           name: 'room',
