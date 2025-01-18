@@ -91,7 +91,7 @@ const Doctors = () => {
   };
 
   return (
-    <div className="min-vh-100 d-flex flex-column justify-content-center px-3 px-lg-5 pt-5">
+    <div className="min-vh-100 d-flex flex-column justify-content-center px-3 px-lg-5 pt-">
       <div className="d-flex flex-column align-items-center flex-lg-row justify-content-between mb-4">
         <div className="text-center text-lg-start">
           <h1 className="display-4">Our Doctors</h1>
