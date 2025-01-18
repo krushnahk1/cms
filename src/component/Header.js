@@ -5,7 +5,7 @@ import Maulilogo from '../assets/Images/mauli_logo.webp';
 import { useNavigate } from 'react-router-dom';
 
 
-const Header = ({ scollTODoctor, scrollToWhyChoose, scollTOPackage }) => {
+const Header = ({ scollTODoctor, scrollToWhyChoose, scollTOPackage, scrollToServices }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const toggleDropdown = (status) => {
     setIsDropdownOpen(status);
@@ -27,7 +27,7 @@ const navigate = useNavigate();
 
   return (
     <header className="header">
-      <div className="header-top">
+      {/* <div className="header-top">
         <div className="header-top-right">
           <div className="emergency-contact">
             <div className="topheaderspace"></div>
@@ -38,7 +38,7 @@ const navigate = useNavigate();
           </div>
           <button className="appointment">Appointment</button>
         </div>
-      </div>
+      </div> */}
 
       <div className="header-main">
         <div className="logo">
@@ -51,7 +51,7 @@ const navigate = useNavigate();
             <div className="headerspace"></div>
             
               <li onClick={scrollToWhyChoose}><a href="#">Hospital</a></li>
-              <li
+              <li onClick={scrollToServices}
                 className="nav-item dropdown"
                 onMouseEnter={() => toggleDropdown(true)}
                 onMouseLeave={() => toggleDropdown(false)}

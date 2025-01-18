@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 import "../rec-css/Navbar.css";
+import { Button } from 'bootstrap';
 
 function Navbar({changeSideNavStatus}) {
     return (
@@ -19,7 +20,7 @@ function Navbar({changeSideNavStatus}) {
                     <Link to="#" className="navbar-brand px-1">
                         RECEPTIONIST DASHBOARD
                     </Link>
-
+                    
                     <div className="navbar-collapse1 ">
                         {/* <form action="" className="d-flex me-5">
                             <input type="search" placeholder="search" className="form-control me-2" />

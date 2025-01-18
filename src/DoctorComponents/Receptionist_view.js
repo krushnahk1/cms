@@ -8,6 +8,7 @@ import AddPatient from '../DoctorComponents/AddPatient';
 import CreateAppointment from '../DoctorComponents/CreateAppointment';
 import AddEnquiry from '../DoctorComponents/AddEnquiries';
 import AllPatients from '../DoctorComponents/AllPatients';
+import Room from '../RoomComponents/Rooms'
 
 function ReceptionistView() {
 
@@ -44,6 +45,12 @@ function ReceptionistView() {
           icon: 'fas fa-user-plus', 
           url: '/DoctorDashboard/add-patient',
         },
+        {
+          number: '6',
+          name: 'room',
+          icon: 'fa-solid fa-hospital',
+          url: '/DoctorDashboard/room',
+        },
       ];
     
 
@@ -71,6 +78,7 @@ function ReceptionistView() {
                             <Route path="/add-patient" element={<AddPatient />} />
                             <Route path="/create-appointment" element={<CreateAppointment />} />
                             <Route path="/AddEnquiry" element={<AddEnquiry />} />
+                            <Route path="/Room" element={<Room />} />
                         </Routes>
                     </div>
                     </div>

@@ -25,6 +25,9 @@ import AllPatient from '../src/DoctorComponents/AllPatients';
 import Nursedashboard from "../src/receptionist/components/Receptionist_view";
 import PatientView from './patient/components/Patient_view';
 import About from './component/abouts';
+import Home from './component/home';
+import Services from './component/Services'
+import DoctorInfo from './component/DoctorsInfo'
 
 function App() {
   const LocationRef = useRef(null);
@@ -59,13 +62,15 @@ function App() {
             <>
              <Header scollTODoctor={scollTODoctor} scrollToWhyChoose={scrollToWhyChoose} scollTOPackage={scollTOPackage}/>
             <div>
-              <Hero />
-            
+              {/* <Hero /> */}
+            <Home/>
               </div>
               <About/>
               <div ref={PackageRef}>
               <HealthPackage  />
               </div>
+              <Services/>
+              <DoctorInfo/>
               <PatientExperience />
               <div ref={whyChooseRef}>
                 <WhyChoose />
