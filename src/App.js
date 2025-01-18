@@ -22,12 +22,21 @@ import AddPatient from '../src/DoctorComponents/AddPatient';
 import CreateAppointment from '../src/DoctorComponents/CreateAppointment';
 import AddEnquiries from '../src/DoctorComponents/AddEnquiries';
 import AllPatient from '../src/DoctorComponents/AllPatients';
+
+import Appointment from './component/appointment/Appointment';
+import AppointmentsAdd from './component/appointment/AppointmentsAdd';
+import AppointmentUpdate from './component/appointment/AppointmentUpdate';
+import AppointmentViewById from './component/appointment/AppointmentViewById';
+
+
+
 import Nursedashboard from "../src/receptionist/components/Receptionist_view";
 import PatientView from './patient/components/Patient_view';
 import About from './component/abouts';
 import Home from './component/home';
 import Services from './component/Services'
 import DoctorInfo from './component/DoctorsInfo'
+
 
 function App() {
   const LocationRef = useRef(null);
@@ -87,8 +96,13 @@ function App() {
           <Route path="/Nursedashboard/*" element={<Nursedashboard/>} />
           <Route path="/AllPatient" element={<AllPatient/>} />
           <Route path="/add-patient" element={<AddPatient />} />
-          <Route path="/create-appointment" element={<CreateAppointment />} />
+          {/* <Route path="/create-appointment" element={<CreateAppointment />} /> */}
           <Route path="/add-enquiries" element={<AddEnquiries />} />     
+          <Route path="/list-appointment" element={<Appointment/>} />     
+          <Route path="/create-appointment" element={<AppointmentsAdd/>} />     
+          <Route path="/add-appointment" element={<AppointmentsAdd/>} />     
+          <Route path="/edit-appointment/:id" element={<AppointmentUpdate/>} />     
+          <Route path="/view-appointment/:id" element={<AppointmentViewById/>} />     
         </Routes>
       </Router>
       

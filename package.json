@@ -49,8 +49,17 @@
     ]
   },
   "devDependencies": {
+    "web-vitals": "^4.2.4",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.5.1",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "some-package": "^4.2.4"
   }
 }
+
+
+
+
+
+
+

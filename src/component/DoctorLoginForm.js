@@ -14,7 +14,9 @@ const Login = () => {
     // Example login validation (replace with real authentication logic)
     if (email === 'doctor@gmail.com' && password === 'pass123') {
       // Save login state (e.g., using local storage or a global state)
+      alert('Login successful');
       localStorage.setItem('isLoggedIn', true);
+      
       navigate('/doctordashboard'); // Redirect to the dashboard
     } else {
       alert('Invalid credentials');
@@ -36,6 +38,7 @@ const Login = () => {
             className="form-control"
             id="email"
             value={email}
+            placeholder="Ex:- doctor@gmail.com"
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
@@ -46,6 +49,7 @@ const Login = () => {
             className="form-control"
             id="password"
             value={password}
+            placeholder="Ex:- pass123"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
