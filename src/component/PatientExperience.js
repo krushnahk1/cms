@@ -16,19 +16,19 @@ const PatientExperience = () => {
     {
       id: 1,
       name: 'Shyam Singhal',
-      content: 'One of the top hospitals in Pune. The staff, daycare team, dialysis, and billing department all provided exceptional service. Nurses, doctors, and administrators are extremely polite, down to earth, and always helpful.',
+      content: 'बीड सर्वोत्तम रुग्णालयांपैकी एक. येथील कर्मचारी, डेकेअर टीम, डायलिसिस आणि बिलिंग विभाग या सर्वांनी अपवादात्मक सेवा दिली. परिचारिका, डॉक्टर आणि प्रशासक अत्यंत सभ्य, प्रामाणिक आणि नेहमीच मदतगार आहेत..',
       rating: 5
     },
     {
       id: 2,
       name: 'Rajesh Kumar',
-      content: 'Excellent healthcare facility with state-of-the-art equipment. The doctors are highly skilled and the staff is very caring and supportive.',
+      content: 'अत्याधुनिक उपकरणांसह उत्कृष्ट आरोग्य सुविधा. डॉक्टर अत्यंत कुशल आहेत आणि कर्मचारी खूप काळजी घेणारे आणि सहाय्यक आहेत..',
       rating: 5
     },
     {
       id: 3,
       name: 'Priya Sharma',
-      content: 'Outstanding experience at Sahyadri Hospital. The medical team is professional and the facilities are world-class.',
+      content: 'माऊली हॉस्पिटलमधील उत्कृष्ट अनुभव. वैद्यकीय पथक व्यावसायिक आहे आणि सुविधा जागतिक दर्जाच्या आहेत..',
       rating: 5
     }
   ];
@@ -44,7 +44,7 @@ const PatientExperience = () => {
       <div className="experience-container">
         <div className="video-section">
           <h2>Patient Experience Stories</h2>
-          <p>Hear directly from those we've treated at Sahyadri Hospitals</p>
+          <p>Hear directly from those we've treated at Mauli Hospitals</p>
           
           <div className="video-container">
             <video 
@@ -77,7 +77,7 @@ const PatientExperience = () => {
 
         <div className="testimonials-section">
           <h2>Patient Speaks</h2>
-          <p>Real Stories of Hope and Healing from Our Patients</p>
+          <p>आमच्या रुग्णांकडून आशा आणि उपचारांच्या खऱ्या कथा</p>
           
           <div className="testimonials-slider">
             {testimonials.map((testimonial, index) => (

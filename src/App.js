@@ -27,15 +27,13 @@ import Appointment from './component/appointment/Appointment';
 import AppointmentsAdd from './component/appointment/AppointmentsAdd';
 import AppointmentUpdate from './component/appointment/AppointmentUpdate';
 import AppointmentViewById from './component/appointment/AppointmentViewById';
-
-
-
 import Nursedashboard from "../src/receptionist/components/Receptionist_view";
 import PatientView from './patient/components/Patient_view';
 import About from './component/abouts';
 import Home from './component/home';
 import Services from './component/Services'
 import DoctorInfo from './component/DoctorsInfo'
+import Scroll from './component/ScrollingTitle'
 
 
 function App() {
@@ -70,6 +68,7 @@ function App() {
           <Route path="/" element={
             <>
              <Header scollTODoctor={scollTODoctor} scrollToWhyChoose={scrollToWhyChoose} scollTOPackage={scollTOPackage}/>
+            <Scroll/>
             <div>
               {/* <Hero /> */}
             <Home/>

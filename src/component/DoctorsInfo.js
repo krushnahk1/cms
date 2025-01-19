@@ -11,14 +11,12 @@ import doc4 from '../assets/img/doc4.jpg';
 import doc5 from '../assets/img/doc5.jpg';
 import doc6 from '../assets/img/doc6.jpg';
 
-const Doctors = () => {
+const DoctorsInfo = () => {
   const data = [
     {
       img: doc1,
       name: "Dr. Serena Mitchell",
       specialties: "Orthopedic Surgeon",
-      viewDetails:"",
-      
     },
     {
       img: doc2,
@@ -34,7 +32,6 @@ const Doctors = () => {
       img: doc4,
       name: "Dr. Victor Nguyen",
       specialties: "Neurologist",
-      
     },
     {
       img: doc5,
@@ -53,38 +50,27 @@ const Doctors = () => {
   const settings = {
     accessibility: true,
     dots: true,
-    infinite: true, // Ensures infinite looping
+    infinite: true,
     speed: 500,
-    arrows: false, // Disable arrows for uninterrupted scrolling
-    slidesToShow: 3,
+    arrows: false,
+    slidesToShow: 3, // Show 3 slides on large screens
     slidesToScroll: 1,
-    autoplay: true, // Enable autoplay
-    autoplaySpeed:4000, // Increased interval to 5 seconds (5000 ms)
-    pauseOnHover: false, // Prevent pausing on hover
+    autoplay: true,
+    autoplaySpeed: 4000,
+    pauseOnHover: false,
     responsive: [
       {
         breakpoint: 1023,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint:768,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 180,
-        settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,  // Show 2 slides on medium screens
           slidesToScroll: 1,
-          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,  // Show 1 slide on smaller screens
+          slidesToScroll: 1,
         },
       },
     ],
@@ -118,10 +104,7 @@ const Doctors = () => {
       <div className="imagescard">
         <Slider ref={slider} {...settings}>
           {data.map((e, index) => (
-            <div
-              className="cardimg"
-              key={index}
-            >
+            <div className="cardimg" key={index}>
               <img
                 src={e.img}
                 className="card-img-top rounded-top"
@@ -139,4 +122,4 @@ const Doctors = () => {
   );
 };
 
-export default Doctors;
+export default DoctorsInfo;
