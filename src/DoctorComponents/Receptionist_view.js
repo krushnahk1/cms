@@ -65,6 +65,7 @@ function ReceptionistView() {
           icon: 'fa-solid fa-hospital',
           url: '/DoctorDashboard/room',
         },
+        
       ];
     
 

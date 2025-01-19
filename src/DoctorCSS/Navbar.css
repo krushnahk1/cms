@@ -2,10 +2,7 @@
 .navbar {
     padding: 10px 20px;
 }
-.backbutton{
-    position: relative;
-    right:0px;
-}
+
 
 .navbar-brand {
     font-size: 1.5rem;
@@ -44,6 +41,9 @@
     .side-nav-button {
         align-self: flex-start;
     }
+    .backbutton{
+        display: flex;
+    }
 }
 
 /* For mobile devices (max-width: 480px) */
@@ -58,5 +58,8 @@
 
     .navbar-brand {
         font-size: 1.2rem;
+    }
+    .backbutton{
+        display: flex;
     }
 }
