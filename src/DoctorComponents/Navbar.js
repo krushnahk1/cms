@@ -13,11 +13,11 @@ function Navbar({changeSideNavStatus}) {
                     </div>
 
                     <div className='nav-name-routes d-flex w-100 justify-content-between'>
-                    <Link to="/"><button className='backbutton'>home</button></Link>
+                    
                     <Link to="#" className="navbar-brand px-4">
                        DOCTOR ADMIN DASHBOARD
                     </Link>
-                    
+                      {/* <Link to="/"><button className='backbutton'>home</button></Link> */}
                    
                    
                     </div>

@@ -1,12 +1,17 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import '../CSS/PatientExperience.css';
-import video1 from '../assets/Videos/video1.mp4'
+import video1 from '../assets/Videos/video1.mp4';
+import video2 from '../assets/Videos/video2.mp4';
+import video3 from '../assets/Videos/video3.mp4';
+import video4 from '../assets/Videos/video1.mp4';
+import video5 from '../assets/Videos/video2.mp4';
 
 const PatientExperience = () => {
   const [activeVideoIndex, setActiveVideoIndex] = useState(0);
   const [activeTestimonialIndex, setActiveTestimonialIndex] = useState(0);
 
- 
+  const videos = [video1, video2, video3, video4, video5];
+
   const testimonials = [
     {
       id: 1,
@@ -42,22 +47,22 @@ const PatientExperience = () => {
           <p>Hear directly from those we've treated at Sahyadri Hospitals</p>
           
           <div className="video-container">
-          <video 
-          
-            src={video1} 
-            controls 
-            className="patient-video"
-            poster="/path/to/your/poster.jpg"
-            onPlay={(e) => e.currentTarget.play()}  // Ensures it plays only when triggered by user
-          >
-            Your browser does not support the video tag.
-          </video>
+            <video 
+              src={videos[activeVideoIndex]} 
+              autoPlay 
+              loop 
+              muted 
+              controls 
+              className="patient-video"
+              onEnded={() => setActiveVideoIndex((prev) => (prev + 1) % videos.length)}
+            >
+              Your browser does not support the video tag.
+            </video>
 
-            
             <div className="video-navigation">
-              <button className="nav-btn prev" onClick={() => setActiveVideoIndex(prev => prev > 0 ? prev - 1 : 4)}>❮</button>
+              <button className="nav-btn prev" onClick={() => setActiveVideoIndex((prev) => prev > 0 ? prev - 1 : videos.length - 1)}>❮</button>
               <div className="video-dots">
-                {[...Array(5)].map((_, index) => (
+                {videos.map((_, index) => (
                   <button 
                     key={index}
                     className={`dot ${activeVideoIndex === index ? 'active' : ''}`}
@@ -65,7 +70,7 @@ const PatientExperience = () => {
                   />
                 ))}
               </div>
-              <button className="nav-btn next" onClick={() => setActiveVideoIndex(prev => prev < 4 ? prev + 1 : 0)}>❯</button>
+              <button className="nav-btn next" onClick={() => setActiveVideoIndex((prev) => (prev + 1) % videos.length)}>❯</button>
             </div>
           </div>
         </div>
@@ -89,7 +94,7 @@ const PatientExperience = () => {
             ))}
             
             <div className="testimonial-navigation">
-              <button className="nav-btn prev" onClick={() => setActiveTestimonialIndex(prev => prev > 0 ? prev - 1 : testimonials.length - 1)}>❮</button>
+              <button className="nav-btn prev" onClick={() => setActiveTestimonialIndex((prev) => prev > 0 ? prev - 1 : testimonials.length - 1)}>❮</button>
               <div className="testimonial-dots">
                 {testimonials.map((_, index) => (
                   <button 
@@ -99,7 +104,7 @@ const PatientExperience = () => {
                   />
                 ))}
               </div>
-              <button className="nav-btn next" onClick={() => setActiveTestimonialIndex(prev => prev < testimonials.length - 1 ? prev + 1 : 0)}>❯</button>
+              <button className="nav-btn next" onClick={() => setActiveTestimonialIndex((prev) => (prev + 1) % testimonials.length)}>❯</button>
             </div>
           </div>
         </div>
