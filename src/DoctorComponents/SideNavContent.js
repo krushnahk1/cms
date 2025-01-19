@@ -1,6 +1,6 @@
 import React from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import "../DoctorCSS/SideNavContent.css";
 
 const SideNavContent = ({ sideNavStatus, list, navigateUrl }) => {
@@ -16,6 +16,7 @@ const SideNavContent = ({ sideNavStatus, list, navigateUrl }) => {
               <a >{item.name}</a>
             </span>
           </li>
+
         ))}
       </ul>
     </div>
