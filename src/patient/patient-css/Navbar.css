@@ -1,24 +1,53 @@
-/* .navbar-collapse1  {
-    position: relative ;
+.navbar-collapse1 {
+    position: relative;
     padding-right: 0px;
-
-} */
-
-.side-nav-button  {
-    cursor: pointer;
 }
 
-/* .navbar-brand {
-    overflow-y: scroll;
-} */
+.side-nav-button {
+    cursor: pointer;
+    font-size: 1.25rem; /* Larger icon for better visibility */
+}
 
 .nav-name-routes {
     width: 100%;
     overflow: hidden;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .nav-name-routes {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-brand {
+        font-size: 1rem; /* Adjust font size for smaller screens */
+    }
+
+    .side-nav-button {
+        font-size: 1rem; /* Adjust icon size for smaller screens */
+    }
 }
 
 @media (max-width: 350px) {
     .navbar-brand {
-        font-size: 100%;
+        font-size: 0.9rem; /* Further adjust font size for very small screens */
+    }
+
+    .nav-name-routes {
+        padding: 0.5rem 0; /* Adjust padding for small screens */
+    }
+
+    .side-nav-button {
+        font-size: 0.9rem; /* Further reduce icon size */
     }
 }

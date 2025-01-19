@@ -1,20 +1,9 @@
+
 .appointment-form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
   background-color: #f4f4f4;
+  padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.appointment-form h1 {
-  text-align: center;
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #333;
 }
 
 .appointment-form label {
@@ -27,8 +16,6 @@
 .appointment-form input,
 .appointment-form select,
 .appointment-form textarea {
-  width: 100%;
-  padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -44,7 +31,6 @@
 }
 
 .appointment-form button {
-  width: 100%;
   padding: 12px;
   background-color: #007bff;
   color: white;
@@ -69,23 +55,21 @@
 @media (max-width: 768px) {
   .appointment-form {
     padding: 15px;
-    max-width: 350px;
   }
 
-  .appointment-form h1 {
-    font-size: 22px;
+  .appointment-form label {
+    font-size: 14px;
   }
 
   .appointment-form input,
   .appointment-form select,
   .appointment-form textarea {
     font-size: 13px;
-    padding: 8px;
+    padding: 10px;
   }
 
   .appointment-form button {
     font-size: 14px;
-    padding: 10px;
   }
 }
 
@@ -93,28 +77,22 @@
 @media (max-width: 480px) {
   .appointment-form {
     padding: 10px;
-    max-width: 300px;
-  }
-
-  .appointment-form h1 {
-    font-size: 20px;
-    margin-bottom: 15px;
   }
 
   .appointment-form label {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .appointment-form input,
   .appointment-form select,
   .appointment-form textarea {
     font-size: 12px;
-    padding: 6px;
+    padding: 8px;
   }
 
   .appointment-form button {
     font-size: 12px;
-    padding: 8px;
+    padding: 10px;
   }
 }
 
@@ -122,26 +100,21 @@
 @media (max-width: 320px) {
   .appointment-form {
     padding: 8px;
-    max-width: 280px;
-  }
-
-  .appointment-form h1 {
-    font-size: 18px;
   }
 
   .appointment-form label {
-    font-size: 12px;
+    font-size: 10px;
   }
 
   .appointment-form input,
   .appointment-form select,
   .appointment-form textarea {
     font-size: 10px;
-    padding: 5px;
+    padding: 6px;
   }
 
   .appointment-form button {
     font-size: 10px;
-    padding: 6px;
+    padding: 8px;
   }
 }

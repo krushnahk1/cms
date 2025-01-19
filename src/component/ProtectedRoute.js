@@ -1,10 +1,16 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import ProtectedRoute from './ProtectedRoute';
+import Dashboard from './Dashboard';
+import Login from './Login';
 
-const ProtectedRoute = ({ children }) => {
-  const isLoggedIn = localStorage.getItem('isLoggedIn');
-
-  return isLoggedIn ? children : <Navigate to="/login" />;
+const App = () => {
+  return (
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+    </Routes>
+  );
 };
 
-export default ProtectedRoute;
+export default App;

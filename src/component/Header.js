@@ -15,6 +15,7 @@ const Header = ({ scollTODoctor, scrollToWhyChoose, scollTOPackage, scrollToServ
     setIsMenuOpen(!isMenuOpen);
     console.log('Menu button clicked, isMenuOpen:', isMenuOpen);
   };
+  const [scrollLeft, setScrollLeft] = useState(0);
 
  const [isMainMenuOpen, setisMainMenuOpen]=useState(false);
  const toggleMainMenu = () => {
@@ -25,7 +26,9 @@ const Header = ({ scollTODoctor, scrollToWhyChoose, scollTOPackage, scrollToServ
 
 const navigate = useNavigate();
 
+
   return (
+    
     <header className="header">
       {/* <div className="header-top">
         <div className="header-top-right">
