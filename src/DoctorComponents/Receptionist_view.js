@@ -21,9 +21,9 @@ function ReceptionistView() {
     let list1 = [
         {
           number: '1',
-          name: 'Dashboard',
+          name: 'Log out',
           icon: 'fas fa-home', 
-          url: '/DoctorDashboard/dashboard-overview',
+          url: '/',
         },
         {
           number: '6',
