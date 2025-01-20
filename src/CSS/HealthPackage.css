@@ -244,3 +244,22 @@
     font-size: 0.9rem;
   }
 }
+@media (max-width: 1044px) {
+  .healthcare-sidebar {
+    display: flex;
+    flex: 2;
+    width: 100vw;
+    flex-direction: column;
+    
+  }
+  .healthcare-location-with-packages {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+  }
+  .healthcare-sidebar {
+    width: 100%;
+    max-width: 100%;
+    
+  }
+}

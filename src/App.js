@@ -68,7 +68,7 @@ function App() {
           <Route path="/" element={
             <>
              <Header scollTODoctor={scollTODoctor} scrollToWhyChoose={scrollToWhyChoose} scollTOPackage={scollTOPackage}/>
-            <Scroll/>
+            {/* <Scroll/> */}
             <div>
               {/* <Hero /> */}
             <Home/>

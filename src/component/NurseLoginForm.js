@@ -23,7 +23,7 @@ const Login = () => {
 
   return (
     
-    <div className="container">
+    <div className="container nlf-container">
       
       <form onSubmit={handleLogin}>
       <h2>Nurse Login</h2>

@@ -35,12 +35,11 @@ function ReceptionistView() {
     return (
         <>
             <Navbar changeSideNavStatus={changeSideNavStatus} />
-            <div className="container-fluid main-view">
-                <div className="row">
-                    <div className={`col-md-2 side-navbar ${sideNavStatus ? 'd-block' : 'd-none d-md-block'}`}>
+            <div className="main-view">
+                    <div className={`side-navbar ${sideNavStatus ? 'd-block' : 'd-none d-md-block'}`}>
                         <SideNavContent list={list1} sideNavStatus={sideNavStatus} />
                     </div>
-                    <div className="col main-content">
+                    <div className="main-content">
                         <div className="main-content-routes">
                             <Routes>
                                 <Route path="/" element={<DashboardOverview />} />
@@ -56,7 +55,6 @@ function ReceptionistView() {
                             </Routes>
                         </div>
                     </div>
-                </div>
             </div>
         </>
     );

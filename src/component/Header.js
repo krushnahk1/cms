@@ -46,17 +46,20 @@ const navigate = useNavigate();
         </div>
       </div>  */}
 
-      <div className="header-main">
+      <div className="header-main px-4">
         <div className="logo">
           <a src="#"><img src={Maulilogo} alt="Mauli Hospital" /></a>
         </div>
 
         <nav className="main-nav">
-          <ul>
-           <Link to="/"><div>Mauli Hospital</div></Link> 
-            <div className="headerspace"></div>
-            
-              <li onClick={scrollToWhyChoose}><a href="#">Hospital</a></li>
+          <ul className=''>
+           <Link to="/"><div className='p-3 hospital-title'>Mauli Hospital</div></Link> 
+            <div className="headerspace d-flex">
+            <li onClick={scrollToWhyChoose}><a href="#">Home</a></li>
+            <li onClick={scrollToWhyChoose}><a href="#">About</a></li>
+            <li onClick={scrollToWhyChoose}><a href="#">Contact Us</a></li>
+
+             
               <li onClick={scrollToServices}
                 className="nav-item dropdown"
                 onMouseEnter={() => toggleDropdown(true)}
@@ -77,16 +80,16 @@ const navigate = useNavigate();
                 )}
               </li>
               <li><a href="#" onClick={scollTOPackage}>Health Packages</a></li>
-              <li><a href="#">International Patients</a></li>
-              <li><a href="#">Find A Doctor</a></li>
+              <li><a href="#">Doctors</a></li>
+              {/* <li><a href="#">       
+              </a></li> */}
               {/* <li><button className="appointment">Appointment</button>
               </li> */}
-            
+            </div>
           </ul>
         </nav>
-
-        
-        <button className="menu btn btn-primary" onClick={toggleMenu}>
+        <button className='appointment btn btn-success p-1 m-2' >Appoiments</button>
+        <button className="menu btn btn-primary p-1" onClick={toggleMenu}>
   ☰ Login
   {isMenuOpen && (
   <div className="menu-dropdown dropdown-menu show">
