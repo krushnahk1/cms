@@ -131,14 +131,14 @@ function App() {
             </>
           
         } />
-          <Route path="/DoctorLoginForm" element={<DoctorLoginForm />} /> 
+          {/* <Route path="/DoctorLoginForm" element={<DoctorLoginForm />} /> 
           <Route path="/DoctorDashboard/*" element={<Doctordashboard/>} /> 
           <Route path="/NurseLoginForm" element={<NurseLoginForm />} />
           <Route path="/Nursedashboard/*" element={<Nursedashboard/>} />
           <Route path="/AllPatient" element={<AllPatient/>} />
           <Route path="/add-patient" element={<AddPatient />} />
           <Route path="/create-appointment" element={<CreateAppointment />} />
-          <Route path="/add-enquiries" element={<AddEnquiries />} />     
+          <Route path="/add-enquiries" element={<AddEnquiries />} />      */}
         </Routes>
       </Router>
     <Router>
