@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AppServices from "../../services/AppServices";
 import { Link } from "react-router-dom";
+import './appoinmentsCSS/Appointment.css'
 
 const Appointment = () => {
   const [appointments, setAppointments] = useState([]);

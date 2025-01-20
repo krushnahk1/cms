@@ -1,0 +1,46 @@
+/* Add custom CSS for responsive design */
+.card-body{
+    width: 400px;
+}
+
+/* Center the form container on larger screens */
+@media (min-width: 576px) {
+    .card {
+      max-width: 500px;
+      margin: auto;
+    }
+  }
+  
+  /* Make the container responsive for smaller screens */
+  @media (max-width: 576px) {
+    .container-fluid {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  
+    .card {
+      width: 100%;
+      margin-top: 20px;
+    }
+  
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+  
+    .d-flex {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .btn {
+      width: 100%;
+    }
+  }
+  
+  /* Adjust the text size for smaller screens */
+  @media (max-width: 576px) {
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+  

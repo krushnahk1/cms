@@ -2,10 +2,7 @@
 .navbar {
     padding: 10px 20px;
 }
-.backbutton{
-    position: relative;
-    right:0px;
-}
+
 
 .navbar-brand {
     font-size: 1.5rem;
@@ -44,6 +41,9 @@
     .side-nav-button {
         align-self: flex-start;
     }
+    .backbutton{
+        display: flex;
+    }
 }
 
 /* For mobile devices (max-width: 480px) */
@@ -58,5 +58,40 @@
 
     .navbar-brand {
         font-size: 1.2rem;
+    }
+    .backbutton{
+        display: flex;
+    }
+}
+
+/* Navbar Custom Styles */
+.navbar {
+    height: 60px;
+}
+
+.side-nav-button {
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+    .nav-name-routes {
+        font-size: 1rem;
+    }
+
+    .side-nav-button {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .nav-name-routes {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+
+    .side-nav-button {
+        font-size: 1rem;
     }
 }

@@ -12,7 +12,7 @@ const Services = () => {
         <div className="text">
           <h1 className="display">Our Services</h1>
           
-          <p >
+          <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus, quidem.
             <button className="servicebutton">See Services</button>
           </p>
@@ -27,7 +27,7 @@ const Services = () => {
                 <RiMicroscopeLine size={50} className="text-primary mb-3" />
                 <h5 className="card-title">Lab Test</h5>
                 <p className="card-text">
-                  Comprehensive lab testing services for  diagnostics.
+                  Comprehensive lab testing services for diagnostics.
                 </p>
                 <a href="#" className="btn btn-link">Learn more</a>
               </div>

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import AppServices from "../../services/AppServices";
+import '../appointment/appoinmentsCSS/AppoinmentAdd.css'; // Create a separate CSS file for custom styles
+
 const AppointmentsAdd = () => {
   const [title, setTitle] = useState("");
   const [dateTime, setDateTime] = useState("");
@@ -19,34 +21,22 @@ const AppointmentsAdd = () => {
 
   return (
     <>
-      <h1>Add Appointments</h1>
-      <div className="container-fluid mt-5">
-        <div className="row">
-          <div className="card col-md-6 offset-md-3">
+      <h1 className="text-center mt-5">Add Appointments</h1>
+      <div className="container-fluid">
+        <div className="row justify-content-center">
+          <div className="card">
             <div className="card-body">
               <form>
-                <div className="form-group mb-2">
+                <div className="form-group mb-3">
                   <label className="form-label">Name:</label>
                   <input
                     type="text"
                     placeholder="Enter name"
                     name="name"
                     className="form-control"
-                    // value={title}
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
-                {/* <div className="form-group mb-2">
-                                    <label className="form-label">Age:</label>
-                                    <input
-                                        type="text"
-                                        placeholder="Enter age"
-                                        name="age"
-                                        className="form-control"
-                                        value={age}
-                                        onChange={(e) => setAge(e.target.value)}
-                                    />
-                                </div> */}
 
                 <div className="mb-3">
                   <label htmlFor="dateTime" className="form-label">
@@ -62,26 +52,30 @@ const AppointmentsAdd = () => {
                     required
                   />
                 </div>
-                <div className="form-group mb-2">
+
+                <div className="form-group mb-3">
                   <label className="form-label">Description:</label>
                   <input
                     type="text"
-                    placeholder="Enter department"
-                    name="dept"
+                    placeholder="Enter description"
+                    name="description"
                     className="form-control"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                   />
                 </div>
-                <button
-                  className="btn btn-success"
-                  onClick={(e) => saveAppointment(e)}
-                >
-                  Submit
-                </button>
-                <Link to="/" className="btn btn-danger">
-                  Cancel
-                </Link>
+
+                <div className="d-flex justify-content-between">
+                  <button
+                    className="btn btn-success"
+                    onClick={(e) => saveAppointment(e)}
+                  >
+                    Submit
+                  </button>
+                  <Link to="/" className="btn btn-danger">
+                    Cancel
+                  </Link>
+                </div>
               </form>
             </div>
           </div>

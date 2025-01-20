@@ -1,18 +1,18 @@
 /* Custom CSS for Clinic Room Management */
-.modal .modal-content{
- text-align: center;
- width: 500px;
- /* margin-left: 500px; */
+.modal .modal-content {
+  text-align: center;
+  width: 500px;
+  margin: 0 auto;
 }
-form{
-  margin-top:0px;
-  margin-left:50px;
+
+form {
+  margin-top: 0;
+  margin-left: 50px;
 }
 
 .container {
   margin-top: 20px; /* Adjusted for better visibility */
   display: inline;
- 
 }
 
 /* Small devices (phones, 600px and below) */
@@ -21,16 +21,24 @@ form{
     width: 100% !important;
     font-size: 0.9rem;
   }
+
   .clinic-title {
     font-size: 1.25rem;
   }
+
   .modal-content {
     width: 90%;
     margin: 0 auto;
   }
+
+  form {
+    margin-left: 10px; /* Adjust form margin for small screens */
+  }
+
   .modal-header {
     font-size: 1.25rem;
   }
+
   .btn {
     font-size: 0.875rem;
   }
@@ -41,16 +49,24 @@ form{
   .clinic-card {
     width: 90% !important;
   }
+
   .clinic-title {
     font-size: 1.5rem;
   }
+
   .modal-content {
     width: 70%;
     margin: 0 auto;
   }
+
+  form {
+    margin-left: 30px; /* Adjust form margin for medium screens */
+  }
+
   .modal-header {
     font-size: 1.5rem;
   }
+
   .btn {
     font-size: 0.9rem;
   }
@@ -61,16 +77,24 @@ form{
   .clinic-card {
     width: 220px !important;
   }
+
   .clinic-title {
     font-size: 1.75rem;
   }
+
   .modal-content {
     width: 50%;
     margin: 0 auto;
   }
+
+  form {
+    margin-left: 50px; /* Default form margin for large screens */
+  }
+
   .modal-header {
     font-size: 1.75rem;
   }
+
   .btn {
     font-size: 1rem;
   }
@@ -90,6 +114,7 @@ form{
 
 .modal-content {
   border-radius: 0.5rem;
+  padding: 1rem; /* Add padding for better spacing */
 }
 
 .btn-close {

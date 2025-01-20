@@ -49,10 +49,12 @@
 .why-choose-image img {
   max-width: 100%;
   border-radius: 8px;
-  height: 430px;
+  height: 430px; /* This will maintain a fixed height for larger screens */
 }
 
 /* Media Queries */
+
+/* Medium Screens and Below (Tablet) */
 @media (max-width: 768px) {
   .why-choose {
     flex-direction: column; /* Stack content vertically */
@@ -66,8 +68,14 @@
   .why-choose-image img {
     height: auto; /* Allow height to adjust dynamically */
   }
+
+  .stats {
+    justify-content: center;
+    gap: 15px; /* Reduce the gap between items on smaller screens */
+  }
 }
 
+/* Small Screens and Below (Mobile) */
 @media (max-width: 576px) {
   .why-choose-content h2 {
     font-size: 1.5rem;
@@ -84,5 +92,9 @@
   .stat-item img {
     width: 40px;
     height: 40px;
+  }
+
+  .why-choose-image img {
+    max-height: 300px; /* Adjust the image size on very small screens */
   }
 }

@@ -145,20 +145,7 @@ const HealthcarePackages = () => {
 
     return (
         <div className="healthcare-page">
-            {/* <div className="healthcare-banner-container">
-                <div className="healthcare-banner-content">
-                    <h1 className="healthcare-banner-title">Welcome to Mauli Hospital
-                    Pune's Best</h1>
-                    <p className="healthcare-banner-subtitle">Description in the past 50 years has set new bench marks for standards in the health care industry is recognised as one of the top hospitals in Pune.
-
-                    </p>
-                </div>
-                <img
-                    src={himage}
-                    alt="Health Packages"
-                    className="healthcare-banner-image"
-                />
-            </div> */}
+          
             <div className="healthcare-location-with-packages">
                 <div className="healthcare-sidebar">
                     <h3>Health Packages</h3>
