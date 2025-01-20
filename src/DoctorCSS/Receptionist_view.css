@@ -14,7 +14,7 @@
 .main-content {
     background-color: #f9f9f9;
     height: calc(100vh - 60px);
-    width: calc(100vw - 17px);
+    width: calc(100vw - 0px);
     
 }
 
@@ -22,7 +22,7 @@
     position: relative;
     left: 60px;
     height: calc(100vh - 60px);
-    width: calc(100vw - 77px);
+    width: calc(100vw - 60px);
     overflow-y: scroll;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none;

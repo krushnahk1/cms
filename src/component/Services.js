@@ -18,7 +18,7 @@ const Services = () => {
           </p>
           
         </div>
-      <div className="container">
+      <div className="container service-container">
         {/* Services Cards */}
         <div className="row g-4">
           <div className="col-lg-4">

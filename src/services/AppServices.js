@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_REST_API_URL = "http://localhost:8084/api/";
+const BASE_REST_API_URL = "http://192.168.47.220:8084/api/";
 class AppServices {
   getAllAppointment() {
     return axios.get(BASE_REST_API_URL + "appointments");
