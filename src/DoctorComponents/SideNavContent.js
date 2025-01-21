@@ -28,8 +28,9 @@ const SideNavContent = ({ sideNavStatus, list }) => {
             <a title={item.name} className="sidebar-link">
               <i className={`${item.icon} p-3`}></i>
               <span className="sidebar-text">{item.name}</span>
+              
               {item.children && <i className={`fas fa-chevron-${expandedItem === item.number ? 'up' : 'down'} p-3`}></i>}
-            </div>
+            </a>
             {item.children && expandedItem === item.number && (
               <ul className="sub-nav-list">
                 {item.children.map((subItem) => (
