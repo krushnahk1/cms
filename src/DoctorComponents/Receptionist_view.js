@@ -13,9 +13,10 @@ import AppointmentsAdd from '../component/appointment/AppointmentsAdd';
 import AppointmentViewById from '../component/appointment/AppointmentViewById';
 import Appointment from '../component/appointment/Appointment';
 import AppointmentUpdate from '../component/appointment/AppointmentUpdate';
+import UserStorageService from '../services/UserStorageService';
 
 function ReceptionistView() {
-    const [sideNavStatus, setSideNavStatus] = useState(false);
+    const [sideNavStatus, setSideNavStatus] = useState(true );
 
     const list1 = [
         { number: '1', name: 'Log out', icon: 'fas fa-home', url: '/' },
@@ -31,7 +32,16 @@ function ReceptionistView() {
         setSideNavStatus(!sideNavStatus);
         console.log(sideNavStatus);
     };
-
+    if(UserStorageService.getToken()==null || UserStorageService.getUser()==null) {
+        return(
+            <>
+                <div className='unilligible' style={{alignItems:'center', marginTop:'300px'}}>
+                    <h1>Page 404 error</h1>
+                </div>
+            </>
+        );
+    }
+    console.log(UserStorageService.getToken());
     return (
         <>
             <Navbar changeSideNavStatus={changeSideNavStatus} />

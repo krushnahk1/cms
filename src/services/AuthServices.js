@@ -1,35 +1,16 @@
 import axios from "axios";
+import UserStorageService from "./UserStorageService";
+import React, { useState } from 'react';
 
-const BASE_REST_API_URL = "http://192.168.47.220:8084/api/";
+const BASE_REST_API_URL = "http://localhost:8084/users/";
+
 class AuthServices {
-
-    login(appointment) {
-        return axios.post(BASE_REST_API_URL + "appointments", appointment);
+    login(user) {
+        return axios.post(BASE_REST_API_URL + "login", user);
     }
 
-//   getAllAppointment() {
-//     return axios.get(BASE_REST_API_URL + "appointments");
-//   }
-//   createAppointment(appointment) {
-//     return axios.post(BASE_REST_API_URL + "appointments", appointment);
-//   }
-
-
-//   deleteAppointments(appointmentId) {
-//     return axios.delete(BASE_REST_API_URL + "appointments/" + appointmentId);
-//   }
-
-//   updateappointments(appointmentId, appointment) {
-//     return axios.put(
-//       BASE_REST_API_URL + "appointments/" + appointmentId, appointment );
-//   }
-
-//   getAppointmentById(appointmentId) {
-//     return axios.get(BASE_REST_API_URL + "appointments/" + appointmentId);
-//   }
 }
 
-// export default new AppointmentServices();
 
-const authServices = new AppServices();
+const authServices = new AuthServices();
 export default authServices;
