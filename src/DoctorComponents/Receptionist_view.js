@@ -19,7 +19,8 @@ function ReceptionistView() {
     const [sideNavStatus, setSideNavStatus] = useState(true );
 
     const list1 = [
-        { number: '1', name: 'Log out', icon: 'fas fa-home', url: '/' },
+
+        { number: '1', name: 'dashboard', icon: 'fas fa-home', url: '/DoctorDashboard' },
         { number: '6', name: 'Add patient', icon: 'fas fa-user-plus', url: '/DoctorDashboard/add-patient' },
         { number: '2', name: 'view patient', icon: 'fas fa-user', url: '/DoctorDashboard/AllPatient' },
         { number: '3', name: 'Create Appointment', icon: 'fas fa-calendar-check', url: '/DoctorDashboard/create-appointment' },
@@ -50,6 +51,7 @@ function ReceptionistView() {
                         <SideNavContent list={list1} sideNavStatus={sideNavStatus} />
                     </div>
                     <div className="main-content">
+                       
                         <div className="main-content-routes">
                             <Routes>
                                 <Route path="/" element={<DashboardOverview />} />

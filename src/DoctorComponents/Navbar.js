@@ -17,6 +17,9 @@ function Navbar({ changeSideNavStatus }) {
                             DOCTOR ADMIN DASHBOARD
                         </Link>
                     </div>
+                    <div>
+                      <a href='/'><button>logout</button></a> 
+                    </div>
                 </div>
             </nav>
         </>
