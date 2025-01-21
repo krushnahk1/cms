@@ -13,6 +13,7 @@ import AppointmentsAdd from '../component/appointment/AppointmentsAdd';
 import AppointmentViewById from '../component/appointment/AppointmentViewById';
 import Appointment from '../component/appointment/Appointment';
 import AppointmentUpdate from '../component/appointment/AppointmentUpdate';
+import UserStorageService from '../services/UserStorageService';
 
 function ReceptionistView() {
     const [sideNavStatus, setSideNavStatus] = useState(false);
@@ -31,7 +32,16 @@ function ReceptionistView() {
         setSideNavStatus(!sideNavStatus);
         console.log(sideNavStatus);
     };
-
+    if(UserStorageService.getToken()==null || UserStorageService.getUser()==null) {
+        return(
+            <>
+                <div className='unilligible' style={{alignItems:'center', marginTop:'300px'}}>
+                    <h1>You are not eligible</h1>
+                </div>
+            </>
+        );
+    }
+    console.log(UserStorageService.getToken());
     return (
         <>
             <Navbar changeSideNavStatus={changeSideNavStatus} />
