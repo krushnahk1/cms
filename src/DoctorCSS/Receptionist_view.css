@@ -1,7 +1,7 @@
 .main-view {
     background-color: #f9f9f9;
     height: calc(100vh - 60px);
-    width: calc(100vw - 17px);
+    width: calc(100vw - 0px);
     /* border: 10px solid black; */
 }
 
@@ -31,6 +31,18 @@
     display: none; /* Chrome, Safari, and Edge */
 }
 
+@media (max-width: 2560px) {
+    .main-content-routes {
+        position: relative;
+        left: 230px;
+        height: calc(100vh - 60px);
+        width: calc(100vw - 230px);
+        overflow-y: scroll;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;
+    }
+} 
+
 @media (max-width: 870px) {
     .main-content-routes {
         position: relative;
@@ -42,4 +54,5 @@
         -ms-overflow-style: none;
     }
 }
+
 

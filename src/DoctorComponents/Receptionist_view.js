@@ -16,7 +16,7 @@ import AppointmentUpdate from '../component/appointment/AppointmentUpdate';
 import UserStorageService from '../services/UserStorageService';
 
 function ReceptionistView() {
-    const [sideNavStatus, setSideNavStatus] = useState(false);
+    const [sideNavStatus, setSideNavStatus] = useState(true );
 
     const list1 = [
         { number: '1', name: 'Log out', icon: 'fas fa-home', url: '/' },
@@ -36,7 +36,7 @@ function ReceptionistView() {
         return(
             <>
                 <div className='unilligible' style={{alignItems:'center', marginTop:'300px'}}>
-                    <h1>You are not eligible</h1>
+                    <h1>Page 404 error</h1>
                 </div>
             </>
         );

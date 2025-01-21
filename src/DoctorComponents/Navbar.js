@@ -8,7 +8,7 @@ function Navbar({ changeSideNavStatus }) {
         <>
             <nav className="navbar navbar-expand navbar-dark bg-dark px-2">
                 <div className="container-fluid">
-                    <div className="side-nav-button p-2 me-3 text-light">
+                    <div className="side-nav-button p-2 me-3 text-light d-lg-none">
                         <FontAwesomeIcon icon={faBars} onClick={() => { changeSideNavStatus(); console.log('hi'); }} />
                     </div>
 

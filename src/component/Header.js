@@ -89,7 +89,7 @@ const navigate = useNavigate();
           </ul>
         </nav>
         <button className='appointment btn btn-success p-1 m-2' >Appoiments</button>
-        <button className="menu btn btn-primary p-1" onClick={toggleMenu}>
+        {/* <button className="menu btn btn-primary p-1" onClick={toggleMenu}>
   ☰ Login
   {isMenuOpen && (
   <div className="menu-dropdown dropdown-menu show">
@@ -101,7 +101,7 @@ const navigate = useNavigate();
     </ul>
   </div>
 )}
-</button>
+</button> */}
 
 <div className='mmi-container'>
 <div className="mobile-menu-icon" onClick={toggleMainMenu}>
