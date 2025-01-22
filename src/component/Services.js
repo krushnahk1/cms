@@ -3,10 +3,9 @@ import { RiMicroscopeLine } from "react-icons/ri";
 import { MdHealthAndSafety } from "react-icons/md";
 import { FaHeartbeat } from "react-icons/fa";
 import '../CSS/Services.css'; // Custom CSS
-import ServiceForm from '../DoctorComponents/AddServiceForm'; // Import the ServiceForm component
+import ServiceForm from './AddServiceForm'; // Ensure this path is correct
 
 const Services = () => {
-  // Initial state to hold the service data
   const [servicesData, setServicesData] = useState({
     title: "Our Services",
     description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus, quidem.",
@@ -18,7 +17,7 @@ const Services = () => {
         title: "Lab Test",
         description: "Comprehensive lab testing services for diagnostics.",
         link: "#",
-        img: "", // Placeholder for the image
+        img: "",
       },
       {
         id: 2,
@@ -26,7 +25,7 @@ const Services = () => {
         title: "Health Check",
         description: "Regular health check-ups to ensure your well-being.",
         link: "#",
-        img: "", // Placeholder for the image
+        img: "",
       },
       {
         id: 3,
@@ -34,7 +33,7 @@ const Services = () => {
         title: "Heart Health",
         description: "Specialized care for maintaining a healthy heart.",
         link: "#",
-        img: "", // Placeholder for the image
+        img: "",
       },
     ],
   });
@@ -42,20 +41,18 @@ const Services = () => {
   const addOrUpdateService = (newServiceData) => {
     setServicesData((prevData) => ({
       ...prevData,
-      services: [...prevData.services, newServiceData], // Add new service to the list
+      services: [...prevData.services, newServiceData],
     }));
   };
 
   return (
     <div className="services-section py-5">
-      {/* "Our Services" Heading and description */}
       <div className="text">
         <h1 className="display">{servicesData.title}</h1>
         <p>{servicesData.description}</p>
         <button className="servicebutton">{servicesData.buttonLabel}</button>
       </div>
 
-      {/* Services Cards */}
       <div className="container service-container">
         <div className="row g-4">
           {servicesData.services.map((service) => (
@@ -69,7 +66,7 @@ const Services = () => {
                       style={{ width: "100%", height: "auto" }}
                     />
                   ) : (
-                    service.icon // Fallback to the icon if no image is provided
+                    service.icon
                   )}
                   <h5 className="card-title">{service.title}</h5>
                   <p className="card-text">{service.description}</p>
@@ -81,7 +78,6 @@ const Services = () => {
         </div>
       </div>
 
-      {/* Service Form for Adding/Updating Data */}
       <ServiceForm addOrUpdateService={addOrUpdateService} />
     </div>
   );

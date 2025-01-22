@@ -4,15 +4,15 @@ import 'cropperjs/dist/cropper.css';
 
 const ServiceForm = ({ addOrUpdateService }) => {
   const [service, setService] = useState({
-    id: Date.now(), // Generate a unique ID for the new service
+    id: Date.now(),
     title: '',
     description: '',
-    icon: '', // You can use an icon name or an image for the icon
-    link: '#', // Default link
-    img: '', // This will hold the base64 string for the image
+    icon: '',
+    link: '#',
+    img: '',
   });
 
-  const cropperRef = useRef(null); // Reference to the cropper instance
+  const cropperRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,9 +24,9 @@ const ServiceForm = ({ addOrUpdateService }) => {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setService({ ...service, img: reader.result }); // Store the image as base64
+        setService({ ...service, img: reader.result });
       };
-      reader.readAsDataURL(file); // Convert the image to a base64 string
+      reader.readAsDataURL(file);
     }
   };
 
@@ -34,34 +34,33 @@ const ServiceForm = ({ addOrUpdateService }) => {
     if (cropperRef.current) {
       const cropper = cropperRef.current.cropper;
       const croppedCanvas = cropper.getCroppedCanvas();
-      const croppedImage = croppedCanvas.toDataURL(); // Get the cropped image as base64
-      setService({ ...service, img: croppedImage }); // Update the service image with the cropped one
+      const croppedImage = croppedCanvas.toDataURL();
+      setService({ ...service, img: croppedImage });
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (service.title && service.description && service.img) {
-      addOrUpdateService(service); // Add or update the service in the parent
+      addOrUpdateService(service);
       setService({
-        id: Date.now(), // Reset ID for next service
+        id: Date.now(),
         title: '',
         description: '',
         icon: '',
         link: '#',
-        img: '', // Reset the image field
+        img: '',
       });
     }
   };
 
   const isFormValid = () => {
     const { title, description, img } = service;
-    return title && description && img; // Ensure that the title, description, and image are provided
+    return title && description && img;
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      {/* Service Title */}
       <div className="form-group">
         <label>Service Title</label>
         <input
@@ -74,7 +73,6 @@ const ServiceForm = ({ addOrUpdateService }) => {
         />
       </div>
 
-      {/* Service Description */}
       <div className="form-group">
         <label>Service Description</label>
         <textarea
@@ -86,7 +84,6 @@ const ServiceForm = ({ addOrUpdateService }) => {
         />
       </div>
 
-      {/* Service Image Upload */}
       <div className="form-group">
         <label>Service Image</label>
         <input
@@ -98,7 +95,6 @@ const ServiceForm = ({ addOrUpdateService }) => {
         />
         {service.img && (
           <>
-            {/* Cropper for the uploaded image */}
             <div className="mt-3">
               <Cropper
                 src={service.img}
@@ -115,11 +111,10 @@ const ServiceForm = ({ addOrUpdateService }) => {
         )}
       </div>
 
-      {/* Submit Button */}
       <button
         type="submit"
         className="btn btn-primary mt-3"
-        disabled={!isFormValid()} // Disable the button if the form is not valid
+        disabled={!isFormValid()}
       >
         Save Service
       </button>

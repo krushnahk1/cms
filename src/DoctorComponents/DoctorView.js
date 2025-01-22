@@ -13,7 +13,7 @@ import AppointmentViewById from '../component/appointment/AppointmentViewById';
 import Appointment from '../component/appointment/Appointment';
 import AppointmentUpdate from '../component/appointment/AppointmentUpdate';
 import UserStorageService from '../services/UserStorageService';
-import AddService from './AddServiceForm'
+import AddService from '../component/AddServiceForm'
 import "../DoctorCSS/DoctorView.css";
 
 function DoctorView() {
