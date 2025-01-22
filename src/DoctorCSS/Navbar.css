@@ -1,22 +1,35 @@
 /* Custom Navbar Styling */
 .navbar {
     padding: 10px 20px;
+    height: 60px !important;
 }
 
-
+.nav-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
 .navbar-brand {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: bold;
+    height: 100%;
     color: #fff !important;
+    display: inline-block;
 }
 
 .side-nav-button {
     cursor: pointer;
     font-size: 1.5rem;
+    
 }
 
 .nav-name-routes {
     align-items: center;
+}
+
+.nav-container .user-icon {
+    position: absolute;
+    right: 20px;
 }
 
 /* Custom media queries for responsiveness */
@@ -30,7 +43,7 @@
 
     .nav-name-routes {
         flex-direction: column;
-        width: 100%;
+        height: 100%;
         text-align: center;
     }
 
@@ -61,6 +74,9 @@
     }
     .backbutton{
         display: flex;
+    }
+    .nav-container .user-icon {
+        display: none;
     }
 }
 
@@ -93,5 +109,10 @@
 
     .side-nav-button {
         font-size: 1rem;
+    }
+}
+@media (max-width: 355px) {
+    .navbar-brand {
+        font-size: 100%;
     }
 }

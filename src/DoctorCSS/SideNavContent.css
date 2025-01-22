@@ -3,6 +3,8 @@
     display: flex;
     flex-direction: column;
     width: 230px;
+    position: absolute;
+    z-index: 10;
     background-color: black;
     height: calc(100vh - 60px);
     transition: width 0.3s ease;
@@ -12,85 +14,40 @@
     list-style: none;
     width: 100%;
     padding: 0;
+    margin: 0;
+
 }
 
 .nav-list-item {
-    padding: 10px;
+    /* padding: 10px; */
     width: 100%;
     color: white;
     text-align: left;
     white-space: nowrap;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    /* padding: 20px; */
+    cursor: pointer;
+    background-color: white;
     transition: background-color 0.3s ease;
 }
 
-.nav-list-item:hover {
-    color: white;
-    background-color: blue;
-}
-
-.side-nav-content:not(.nav-list-open) {
-    width: 60px;
-}
-
-.side-nav-content:not(.nav-list-open) .nav-list .nav-list-item span {
-    display: none;
-}
-
-.side-nav-content.nav-list-open .nav-list .nav-list-item span {
-    display: inline-block;
-}
-
-/* Media query for smaller screens */
-@media (max-width: 992px) {
-    .side-nav-content {
-        width: 230px;
-        position: fixed;
-        top: 60px;
-        left: -230px;
-        height: 100vh;
-        z-index: 10;
-        transition: transform 0.3s ease;
-    }
-}
-
-@media (max-width: 768px) {
-    .side-nav-content {
-        width: 60px; /* Collapsed state by default on smaller screens */
-    }
-
-    .side-nav-content.nav-list-open {
-        width: 100%; /* Expand to full width on toggle */
-    }
-
-    .nav-list-item {
-        padding: 8px; /* Adjust padding for smaller screens */
-    }
-
-    .nav-list-item:hover {
-        background-color: darkblue; /* Slightly different hover effect */
-    }
-}
-
-.side-nav-content {
-    width: 230px;
-    position: absolute;
-    z-index: 10;
-}
-
-.nav-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.nav-list-item {
-    display: flex;
-    align-items: center;
+.nav-list-item a {
+    background-color: black;
     padding: 10px;
-    cursor: pointer;
+}
+.nav-list-item a:hover {
+    background-color: white;
+
 }
 
+/* .nav-list-item:hover {
+    color: white;
+    background-color: white;
+} */
 .sidebar-link {
     display: flex;
     align-items: center;
@@ -107,6 +64,62 @@
     display: inline-block;
     font-weight: 500;
 }
+
+.subitem-container {
+    padding-left: 0px;
+    background-color: #847878;
+
+}
+.subitem-container:hover {
+    background-color: white;
+}
+
+
+/* Media query for smaller screens */
+@media (max-width: 992px) {
+    .side-nav-content {
+        width: 230px;
+        position: fixed;
+        top: 60px;
+        left: -1px;
+        height: 100vh;
+        z-index: 10;
+        transition: transform 0.3s ease, width 0.92s ease;
+    }
+    .side-nav-content:not(.nav-list-open) {
+        width: 0px;
+        /* display: none; */
+    }
+    
+    .side-nav-content:not(.nav-list-open) .nav-list .nav-list-item span {
+        display: none;
+    }
+   
+    
+    .side-nav-content.nav-list-open .nav-list .nav-list-item span {
+        display: inline-block;
+    }
+}
+
+@media (max-width: 768px) {
+    .side-nav-content {
+        width: 60px; /* Collapsed state by default on smaller screens */
+    }
+
+    .side-nav-content.nav-list-open {
+        width: 230px; /* Expand to full width on toggle */
+    }
+
+    .nav-list-item {
+        padding: 8px; /* Adjust padding for smaller screens */
+    }
+
+    .nav-list-item:hover {
+        background-color: darkblue; /* Slightly different hover effect */
+    }
+}
+
+
 
 /* Tooltip functionality with title attribute handled by browser */
 

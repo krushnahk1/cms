@@ -31,6 +31,10 @@
   font-size: 1rem;
 }
 
+.add-enquiry-form label {
+  width: 100%;
+}
+
 .add-enquiry-form input:focus,
 .add-enquiry-form select:focus,
 .add-enquiry-form textarea:focus {
@@ -64,10 +68,12 @@
   .add-enquiry-form-container {
     padding: 15px;
     max-width: 100%;
+    /* justify-content: center; */
   }
 
   .add-enquiry-form {
     padding: 15px;
+    margin: 0 auto;
   }
 
   .add-enquiry-form h1 {
