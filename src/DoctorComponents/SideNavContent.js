@@ -14,71 +14,81 @@ import Appointment from '../component/appointment/Appointment';
 import AppointmentUpdate from '../component/appointment/AppointmentUpdate';
 import UserStorageService from '../services/UserStorageService';
 
-function ReceptionistView() {
-    const [sideNavStatus, setSideNavStatus] = useState(true);
-    const [isPatientDropdownOpen, setIsPatientDropdownOpen] = useState(false);
+const SideNavContent = ({ sideNavStatus, list, toggleSubmenu }) => {
+  const [expandedItem, setExpandedItem] = useState(null);
+  const navigate = useNavigate();
 
-    const list1 = [
-        { number: '1', name: 'dashboard', icon: 'fas fa-home', url: '/DoctorDashboard' },
-        { number: '2', name: 'patient', icon: 'fas fa-user-plus', url: '', dropdown: true },
-    ];
+  const handleRoutes = (item) => {
 
-    const changeSideNavStatus = () => {
-        setSideNavStatus(!sideNavStatus);
-    };
-
-    const togglePatientDropdown = () => {
-        setIsPatientDropdownOpen(!isPatientDropdownOpen);
-    };
-
-    if (UserStorageService.getToken() == null || UserStorageService.getUser() == null) {
-        return (
-            <>
-                <div className='unilligible' style={{ alignItems: 'center', marginTop: '300px' }}>
-                    <h1>Page 404 error</h1>
-                </div>
-            </>
-        );
+    if (item.url == "/") {
+      UserStorageService.signOut();
     }
+    if (item.isSubitem) {
+      console.log(item.subitem);
+      // return (
+      //   <>
+      //     <ul className='sidebar-subitem-list'>
+      //       <a title={item.subitem.name} className="sidebar-subitem-link">
+      //         <i className={`${item.subitem.icon} p-3`}></i>
+      //         <span className="sidebar-text">{item.subitem.name}</span>
+      //       </a>
+      //     </ul>
+      //   </>
+      // );
+      toggleSubmenu(item.number);
+      console.log(item.isExpanded);
 
-    return (
-        <>
-            <Navbar changeSideNavStatus={changeSideNavStatus} />
-            <div className="main-view">
-                <div className={`side-navbar ${sideNavStatus ? 'd-block' : 'd-none d-md-block'}`}>
-                    {/* Sidebar Image */}
-                    <div className="sidebar-img">
-                        <img src="/path/to/your/image.jpg" alt="Sidebar Top" className="img-fluid" />
-                    </div>
-                    <SideNavContent list={list1} sideNavStatus={sideNavStatus} />
-                    {/* Patient Dropdown */}
-                    {isPatientDropdownOpen && (
-                        <ul className="dropdown-menu">
-                            <li><Link to="/patient/1">Patient 1</Link></li>
-                            <li><Link to="/patient/2">Patient 2</Link></li>
-                            <li><Link to="/patient/3">Patient 3</Link></li>
-                        </ul>
-                    )}
-                </div>
-                <div className="main-content">
-                    <div className="main-content-routes">
-                        <Routes>
-                            <Route path="/" element={<DashboardOverview />} />
-                            <Route path="/DashboardOverview" element={<DashboardOverview />} />
-                            <Route path="/AllPatient" element={<AllPatients />} />
-                            <Route path="/add-patient" element={<AddPatient />} />
-                            <Route path="/create-appointment" element={<AppointmentsAdd />} />
-                            <Route path="/list-appointment" element={<Appointment />} />
-                            <Route path="/view-appointment/:id" element={<AppointmentViewById />} />
-                            <Route path="/edit-appointment/:id" element={<AppointmentUpdate />} />
-                            <Route path="/AddEnquiry" element={<AddEnquiry />} />
-                            <Route path="/Room" element={<Room />} />
-                        </Routes>
-                    </div>
-                </div>
-            </div>
-        </>
-    );
-}
+      return;
+    }
+    navigate(item.url);
+  }
 
-export default ReceptionistView;
+  return (
+    <div className={`side-nav-content ${sideNavStatus ? 'nav-list-open' : ''}`}>
+      <ul className="nav-list">
+        {list.map((item) => (
+          <li key={item.number} className="nav-list-item sidebar-item" onClick={() => handleRoutes(item)} >
+            <a title={item.name} className="sidebar-link">
+              <i className={`${item.icon} p-3`}></i>
+              <span className="sidebar-text">{item.name}</span>
+            </a>
+            {item.isSubitem && (
+              <ul className='subitem-container' style={{height: item.isExpanded?'100%':'0px', overflow:'hidden'}}>
+                {item.subitem.map((subitem) => (
+                  <li key={subitem.name} className="nav-list-item sidebar-item" onClick={() => handleRoutes(subitem)} >
+                    <a title={subitem.name} className="sidebar-link">
+                      <i className={`${subitem.icon} p-3`}></i>
+                      <span className="sidebar-text">{subitem.name}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default SideNavContent;
+
+{/* <a title={item.name} className="sidebar-link">
+              <i className={`${item.icon} p-3`}></i>
+              <span className="sidebar-text">{item.name}</span>
+              
+              {item.children && <i className={`fas fa-chevron-${expandedItem === item.number ? 'up' : 'down'} p-3`}></i>}
+            </a>
+            {item.children && expandedItem === item.number && (
+              <ul className="sub-nav-list">
+                {item.children.map((subItem) => (
+                  <li 
+                    key={subItem.number} 
+                    className="sub-nav-list-item"
+                    onClick={() => navigate(subItem.url)}
+                  >
+                    <span className="sub-nav-text">{subItem.name}</span>
+                  </li>
+                ))}
+              </ul>
+            )} */}
