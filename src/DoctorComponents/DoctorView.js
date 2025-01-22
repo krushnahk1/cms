@@ -13,8 +13,20 @@ import AppointmentViewById from '../component/appointment/AppointmentViewById';
 import Appointment from '../component/appointment/Appointment';
 import AppointmentUpdate from '../component/appointment/AppointmentUpdate';
 import UserStorageService from '../services/UserStorageService';
-import AddService from './AddServiceForm'
+import ServiceForm from './AddServiceForm';
+import { RiMicroscopeLine } from "react-icons/ri";
+import { MdHealthAndSafety } from "react-icons/md";
+import { FaHeartbeat } from "react-icons/fa";
 import "../DoctorCSS/DoctorView.css";
+import ViewServices from './ViewService';
+import AddDoctorForm from "./AddDoctorForm"
+import DoctorInfo from "./DoctorInfo";
+import doc1 from '../assets/img/doc1.jpg';
+import doc2 from '../assets/img/doc2.jpg';
+import doc3 from '../assets/img/doc3.jpg';
+import doc4 from '../assets/img/doc4.jpg';
+import doc5 from '../assets/img/doc5.jpg';
+import doc6 from '../assets/img/doc6.jpg';
 
 function DoctorView() {
     const [sideNavStatus, setSideNavStatus] = useState(true);
@@ -32,6 +44,10 @@ function DoctorView() {
         { number: '1', name: 'Create Service', icon: 'fas fa-calendar-check', url: '/DoctorDashboard/create-service' },
         { number: '2', name: 'View Service', icon: 'fas fa-calendar-check', url: '/DoctorDashboard/view-service' },
     ]
+    const subdoctor = [
+        { number: '1', name: 'Add Doctor', icon: 'fas fa-calendar-check', url: '/DoctorDashboard/add-doctor' },
+        { number: '2', name: 'View Doctor', icon: 'fas fa-calendar-check', url: '/DoctorDashboard/view-doctor' },
+    ]
 
     const [menuItems, setMenuItems] = useState([
 
@@ -41,6 +57,7 @@ function DoctorView() {
         { number: '6', name: 'view Enquiries', icon: 'fas fa-question-circle', url: '/DoctorDashboard/AddEnquiry', isSubitem: false },
         { number: '7', name: 'room', icon: 'fa-solid fa-hospital', url: '/DoctorDashboard/room', isSubitem: false },
         { number: '8', name: 'Service', icon: 'fa-solid fa-hospital', url: '/DoctorDashboard/room', isSubitem: true, subitem: subservice, isExpanded: false },
+        { number: '9', name: 'Doctors', icon: 'fa-solid fa-hospital', url: '/DoctorDashboard/room', isSubitem: true, subitem: subdoctor, isExpanded: false },
     
     ]);
     
@@ -66,6 +83,108 @@ function DoctorView() {
     //     );
     // }
     // console.log(UserStorageService.getToken());
+    const [doctors, setDoctors] = useState([
+        {
+          img: doc1,
+          name: "Dr. Serena Mitchell",
+          specialties: "Orthopedic Surgeon",
+          inTime: "9:00 AM",
+          outTime: "5:00 PM",
+          days: ["Monday", "Wednesday", "Friday"]
+        },
+        {
+          img: doc2,
+          name: "Dr. Julian Bennett",
+          specialties: "Cardiologist",
+          inTime: "10:00 AM",
+          outTime: "4:00 PM",
+          days: ["Tuesday", "Thursday"]
+        },
+        {
+          img: doc3,
+          name: "Dr. Julian Bennett",
+          specialties: "Cardiologist",
+          inTime: "10:00 AM",
+          outTime: "4:00 PM",
+          days: ["Tuesday", "Thursday"]
+        },
+        {
+          img: doc4,
+          name: "Dr. Julian Bennett",
+          specialties: "Cardiologist",
+          inTime: "10:00 AM",
+          outTime: "4:00 PM",
+          days: ["Tuesday", "Thursday"]
+        },
+        {
+          img: doc5,
+          name: "Dr. Julian Bennett",
+          specialties: "Cardiologist",
+          inTime: "10:00 AM",
+          outTime: "4:00 PM",
+          days: ["Tuesday", "Thursday"]
+        },
+        {
+          img: doc6,
+          name: "Dr. Julian Bennett",
+          specialties: "Cardiologist",
+          inTime: "10:00 AM",
+          outTime: "4:00 PM",
+          days: ["Tuesday", "Thursday"]
+        },
+        // Other initial doctors
+      ]);
+    const [servicesData, setServicesData] = useState({
+        title: "Our Services",
+        description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus, quidem.",
+        buttonLabel: "See Services",
+        services: [
+          {
+            id: 1,
+            icon: <RiMicroscopeLine size={50} className="text-primary mb-3" />,
+            title: "Lab Test",
+            description: "Comprehensive lab testing services for diagnostics.",
+            link: "#",
+            img: "", // Placeholder for the image
+          },
+          {
+            id: 2,
+            icon: <MdHealthAndSafety size={50} className="text-primary mb-3" />,
+            title: "Health Check",
+            description: "Regular health check-ups to ensure your well-being.",
+            link: "#",
+            img: "", // Placeholder for the image
+          },
+          {
+            id: 3,
+            icon: <FaHeartbeat size={50} className="text-primary mb-3" />,
+            title: "Heart Health",
+            description: "Specialized care for maintaining a healthy heart.",
+            link: "#",
+            img: "", // Placeholder for the image
+          },
+        ],
+      });
+    
+      const addOrUpdateService = (newServiceData) => {
+        setServicesData((prevData) => ({
+          ...prevData,
+          services: [...prevData.services, newServiceData], // Add new service to the list
+        }));
+      };
+
+      const addOrUpdateDoctor = (newDoctor) => {
+        setDoctors((prevDoctors) => {
+          const index = prevDoctors.findIndex(doc => doc.name === newDoctor.name);
+          if (index > -1) {
+            const updatedDoctors = [...prevDoctors];
+            updatedDoctors[index] = newDoctor;
+            return updatedDoctors;
+          }
+          return [...prevDoctors, newDoctor];
+        });
+      };
+
     return (
         <>
             <Navbar changeSideNavStatus={changeSideNavStatus} />
@@ -87,7 +206,12 @@ function DoctorView() {
                                 <Route path="/edit-appointment/:id" element={<AppointmentUpdate />} />
                                 <Route path="/AddEnquiry" element={<AddEnquiry />} />
                                 <Route path="/Room" element={<Room />} />
-                                <Route path="/create-service" element={<AddService />} />
+                                <Route path="/add-doctor" element={<AddDoctorForm addOrUpdateDoctor={addOrUpdateDoctor} />} />
+                                <Route path="/view-doctor" element={<DoctorInfo doctors={doctors} setDoctors={setDoctors}/>} />
+                                <Route path="/view-service" element={<ViewServices servicesData={servicesData} setServicesData={setServicesData} />} />
+                                <Route path="/create-service" element={  <ServiceForm addOrUpdateService={addOrUpdateService} />
+                                
+} />
                             </Routes>
                         </div>
                     </div>

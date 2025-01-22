@@ -1,0 +1,21 @@
+.imagescard {
+    /* display: flex; */
+    /* overflow: scroll; */
+}
+.imagescard::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Edge */
+}
+
+.slick-track {
+    display: flex;
+    overflow: scroll;
+    gap: 10px;
+}
+.slick-track::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Edge */
+}
+
+.cardimg {
+    flex: 1 1 auto;   /* Allows items to grow and shrink as needed */
+
+}

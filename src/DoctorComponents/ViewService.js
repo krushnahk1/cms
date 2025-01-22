@@ -2,42 +2,42 @@ import React, { useState } from "react";
 import { RiMicroscopeLine } from "react-icons/ri";
 import { MdHealthAndSafety } from "react-icons/md";
 import { FaHeartbeat } from "react-icons/fa";
-import '../CSS/Services.css'; // Custom CSS
-import ServiceForm from '../DoctorComponents/AddServiceForm'; // Import the ServiceForm component
+// import '../CSS/Services.css'; // Custom CSS
+// import ServiceForm from '../DoctorComponents/AddServiceForm'; // Import the ServiceForm component
 
-const Services = () => {
+const ViewServices = ({servicesData, setServicesData}) => {
   // Initial state to hold the service data
-  const [servicesData, setServicesData] = useState({
-    title: "Our Services",
-    description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus, quidem.",
-    buttonLabel: "See Services",
-    services: [
-      {
-        id: 1,
-        icon: <RiMicroscopeLine size={50} className="text-primary mb-3" />,
-        title: "Lab Test",
-        description: "Comprehensive lab testing services for diagnostics.",
-        link: "#",
-        img: "", // Placeholder for the image
-      },
-      {
-        id: 2,
-        icon: <MdHealthAndSafety size={50} className="text-primary mb-3" />,
-        title: "Health Check",
-        description: "Regular health check-ups to ensure your well-being.",
-        link: "#",
-        img: "", // Placeholder for the image
-      },
-      {
-        id: 3,
-        icon: <FaHeartbeat size={50} className="text-primary mb-3" />,
-        title: "Heart Health",
-        description: "Specialized care for maintaining a healthy heart.",
-        link: "#",
-        img: "", // Placeholder for the image
-      },
-    ],
-  });
+//   const [servicesData, setServicesData] = useState({
+//     title: "Our Services",
+//     description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus, quidem.",
+//     buttonLabel: "See Services",
+//     services: [
+//       {
+//         id: 1,
+//         icon: <RiMicroscopeLine size={50} className="text-primary mb-3" />,
+//         title: "Lab Test",
+//         description: "Comprehensive lab testing services for diagnostics.",
+//         link: "#",
+//         img: "", // Placeholder for the image
+//       },
+//       {
+//         id: 2,
+//         icon: <MdHealthAndSafety size={50} className="text-primary mb-3" />,
+//         title: "Health Check",
+//         description: "Regular health check-ups to ensure your well-being.",
+//         link: "#",
+//         img: "", // Placeholder for the image
+//       },
+//       {
+//         id: 3,
+//         icon: <FaHeartbeat size={50} className="text-primary mb-3" />,
+//         title: "Heart Health",
+//         description: "Specialized care for maintaining a healthy heart.",
+//         link: "#",
+//         img: "", // Placeholder for the image
+//       },
+//     ],
+//   });
 
   const addOrUpdateService = (newServiceData) => {
     setServicesData((prevData) => ({
@@ -87,4 +87,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default ViewServices;

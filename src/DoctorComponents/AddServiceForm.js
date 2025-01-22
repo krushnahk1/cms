@@ -60,7 +60,8 @@ const ServiceForm = ({ addOrUpdateService }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+   <div className='d-flex justify-content-center align-items-center h-100'>
+     <form onSubmit={handleSubmit}>
       {/* Service Title */}
       <div className="form-group">
         <label>Service Title</label>
@@ -124,6 +125,7 @@ const ServiceForm = ({ addOrUpdateService }) => {
         Save Service
       </button>
     </form>
+    </div>
   );
 };
 
