@@ -20,7 +20,7 @@ const SideNavContent = ({ sideNavStatus, list, toggleSubmenu }) => {
       //   <>
       //     <ul className='sidebar-subitem-list'>
       //       <a title={item.subitem.name} className="sidebar-subitem-link">
-      //         <i className={`${item.subitem.icon} p-3`}></i>
+      //         <i className={${item.subitem.icon} p-3}></i>
       //         <span className="sidebar-text">{item.subitem.name}</span>
       //       </a>
       //     </ul>
@@ -72,10 +72,10 @@ const SideNavContent = ({ sideNavStatus, list, toggleSubmenu }) => {
 export default SideNavContent;
 
 {/* <a title={item.name} className="sidebar-link">
-              <i className={`${item.icon} p-3`}></i>
+              <i className={${item.icon} p-3}></i>
               <span className="sidebar-text">{item.name}</span>
               
-              {item.children && <i className={`fas fa-chevron-${expandedItem === item.number ? 'up' : 'down'} p-3`}></i>}
+              {item.children && <i className={fas fa-chevron-${expandedItem === item.number ? 'up' : 'down'} p-3}></i>}
             </a>
             {item.children && expandedItem === item.number && (
               <ul className="sub-nav-list">
