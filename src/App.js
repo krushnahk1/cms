@@ -13,21 +13,21 @@ import WhyChoose from './component/WhyChoose';
 import PatientExperience from './component/PatientExperience'
 import DoctorLoginForm from './component/DoctorLoginForm'
 import Login from './component/DoctorLoginForm';
-import Doctordashboard from '../src/DoctorComponents/Receptionist_view';
+import Doctordashboard from './DoctorComponents/DoctorView';
 import NurseLoginForm from '../src/component/NurseLoginForm'
 // import NurseDashboard from '../src/component/Nursedashboard'
 // import DoctorsInfo from './component/DoctorsInfo'
 // import DashboardOverview from '../src/DoctorComponents/DashboardOverview';
-import AddPatient from '../src/DoctorComponents/AddPatient';
-import CreateAppointment from '../src/DoctorComponents/CreateAppointment';
-import AddEnquiries from '../src/DoctorComponents/AddEnquiries';
-import AllPatient from '../src/DoctorComponents/AllPatients';
+// import AddPatient from '../src/DoctorComponents/AddPatient';
+// import CreateAppointment from '../src/DoctorComponents/CreateAppointment';
+// import AddEnquiries from '../src/DoctorComponents/AddEnquiries';
+// import AllPatient from '../src/DoctorComponents/AllPatients';
 
-import Appointment from './component/appointment/Appointment';
-import AppointmentsAdd from './component/appointment/AppointmentsAdd';
-import AppointmentUpdate from './component/appointment/AppointmentUpdate';
-import AppointmentViewById from './component/appointment/AppointmentViewById';
-import Nursedashboard from "../src/receptionist/components/Receptionist_view";
+// import Appointment from './component/appointment/Appointment';
+// import AppointmentsAdd from './component/appointment/AppointmentsAdd';
+// import AppointmentUpdate from './component/appointment/AppointmentUpdate';
+// import AppointmentViewById from './component/appointment/AppointmentViewById';
+// import Nursedashboard from "../src/receptionist/components/Receptionist_view";
 import About from './component/abouts';
 import Home from './component/home';
 import Services from './component/Services'
@@ -91,16 +91,16 @@ function App() {
           <Route path="/DoctorLoginForm" element={<DoctorLoginForm />} /> 
           <Route path="/DoctorDashboard/*" element={<Doctordashboard/>} /> 
           <Route path="/NurseLoginForm" element={<NurseLoginForm />} />
-          <Route path="/Nursedashboard/*" element={<Nursedashboard/>} />
-          <Route path="/AllPatient" element={<AllPatient/>} />
-          <Route path="/add-patient" element={<AddPatient />} />
+          {/* <Route path="/Nursedashboard/*" element={<Nursedashboard/>} /> */}
+          {/* <Route path="/AllPatient" element={<AllPatient/>} />
+          <Route path="/add-patient" element={<AddPatient />} /> */}
           {/* <Route path="/create-appointment" element={<CreateAppointment />} /> */}
-          <Route path="/add-enquiries" element={<AddEnquiries />} />     
+          {/* <Route path="/add-enquiries" element={<AddEnquiries />} />     
           <Route path="/list-appointment" element={<Appointment/>} />     
           <Route path="/create-appointment" element={<AppointmentsAdd/>} />     
           <Route path="/add-appointment" element={<AppointmentsAdd/>} />     
           <Route path="/edit-appointment/:id" element={<AppointmentUpdate/>} />     
-          <Route path="/view-appointment/:id" element={<AppointmentViewById/>} />     
+          <Route path="/view-appointment/:id" element={<AppointmentViewById/>} />      */}
         </Routes>
       </Router>
       <Router>
