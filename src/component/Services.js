@@ -3,7 +3,11 @@ import { RiMicroscopeLine } from "react-icons/ri";
 import { MdHealthAndSafety } from "react-icons/md";
 import { FaHeartbeat } from "react-icons/fa";
 import '../CSS/Services.css'; // Custom CSS
+<<<<<<< HEAD
 import ServiceForm from './AddServices'; // Import the ServiceForm component
+=======
+import ServiceForm from '../DoctorComponents/AddServiceForm'; // Import the ServiceForm component
+>>>>>>> 57efe3b50514932588f2767839da6b06bdc79408
 
 const Services = () => {
   // Initial state to hold the service data

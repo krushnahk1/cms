@@ -13,6 +13,7 @@ import AppointmentViewById from '../component/appointment/AppointmentViewById';
 import Appointment from '../component/appointment/Appointment';
 import AppointmentUpdate from '../component/appointment/AppointmentUpdate';
 import UserStorageService from '../services/UserStorageService';
+import AddService from './AddServiceForm'
 import "../DoctorCSS/DoctorView.css";
 
 function DoctorView() {
@@ -25,7 +26,11 @@ function DoctorView() {
     ]
     const subappointment = [
         { number: '4', name: 'Create Appointment', icon: 'fas fa-calendar-check', url: '/DoctorDashboard/create-appointment' },
-        { number: '5', name: 'All-Appointment', icon: 'fas fa-calendar-check', url: '/DoctorDashboard/list-appointment' },
+        { number: '5', name: 'View-Appointment', icon: 'fas fa-calendar-check', url: '/DoctorDashboard/list-appointment' },
+    ]
+    const subservice = [
+        { number: '1', name: 'Create Service', icon: 'fas fa-calendar-check', url: '/DoctorDashboard/create-service' },
+        { number: '2', name: 'View Service', icon: 'fas fa-calendar-check', url: '/DoctorDashboard/view-service' },
     ]
 
     const [menuItems, setMenuItems] = useState([
@@ -35,6 +40,7 @@ function DoctorView() {
         { number: '4', name: 'Appointment', icon: 'fas fa-calendar-check', url: '/DoctorDashboard/create-appointment', isSubitem: true, subitem: subappointment, isExpanded: false },
         { number: '6', name: 'view Enquiries', icon: 'fas fa-question-circle', url: '/DoctorDashboard/AddEnquiry', isSubitem: false },
         { number: '7', name: 'room', icon: 'fa-solid fa-hospital', url: '/DoctorDashboard/room', isSubitem: false },
+        { number: '8', name: 'Service', icon: 'fa-solid fa-hospital', url: '/DoctorDashboard/room', isSubitem: true, subitem: subservice, isExpanded: false },
     
     ]);
     
@@ -81,6 +87,7 @@ function DoctorView() {
                                 <Route path="/edit-appointment/:id" element={<AppointmentUpdate />} />
                                 <Route path="/AddEnquiry" element={<AddEnquiry />} />
                                 <Route path="/Room" element={<Room />} />
+                                <Route path="/create-service" element={<AddService />} />
                             </Routes>
                         </div>
                     </div>

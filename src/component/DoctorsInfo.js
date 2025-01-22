@@ -10,8 +10,13 @@ import doc3 from '../assets/img/doc3.jpg';
 import doc4 from '../assets/img/doc4.jpg';
 import doc5 from '../assets/img/doc5.jpg';
 import doc6 from '../assets/img/doc6.jpg';
+<<<<<<< HEAD
 import DoctorModal from './DoctorModel';
 import DoctorForm from './AddDocorForm'; // Import the form
+=======
+import DoctorModal from '../DoctorComponents/DoctorModel';
+import DoctorForm from '../DoctorComponents/AddDoctorForm'; // Import the form
+>>>>>>> 57efe3b50514932588f2767839da6b06bdc79408
 
 const DoctorsInfo = () => {
   const [doctors, setDoctors] = useState([
