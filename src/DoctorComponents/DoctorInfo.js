@@ -4,81 +4,15 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import '../CSS/Doctorinfo.css';
-import doc1 from '../assets/img/doc1.jpg';
-import doc2 from '../assets/img/doc2.jpg';
-import doc3 from '../assets/img/doc3.jpg';
-import doc4 from '../assets/img/doc4.jpg';
-import doc5 from '../assets/img/doc5.jpg';
-import doc6 from '../assets/img/doc6.jpg';
+
 import DoctorModal from '../DoctorComponents/DoctorModel';
 import DoctorForm from '../DoctorComponents/AddDoctorForm'; // Import the form
-
-const DoctorsInfo = () => {
-  const [doctors, setDoctors] = useState([
-    {
-      img: doc1,
-      name: "Dr. Serena Mitchell",
-      specialties: "Orthopedic Surgeon",
-      inTime: "9:00 AM",
-      outTime: "5:00 PM",
-      days: ["Monday", "Wednesday", "Friday"]
-    },
-    {
-      img: doc2,
-      name: "Dr. Julian Bennett",
-      specialties: "Cardiologist",
-      inTime: "10:00 AM",
-      outTime: "4:00 PM",
-      days: ["Tuesday", "Thursday"]
-    },
-    {
-      img: doc3,
-      name: "Dr. Julian Bennett",
-      specialties: "Cardiologist",
-      inTime: "10:00 AM",
-      outTime: "4:00 PM",
-      days: ["Tuesday", "Thursday"]
-    },
-    {
-      img: doc4,
-      name: "Dr. Julian Bennett",
-      specialties: "Cardiologist",
-      inTime: "10:00 AM",
-      outTime: "4:00 PM",
-      days: ["Tuesday", "Thursday"]
-    },
-    {
-      img: doc5,
-      name: "Dr. Julian Bennett",
-      specialties: "Cardiologist",
-      inTime: "10:00 AM",
-      outTime: "4:00 PM",
-      days: ["Tuesday", "Thursday"]
-    },
-    {
-      img: doc6,
-      name: "Dr. Julian Bennett",
-      specialties: "Cardiologist",
-      inTime: "10:00 AM",
-      outTime: "4:00 PM",
-      days: ["Tuesday", "Thursday"]
-    },
-    // Other initial doctors
-  ]);
+// import "../DoctorCSS/DoctorInfo.css";
+const DoctorsInfo = ({doctors, setDoctors}) => {
+  
   const [selectedDoctor, setSelectedDoctor] = useState(null);
   const slider = useRef(null);
 
-  const addOrUpdateDoctor = (newDoctor) => {
-    setDoctors((prevDoctors) => {
-      const index = prevDoctors.findIndex(doc => doc.name === newDoctor.name);
-      if (index > -1) {
-        const updatedDoctors = [...prevDoctors];
-        updatedDoctors[index] = newDoctor;
-        return updatedDoctors;
-      }
-      return [...prevDoctors, newDoctor];
-    });
-  };
 
   const settings = {
     accessibility: true,
@@ -98,8 +32,8 @@ const DoctorsInfo = () => {
   };
 
   return (
-    <div className="d-flex flex-column justify-content-center px-3 px-lg-5 pt-">
-      <div className="d-flex flex-column align-items-center flex-lg-row justify-content-between mb-4">
+    <div className="d-flex flex-column justify-content-center px-3 px-lg-5 pt-2">
+      <div className="d-flex flex-column align-items-center flex-lg-row justify-content-between mb-4" >
         <div className="text-center text-lg-start">
           <h1 className="display-4">Our Doctors</h1>
           <p className="mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus, quidem.</p>

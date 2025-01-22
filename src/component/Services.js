@@ -78,7 +78,8 @@ const Services = () => {
         </div>
       </div>
 
-      <ServiceForm addOrUpdateService={addOrUpdateService} />
+      {/* Service Form for Adding/Updating Data */}
+      {/* <ServiceForm addOrUpdateService={addOrUpdateService} /> */}
     </div>
   );
 };

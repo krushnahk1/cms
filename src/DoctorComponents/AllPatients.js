@@ -34,10 +34,11 @@ function AllPatients() {
   ];
 
   return (
-    <div className="all-patients-container mt-4">
+    <div className='all-patient-view'>
+      <div className="all-patients-container mt-4">
       <h1>All Patients</h1>
-      <div className="patients-table">
-        <table>
+      <div className="patients-table p-2">
+        <table border={"2px"}>
           <thead>
             <tr>
               <th>ID</th>
@@ -75,6 +76,7 @@ function AllPatients() {
           </tbody>
         </table>
       </div>
+    </div>
     </div>
   );
 }

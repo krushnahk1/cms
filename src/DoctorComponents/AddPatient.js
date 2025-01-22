@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Make sure Bootstrap is imported
-
+import "../DoctorCSS/AddPatient.css"
 function AddPatient() {
   // State to manage marital status and number of children visibility
   const [isMarried, setIsMarried] = useState(false);
@@ -13,7 +13,7 @@ function AddPatient() {
 
   return (
     
-    <div className="container pt-4">
+    <div className="add-patient-container pt-4">
       
       <form className="add-patient-form">
       <h1 className="text-center">Add Patient</h1>

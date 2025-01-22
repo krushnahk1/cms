@@ -3,6 +3,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import { useNavigate } from 'react-router-dom';
 import "../DoctorCSS/SideNavContent.css";
 import UserStorageService from '../services/UserStorageService';
+import moulilogo from "../assets/Images/mauli_logo.webp"
 
 const SideNavContent = ({ sideNavStatus, list, toggleSubmenu }) => {
   const [expandedItem, setExpandedItem] = useState(null);
@@ -35,15 +36,22 @@ const SideNavContent = ({ sideNavStatus, list, toggleSubmenu }) => {
 
   return (
     <div className={`side-nav-content ${sideNavStatus ? 'nav-list-open' : ''}`}>
+      <div className='mt-3'>
+      <img className='dashboard-logo-img' src={moulilogo} width={"150px"} ></img>
+      </div>
+      <hr style={{color:"white", height:"20px"}}></hr>
       <ul className="nav-list">
         {list.map((item) => (
-          <li key={item.number} className="nav-list-item sidebar-item" onClick={() => handleRoutes(item)} >
-            <a title={item.name} className="sidebar-link">
+          <li key={item.number} className="nav-list-item sidebar-item" >
+            <a title={item.name} className="sidebar-link" onClick={() => handleRoutes(item)} >
               <i className={`${item.icon} p-3`}></i>
               <span className="sidebar-text">{item.name}</span>
             </a>
             {item.isSubitem && (
-              <ul className='subitem-container' style={{height: item.isExpanded?'100%':'0px', overflow:'hidden'}}>
+              <ul className='subitem-container' style={{
+                maxHeight: item.isExpanded ? '500px' : '0px', // Set a max value greater than expected content height
+                overflow: 'hidden',
+              }}>
                 {item.subitem.map((subitem) => (
                   <li key={subitem.name} className="nav-list-subitem sidebar-subitem" onClick={() => handleRoutes(subitem)} >
                     <a title={subitem.name} className="sidebar-link-subitem">

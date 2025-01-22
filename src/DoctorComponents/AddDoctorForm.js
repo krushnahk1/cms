@@ -52,7 +52,8 @@ const DoctorForm = ({ addOrUpdateDoctor }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+   <div className='d-flex justify-content-center align-items-center h-100'>
+     <form onSubmit={handleSubmit}>
       <div className="form-group">
         <label>Image Upload</label>
         <input
@@ -132,6 +133,7 @@ const DoctorForm = ({ addOrUpdateDoctor }) => {
       </div>
       <button type="submit" className="btn btn-primary mt-3" disabled={!isFormValid()}>Save</button>
     </form>
+   </div>
   );
 };
 
