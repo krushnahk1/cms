@@ -1,10 +1,13 @@
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import "../DoctorCSS/Navbar.css";
 
 function Navbar({ changeSideNavStatus }) {
+
+    const [isExpandedUser, setIsExpandedUser] = useState(false);
+
     return (
         <>
             <nav className="navbar navbar-expand navbar-dark bg-dark px-2" style={{height:"60px"}}>
@@ -19,7 +22,11 @@ function Navbar({ changeSideNavStatus }) {
                         </Link>
                     </div>
                     <div className='user-icon'>
-                      <a href='/'><button>logout</button></a> 
+                      <a href='/'><button>logout</button></a>
+                      {isExpandedUser && (
+                        <div>
+                        </div>
+                      )} 
                     </div>
                 </div>
             </nav>
