@@ -35,7 +35,7 @@
     transition: background-color 0.3s ease;
 }
 
-.nav-list-item a {
+.nav-list-item .sidebar-link {
     background-color: black;
     padding: 10px;
 }
@@ -66,12 +66,28 @@
 }
 
 .subitem-container {
-    padding-left: 0px;
-    background-color: #847878;
-
+    padding-left: 10px;
+    border:4px solid #000000 ;
+    background-color: white;
+    width: 100%;
+    /* transition: height 1.2s linear; */
 }
 .subitem-container:hover {
     background-color: white;
+}
+
+.sidebar-link-subitem {
+    display: inline-block;
+    width: 100%;
+    background-color: white;
+}
+.nav-list-subitem {
+    background-color: white;
+}
+.nav-list-subitem .sidebar-link-subitem {
+    padding: 10px;
+    color: #000000;
+    text-decoration: none;
 }
 
 
