@@ -1,54 +1,84 @@
 import React, { useState } from 'react';
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import { useNavigate } from 'react-router-dom';
-import "../DoctorCSS/SideNavContent.css";
+import Navbar from './Navbar';
+import { Route, Routes, Link } from 'react-router-dom';
+import "../DoctorCSS/Receptionist_view.css";
+import SideNavContent from '../DoctorComponents/SideNavContent';
+import DashboardOverview from '../DoctorComponents/DashboardOverview';
+import AddPatient from '../DoctorComponents/AddPatient';
+import AddEnquiry from '../DoctorComponents/AddEnquiries';
+import AllPatients from '../DoctorComponents/AllPatients';
+import Room from '../RoomComponents/Rooms';
+import AppointmentsAdd from '../component/appointment/AppointmentsAdd';
+import AppointmentViewById from '../component/appointment/AppointmentViewById';
+import Appointment from '../component/appointment/Appointment';
+import AppointmentUpdate from '../component/appointment/AppointmentUpdate';
 import UserStorageService from '../services/UserStorageService';
 
-const SideNavContent = ({ sideNavStatus, list }) => {
-  const [expandedItem, setExpandedItem] = useState(null);
-  const navigate = useNavigate();
+function ReceptionistView() {
+    const [sideNavStatus, setSideNavStatus] = useState(true);
+    const [isPatientDropdownOpen, setIsPatientDropdownOpen] = useState(false);
 
-  const handleRoutes = (item) => {
+    const list1 = [
+        { number: '1', name: 'dashboard', icon: 'fas fa-home', url: '/DoctorDashboard' },
+        { number: '2', name: 'patient', icon: 'fas fa-user-plus', url: '', dropdown: true },
+    ];
 
-    if(item.url=="/"){
-      UserStorageService.signOut();
+    const changeSideNavStatus = () => {
+        setSideNavStatus(!sideNavStatus);
+    };
+
+    const togglePatientDropdown = () => {
+        setIsPatientDropdownOpen(!isPatientDropdownOpen);
+    };
+
+    if (UserStorageService.getToken() == null || UserStorageService.getUser() == null) {
+        return (
+            <>
+                <div className='unilligible' style={{ alignItems: 'center', marginTop: '300px' }}>
+                    <h1>Page 404 error</h1>
+                </div>
+            </>
+        );
     }
-    navigate(item.url);
-  }
 
-  return (
-    <div className={`side-nav-content ${sideNavStatus ? 'nav-list-open' : ''}`}>
-      <ul className="nav-list">
-        {list.map((item) => (
-          <li 
-            key={item.number} 
-            className="nav-list-item sidebar-item"
-            onClick={() => handleRoutes(item)}
-          >
-            <a title={item.name} className="sidebar-link">
-              <i className={`${item.icon} p-3`}></i>
-              <span className="sidebar-text">{item.name}</span>
-              
-              {item.children && <i className={`fas fa-chevron-${expandedItem === item.number ? 'up' : 'down'} p-3`}></i>}
-            </a>
-            {item.children && expandedItem === item.number && (
-              <ul className="sub-nav-list">
-                {item.children.map((subItem) => (
-                  <li 
-                    key={subItem.number} 
-                    className="sub-nav-list-item"
-                    onClick={() => navigate(subItem.url)}
-                  >
-                    <span className="sub-nav-text">{subItem.name}</span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+    return (
+        <>
+            <Navbar changeSideNavStatus={changeSideNavStatus} />
+            <div className="main-view">
+                <div className={`side-navbar ${sideNavStatus ? 'd-block' : 'd-none d-md-block'}`}>
+                    {/* Sidebar Image */}
+                    <div className="sidebar-img">
+                        <img src="/path/to/your/image.jpg" alt="Sidebar Top" className="img-fluid" />
+                    </div>
+                    <SideNavContent list={list1} sideNavStatus={sideNavStatus} />
+                    {/* Patient Dropdown */}
+                    {isPatientDropdownOpen && (
+                        <ul className="dropdown-menu">
+                            <li><Link to="/patient/1">Patient 1</Link></li>
+                            <li><Link to="/patient/2">Patient 2</Link></li>
+                            <li><Link to="/patient/3">Patient 3</Link></li>
+                        </ul>
+                    )}
+                </div>
+                <div className="main-content">
+                    <div className="main-content-routes">
+                        <Routes>
+                            <Route path="/" element={<DashboardOverview />} />
+                            <Route path="/DashboardOverview" element={<DashboardOverview />} />
+                            <Route path="/AllPatient" element={<AllPatients />} />
+                            <Route path="/add-patient" element={<AddPatient />} />
+                            <Route path="/create-appointment" element={<AppointmentsAdd />} />
+                            <Route path="/list-appointment" element={<Appointment />} />
+                            <Route path="/view-appointment/:id" element={<AppointmentViewById />} />
+                            <Route path="/edit-appointment/:id" element={<AppointmentUpdate />} />
+                            <Route path="/AddEnquiry" element={<AddEnquiry />} />
+                            <Route path="/Room" element={<Room />} />
+                        </Routes>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+}
 
-export default SideNavContent;
+export default ReceptionistView;
