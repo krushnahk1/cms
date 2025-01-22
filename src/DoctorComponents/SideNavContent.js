@@ -45,10 +45,10 @@ const SideNavContent = ({ sideNavStatus, list, toggleSubmenu }) => {
             {item.isSubitem && (
               <ul className='subitem-container' style={{height: item.isExpanded?'100%':'0px', overflow:'hidden'}}>
                 {item.subitem.map((subitem) => (
-                  <li key={subitem.name} className="nav-list-item sidebar-item" onClick={() => handleRoutes(subitem)} >
-                    <a title={subitem.name} className="sidebar-link">
+                  <li key={subitem.name} className="nav-list-subitem sidebar-subitem" onClick={() => handleRoutes(subitem)} >
+                    <a title={subitem.name} className="sidebar-link-subitem">
                       <i className={`${subitem.icon} p-3`}></i>
-                      <span className="sidebar-text">{subitem.name}</span>
+                      <span className="sidebar-text-subitem">{subitem.name}</span>
                     </a>
                   </li>
                 ))}
