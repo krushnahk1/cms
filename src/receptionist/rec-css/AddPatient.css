@@ -25,6 +25,15 @@
   flex: 1;
   white-space: nowrap;
 }
+.form-row label {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  white-space: nowrap;
+}
 
 .add-patient-form-labels input,
 .add-patient-form-labels select {
@@ -41,6 +50,24 @@
 
 .add-patient-form input:focus,
 .add-patient-form select:focus {
+  outline: none;
+  border-color: #28a745;
+}
+.form-row input,
+.form-row select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  box-sizing: border-box;
+  min-width: 190px;
+
+}
+
+.form-row input:focus,
+.form-row select:focus {
   outline: none;
   border-color: #28a745;
 }

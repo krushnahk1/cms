@@ -3,14 +3,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import "../DoctorCSS/Navbar.css";
+import { FaRegUserCircle } from 'react-icons/fa';
 
 function Navbar({ changeSideNavStatus }) {
 
     const [isExpandedUser, setIsExpandedUser] = useState(false);
 
+    const expandedUserFunc=()=>{
+        setIsExpandedUser(prev => !prev);
+    }
+
     return (
         <>
-            <nav className="navbar navbar-expand navbar-dark bg-dark px-2" style={{height:"60px"}}>
+            <nav className="navbar navbar-expand navbar-dark  px-2" style={{ height: "60px" }}>
                 <div className="nav-container">
                     <div className="side-nav-button p-2 me-3 text-light d-lg-none">
                         <FontAwesomeIcon icon={faBars} onClick={() => { changeSideNavStatus(); console.log('hi'); }} />
@@ -22,12 +27,31 @@ function Navbar({ changeSideNavStatus }) {
                         </Link>
                     </div>
                     <div className='user-icon'>
-                      <a href='/'><button><i class="fa-solid fa-circle-user user"></i></button></a>
-                      {isExpandedUser && (
-                        <div className='user-info-popup'>
-                            <i class="fa-solid fa-circle-user"></i>
-                        </div>
-                      )} 
+                        <a onClick={expandedUserFunc}>
+                            <i class="fa-regular fa-circle-user" ></i>
+                        </a>
+                        {isExpandedUser && (
+                            <div className='user-info-popup'>
+                                    <div className='usericon-div'>
+                                    <FaRegUserCircle className="popup-icon"  />   
+                                    </div>   
+                                    <div className="popup-container">
+                                        <div className="popup-box">
+                                            <p>Welcome, User!</p>
+                                            <ul>
+                                                <li>Profile</li>
+                                                <li>Settings</li>
+                                                <li>Logout</li>
+                                            </ul>
+                                           
+                                        </div>
+                                        <button className='logout-btn'>
+                                                Logout
+                                        </button>
+                                        
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             </nav>

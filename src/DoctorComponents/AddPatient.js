@@ -112,6 +112,8 @@ function AddPatient() {
             </select>
           </div>
         </div>
+        
+
 
         {isMarried && (
           <div className="row mb-3">
@@ -121,19 +123,19 @@ function AddPatient() {
                 value={wifeName} onChange={(e) => setWifeName(e.target.value)} />
             </div>
             <div className="col-md-6">
-              <label>Number of Children:</label>
+              <label>Number of Children:
               <input
                 type="number"
-                className="form-control"
                 value={numChildren}
                 onChange={(e) => setNumChildren(e.target.value)}
                 placeholder="Enter number of children"
               />
+              </label>
             </div>
           </div>
         )}
 
-        <button type="submit" className="btn btn-primary w-100">Add Patient</button>
+        <button type="submit">Add Patient</button>
       </form>
     </div>
   );

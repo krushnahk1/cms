@@ -1,90 +1,119 @@
-.add-patient-container {
-  display: flex;
-  justify-content: center;
-}
-
-
-/* Add some padding to the form */
 .add-patient-form {
+  max-width: 80%;
+  margin: 0 auto;
   background-color: #f8f9fa;
-  padding: 20px;
+  padding: 30px 20px;
   border-radius: 8px;
-  margin-left: 100px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Custom label styles for better visibility */
-.add-patient-form label {
-  font-size: 1rem;
-  font-weight: bold;
-  /* min-width: 00px; */
+.add-patient-form-labels,
+.form-row {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
-/* Button Customization */
-.add-patient-form button {
+.add-patient-form label {
   font-size: 1.1rem;
+  margin-bottom: 8px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  white-space: nowrap;
+}
+.form-row label {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  white-space: nowrap;
+}
+
+.add-patient-form-labels input,
+.add-patient-form-labels select {
+  width: 100%;
   padding: 12px;
+  /* margin-bottom: 20px;
+  margin-top: 8px; */
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  box-sizing: border-box;
+  min-width: 170px;
+
+}
+
+.add-patient-form input:focus,
+.add-patient-form select:focus {
+  outline: none;
+  border-color: #28a745;
+}
+.form-row input,
+.form-row select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  box-sizing: border-box;
+  min-width: 190px;
+
+}
+
+.form-row input:focus,
+.form-row select:focus {
+  outline: none;
+  border-color: #28a745;
+}
+
+.add-patient-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
 }
 
 .add-patient-form button:hover {
   background-color: #218838;
 }
 
-/* Media Queries for responsiveness */
-
-/* For screens with a max width of 768px (tablets, smaller screens) */
-@media (max-width: 768px) {
-  .container {
-    padding: 15px;
-  }
-
-  .add-patient-form {
-    padding: 15px;
-  }
-
-  .add-patient-form label {
-    font-size: 1rem;
-  }
-
-  .add-patient-form input,
-  .add-patient-form select {
-    font-size: 0.95rem;
-    padding: 8px;
-  }
-
-  .add-patient-form button {
-    font-size: 1rem;
-    padding: 10px;
-  }
+h1 {
+  text-align: center;
+  color: #343a40;
+  margin-bottom: 20px;
 }
 
-/* For screens with a max width of 480px (mobile devices) */
-@media (max-width: 480px) {
-  .container {
-    padding: 10px;
-  }
 
+@media (max-width: 870px) {
   .add-patient-form {
-    padding: 10px;
-    max-width: 100%;
+    max-width: 80%;
+    margin: 0 auto;
+  }
+  .add-patient-form-labels,
+  .form-row {
+    display: flex;
+    text-align: left;
+    gap: 10px;
   }
 
-  .add-patient-form h1 {
-    font-size: 20px;
+}
+@media (max-width: 475px) {
+  .add-patient-form-labels,
+  .form-row {
+    gap: 0px;
   }
-
-  .add-patient-form label {
-    font-size: 0.9rem;
-  }
-
-  .add-patient-form input,
-  .add-patient-form select {
-    font-size: 0.85rem;
-    padding: 6px;
-  }
-
-  .add-patient-form button {
-    font-size: 0.95rem;
-    padding: 8px;
+  .add-patient-form-labels input, .add-patient-form-labels select {
+    margin-bottom: 5px;
   }
 }

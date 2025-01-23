@@ -1,34 +1,47 @@
-/* Custom styles for Dashboard Overview */
-
-/* General styles for the entire dashboard */
 .dashboard-overview {
-  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f9f9f9;
+  font-family: 'Arial', sans-serif;
 }
 
 .dashboard-title {
   font-size: 2rem;
-  color: #333;
+  color: #2b9016;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 .dashboard-welcome {
   font-size: 1.2rem;
-  color: #555;
+  color: #5e261d;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .dashboard-stats {
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: space-around;
+  gap: 40px;
 }
 
-/* Stat Card Styling */
 .stat-card {
+  background-color: #fff;
+  padding: 50px 50px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  min-width: 251px;
+  flex: 1;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .stat-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
 .stat-number {
@@ -40,80 +53,5 @@
 
 .stat-label {
   font-size: 1rem;
-  color: #777;
-}
-
-/* Media Queries for responsiveness */
-
-/* For tablets and smaller screens (max-width: 768px) */
-@media (max-width: 768px) {
-  .dashboard-title {
-    font-size: 1.8rem;
-  }
-
-  .dashboard-welcome {
-    font-size: 1.1rem;
-  }
-
-  .stat-card {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .stat-number {
-    font-size: 2rem;
-  }
-
-  .stat-label {
-    font-size: 1rem;
-  }
-}
-
-/* For mobile devices (max-width: 480px) */
-@media (max-width: 480px) {
-  .dashboard-title {
-    font-size: 1.5rem;
-  }
-
-  .dashboard-welcome {
-    font-size: 1rem;
-    margin-bottom: 15px;
-  }
-
-  .stat-card {
-    padding: 15px;
-    width: 100%;
-  }
-
-  .stat-number {
-    font-size: 1.8rem;
-  }
-
-  .stat-label {
-    font-size: 0.9rem;
-  }
-}
-
-/* For very small screens (max-width: 320px) */
-@media (max-width: 320px) {
-  .dashboard-title {
-    font-size: 1.2rem;
-  }
-
-  .dashboard-welcome {
-    font-size: 0.9rem;
-  }
-
-  .stat-card {
-    width: 100%;
-    padding: 10px;
-  }
-
-  .stat-number {
-    font-size: 1.6rem;
-  }
-
-  .stat-label {
-    font-size: 0.8rem;
-  }
+  color: #387e85;
 }
