@@ -15,7 +15,7 @@ const AppointmentsAdd = () => {
 
     AppServices.createAppointment(appointment).then((response) => {
       // console.log(response.data);
-      navigate("/list-appointment");
+      navigate("/DoctorDashboard");
     });
   };
 
@@ -72,7 +72,7 @@ const AppointmentsAdd = () => {
                   >
                     Submit
                   </button>
-                  <Link to="/" className="btn btn-danger">
+                  <Link to="/list-appointment" className="btn btn-danger">
                     Cancel
                   </Link>
                 </div>

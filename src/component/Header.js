@@ -1,159 +1,111 @@
 import React, { useState } from 'react';
 import '../CSS/Header.css';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Maulilogo from '../assets/Images/mauli_logo.webp';
-import { useNavigate } from 'react-router-dom';
-
+import AppServices from "../services/AppServices"; // Import AppServices
 
 const Header = ({ scollTODoctor, scrollToWhyChoose, scollTOPackage, scrollToServices }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const toggleDropdown = (status) => {
-    setIsDropdownOpen(status);
-  };
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-    console.log('Menu button clicked, isMenuOpen:', isMenuOpen);
+  const [isMainMenuOpen, setisMainMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({ title: '', dateTime: '', description: '' });
+
+  const navigate = useNavigate(); // Use navigate
+
+  const toggleDropdown = (status) => setIsDropdownOpen(status);
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleMainMenu = () => setisMainMenuOpen(!isMainMenuOpen);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
-  const [scrollLeft, setScrollLeft] = useState(0);
 
- const [isMainMenuOpen, setisMainMenuOpen]=useState(false);
- const toggleMainMenu = () => {
-  setIsMenuOpen(false);
-  setisMainMenuOpen(!isMainMenuOpen);
-  console.log('Menu button clicked, isMainMenuOpen:', isMainMenuOpen);
-};
-
-const navigate = useNavigate();
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    AppServices.createAppointment(formData).then(() => {
+      navigate('/'); // Redirect on successful appointment creation
+      closeModal(); // Close the modal
+    });
+  };
 
   return (
-    
     <header className="header">
-      {/* <div className="header-top">
-        <div className="header-top-right">
-          <div className="emergency-contact">
-            <div className="topheaderspace"></div>
-            <span>For Emergency Ambulance/Appointment</span>
-            <a href="tel:+918888822222">+91 88888 22222</a>
-            <a href="tel:+918888822222">+91 99999 55555</a>
-            <a href="tel:+918888822222">+91 91999 22222</a>
-          </div> 
-           <button className="appointment">Appointment</button>
-          <NavLink className="nav-link active btn-danger" style={{ color: 'red' }} to={'/add-appointment'}>Appointment</NavLink>
-          <NavLink className="nav-link active btn-danger" style={{ color: 'red' }} to={'/list-appointment'}>Appointment List</NavLink>
-
-        </div>
-      </div>  */}
-
+      {/* Existing Header Code */}
       <div className="header-main px-4">
         <div className="logo">
-          <a src="#"><img src={Maulilogo} alt="Mauli Hospital" /></a>
+          <a href="#"><img src={Maulilogo} alt="Mauli Hospital" /></a>
         </div>
 
         <nav className="main-nav">
-          <ul className=''>
-           <Link to="/"><div className='p-3 hospital-title'>Mauli Hospital</div></Link> 
+          <ul className="">
+            <Link to="/"><div className="p-3 hospital-title">Mauli Hospital</div></Link>
             <div className="headerspace d-flex">
-            <li onClick={scrollToWhyChoose}><a href="#">Home</a></li>
-            <li onClick={scrollToWhyChoose}><a href="#">About</a></li>
-            <li onClick={scrollToWhyChoose}><a href="#">Contact Us</a></li>
-
-             
-              <li onClick={scrollToServices}
-                className="nav-item dropdown"
-                onMouseEnter={() => toggleDropdown(true)}
-                onMouseLeave={() => toggleDropdown(false)}
-              >
-                <Link to="#" className="dropdown-toggle">Specialities</Link>
-                {isDropdownOpen && (
-                  <div className="dropdown-menu">
-                    <div className="dropdown-column">
-                      <ul>
-                        <li><a href="#">Anaesthesiology</a></li>
-                        <li><a href="#">Critical Care</a></li>
-                        <li><a href="#">ENT</a></li>
-                        <li><a href="#">Hand Reconstruction Surgery</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                )}
-              </li>
+              <li onClick={scrollToWhyChoose}><a href="#">Home</a></li>
+              <li onClick={scrollToWhyChoose}><a href="#">About</a></li>
+              <li onClick={scrollToWhyChoose}><a href="#">Contact Us</a></li>
               <li><a href="#" onClick={scollTOPackage}>Health Packages</a></li>
               <li><a href="#">Doctors</a></li>
-              {/* <li><a href="#">       
-              </a></li> */}
-              {/* <li><button className="appointment">Appointment</button>
-              </li> */}
             </div>
           </ul>
         </nav>
-        <button className='appointment btn btn-success p-1 m-2' >Appoiments</button>
-        {/* <button className="menu btn btn-primary p-1" onClick={toggleMenu}>
-  ☰ Login
-  {isMenuOpen && (
-  <div className="menu-dropdown dropdown-menu show">
-    <ul className="list-unstyled">
-   < li><Link to="/DoctorLoginForm" className="dropdown-item" >Doctor</Link></li>
-    
-        <li><Link to="/NurseLoginForm" className="dropdown-item">Nurse</Link></li>
-        
-    </ul>
-  </div>
-)}
-</button> */}
 
-<div className='mmi-container'>
-<div className="mobile-menu-icon" onClick={toggleMainMenu}>
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
-{isMainMenuOpen && (
-  <div className="mobile-menu">
-    <nav className="mobile-nav">
-      <ul>
-        <li onClick={scollTODoctor}><a href="#">Hospital</a></li>
-        <li
-          className="nav-item dropdown"
-          onClick={() => toggleDropdown(!isDropdownOpen)}
-        >
-          <a href="#" className="dropdown-toggle">Specialities</a>
-          {isDropdownOpen && (
-            <div className="dropdown-menu">
-              <div className="dropdown-column">
-                <ul>
-                  <li><a href="#">Anaesthesiology</a></li>
-                  <li><a href="#">Critical Care</a></li>
-                  <li><a href="#">ENT</a></li>
-                  <li><a href="#">Hand Reconstruction Surgery</a></li>
-                </ul>
-              </div>
+        <button className="appointment btn btn-success p-1 m-2" onClick={openModal}>
+          Appointments
+        </button>
+
+        {/* Modal for Appointment Form */}
+        {isModalOpen && (
+          <div className="modal-overlay">
+            <div className="modal-content">
+              <h2 className="modal-title">Add Appointment</h2>
+              <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <label htmlFor="title">Name</label>
+                  <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    value={formData.title}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="dateTime">Date and Time</label>
+                  <input
+                    type="datetime-local"
+                    id="dateTime"
+                    name="dateTime"
+                    value={formData.dateTime}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="description">Description</label>
+                  <textarea
+                    id="description"
+                    name="description"
+                    value={formData.description}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                <div className="modal-actions">
+                  <button type="submit" className="btn btn-primary">Submit</button>
+                  <button type="button" className="btn btn-secondary" onClick={closeModal}>
+                    Cancel
+                  </button>
+                </div>
+              </form>
             </div>
-          )}
-        </li>
-        <li><a href="#">Health Packages</a></li>
-        <li><a href="#">Rooms</a></li>
-        <li><a href="#">Doctors</a></li>
-        <li className="LoginMenuDrop">
-          <button className="Loginmenu btn btn-primary" onClick={toggleMenu}>
-            ☰ Login
-          </button>
-          {isMenuOpen && (
-            <div className="menu-dropdown dropdown-menu show" onClick={toggleMainMenu}>
-              <ul className="list-unstyled">
-                <li><Link to="/DoctorLoginForm" className="dropdown-item">Doctor</Link></li>
-                <li><Link to="/NurseLoginForm" className="dropdown-item">Nurse</Link></li>
-               
-              </ul>
-            </div>
-          )}
-        </li>
-      </ul>
-    </nav>
-  </div>
-)}
-</div>
+          </div>
+        )}
       </div>
     </header>
   );

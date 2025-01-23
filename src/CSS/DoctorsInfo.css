@@ -1,99 +1,105 @@
-/* General Styling */
-.min-vh-100 {
-  min-height: 100vh;
+/* General modal styles */
+.modal-dialog {
+  max-width: 500px;
+  margin: 1.75rem auto;
 }
 
-.imagescard {
-  margin: 0 auto;
-  padding: 20px;
-  max-width: 1200px;
+.modal-content {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  border: none;
 }
 
-.cardimg {
-  padding: 15px;
+.modal-header {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  flex-direction: column;
-}
-
-.card-img-top {
-  height: 300px;
-  width: 100%;
-  object-fit: cover;
-}
-
-.card-body {
-  text-align: center;
+  border-bottom: 1px solid #dee2e6;
   padding: 15px;
 }
 
-.card-title {
+.modal-title {
   font-size: 1.25rem;
-  font-weight: bold;
 }
 
-.card-text {
-  font-size: 1rem;
-  color: #6c757d;
+.close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
-/* Responsive Design */
+.modal-body {
+  padding: 20px;
+}
 
-/* Large Devices (Desktops, 1024px and up) */
-@media (min-width: 1024px) {
-  .card-img-top {
-    height: 300px;
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px;
+  border-top: 1px solid #dee2e6;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+/* Media queries for responsiveness */
+
+/* Large screens (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .modal-dialog {
+    max-width: 600px;
   }
 }
 
-/* Medium Devices (Tablets, 768px to 1023px) */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .card-img-top {
-    height: 250px;
+/* Medium screens (tablets, 768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .modal-dialog {
+    max-width: 500px;
   }
 
-  .imagescard {
+  .modal-title {
+    font-size: 1.2rem;
+  }
+
+  .modal-body {
     padding: 15px;
   }
 
-  .card-body {
+  .modal-footer {
     padding: 10px;
-  }
-
-  .card-title {
-    font-size: 1.15rem;
-  }
-
-  .card-text {
-    font-size: 0.95rem;
   }
 }
 
-/* Small Devices (Phones, up to 767px) */
+/* Small screens (phones, less than 768px) */
 @media (max-width: 767px) {
-  .card-img-top {
-    height: 200px;
+  .modal-dialog {
+    max-width: 90%; /* Use most of the screen width */
+    margin: 1rem auto;
   }
 
-  .imagescard {
-    padding: 10px;
-  }
-
-  .card-body {
-    padding: 8px;
-  }
-
-  .card-title {
+  .modal-title {
     font-size: 1rem;
   }
 
-  .card-text {
-    font-size: 0.9rem;
+  .modal-body {
+    padding: 10px;
   }
 
-  .btn {
-    padding: 8px;
-    font-size: 0.9rem;
+  .modal-footer {
+    padding: 10px;
+  }
+
+  .btn-secondary {
+    font-size: 0.875rem;
+    padding: 8px 16px;
   }
 }

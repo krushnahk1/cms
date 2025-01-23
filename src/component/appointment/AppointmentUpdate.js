@@ -1,108 +1,92 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import AppServices from "../../services/AppServices";
-import '../appointment/appoinmentsCSS/AppointmentUpdate.css' // Custom CSS for better control
+import '../appointment/appoinmentsCSS/AppointmentUpdate.css';
 
-const AppointmentUpdate = () => {
+const EditAppointment = () => {
   const { id } = useParams();
-  const [title, setTitle] = useState("");
-  const [dateTime, setDateTime] = useState("");
-  const [description, setDescription] = useState("");
-  const navigate = useNavigate(); // Use useNavigate
-
-  const saveAppointment = (e) => {
-    e.preventDefault();
-    const appointment = { title, dateTime, description };
-
-    AppServices.updateappointments(id, appointment).then((response) => {
-      console.log(response.data);
-      navigate("/list-appointment");
-    });
-  };
+  const navigate = useNavigate();
+  const [appointment, setAppointment] = useState({
+    title: "",
+    dateTime: "",
+    description: "",
+  });
 
   useEffect(() => {
     AppServices.getAppointmentById(id)
       .then((response) => {
-        setTitle(response.data.title);
-        setDateTime(response.data.dateTime);
-        setDescription(response.data.description);
-        console.log(response.data);
+        // Format the dateTime value for the datetime-local input
+        const formattedDateTime = new Date(response.dateTime).toISOString().slice(0, 16);
+        setAppointment({ ...response, dateTime: formattedDateTime });
       })
       .catch((error) => {
-        console.log(error);
+        console.error("Error fetching appointment details:", error);
       });
   }, [id]);
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setAppointment({ ...appointment, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Format the dateTime value back to ISO string before sending it to the API
+    const updatedAppointment = {
+      ...appointment,
+      dateTime: new Date(appointment.dateTime).toISOString(),
+    };
+
+    AppServices.updateAppointment(id, updatedAppointment)
+      .then(() => {
+        navigate("/list-appointment");
+      })
+      .catch((error) => {
+        console.error("Error updating appointment:", error);
+      });
+  };
+
   return (
-    <>
-      <h1 className="text-center mt-5">Update Appointment</h1>
-
-      <div className="container-fluid mt-5">
-        <div className="row justify-content-center">
-          <div className="card col-md-6 col-lg-4 col-12">
-            <div className="card-body">
-              <form>
-                <div className="form-group mb-3">
-                  <label className="form-label">Id:</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={id}
-                    disabled
-                  />
-                </div>
-                <div className="form-group mb-3">
-                  <label className="form-label">Name:</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                  />
-                </div>
-
-                <div className="mb-3">
-                  <label htmlFor="dateTime" className="form-label">
-                    Date and Time
-                  </label>
-                  <input
-                    type="datetime-local"
-                    className="form-control"
-                    id="dateTime"
-                    value={dateTime}
-                    onChange={(e) => setDateTime(e.target.value)}
-                    required
-                  />
-                </div>
-
-                <div className="form-group mb-3">
-                  <label className="form-label">Description:</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                  />
-                </div>
-
-                <div className="d-flex justify-content-between">
-                  <button
-                    className="btn btn-success"
-                    onClick={(e) => saveAppointment(e)}
-                  >
-                    Submit
-                  </button>
-                  <Link to="/list-appointment" className="btn btn-danger">
-                    Cancel
-                  </Link>
-                </div>
-              </form>
-            </div>
-          </div>
+    <div className="container mt-5">
+      <h1 className="text-center mb-4">Edit Appointment</h1>
+      <form onSubmit={handleSubmit} className="w-50 mx-auto">
+        <div className="form-group mb-3">
+          <label className="form-label">Title</label>
+          <input
+            type="text"
+            name="title"
+            className="form-control"
+            value={appointment.title}
+            onChange={handleInputChange}
+          />
         </div>
-      </div>
-    </>
+        <div className="form-group mb-3">
+          <label className="form-label">Date and Time</label>
+          <input
+            type="datetime-local"
+            name="dateTime"
+            className="form-control"
+            value={appointment.dateTime}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="form-group mb-4">
+          <label className="form-label">Description</label>
+          <textarea
+            name="description"
+            className="form-control"
+            rows="4"
+            value={appointment.description}
+            onChange={handleInputChange}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary w-100">
+          Update Appointment
+        </button>
+      </form>
+    </div>
   );
 };
 
-export default AppointmentUpdate;
+export default EditAppointment;

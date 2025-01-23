@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -11,74 +11,26 @@ import doc4 from '../assets/img/doc4.jpg';
 import doc5 from '../assets/img/doc5.jpg';
 import doc6 from '../assets/img/doc6.jpg';
 import DoctorModal from '../DoctorComponents/DoctorModel';
-import DoctorForm from '../DoctorComponents/AddDoctorForm'; // Import the form
+import appServices from '../services/AppServices';  // Importing the AppServices class
 
 const DoctorsInfo = () => {
-  const [doctors, setDoctors] = useState([
-    {
-      img: doc1,
-      name: "Dr. Serena Mitchell",
-      specialties: "Orthopedic Surgeon",
-      inTime: "9:00 AM",
-      outTime: "5:00 PM",
-      days: ["Monday", "Wednesday", "Friday"]
-    },
-    {
-      img: doc2,
-      name: "Dr. Julian Bennett",
-      specialties: "Cardiologist",
-      inTime: "10:00 AM",
-      outTime: "4:00 PM",
-      days: ["Tuesday", "Thursday"]
-    },
-    {
-      img: doc3,
-      name: "Dr. Julian Bennett",
-      specialties: "Cardiologist",
-      inTime: "10:00 AM",
-      outTime: "4:00 PM",
-      days: ["Tuesday", "Thursday"]
-    },
-    {
-      img: doc4,
-      name: "Dr. Julian Bennett",
-      specialties: "Cardiologist",
-      inTime: "10:00 AM",
-      outTime: "4:00 PM",
-      days: ["Tuesday", "Thursday"]
-    },
-    {
-      img: doc5,
-      name: "Dr. Julian Bennett",
-      specialties: "Cardiologist",
-      inTime: "10:00 AM",
-      outTime: "4:00 PM",
-      days: ["Tuesday", "Thursday"]
-    },
-    {
-      img: doc6,
-      name: "Dr. Julian Bennett",
-      specialties: "Cardiologist",
-      inTime: "10:00 AM",
-      outTime: "4:00 PM",
-      days: ["Tuesday", "Thursday"]
-    },
-    // Other initial doctors
-  ]);
+  const [doctors, setDoctors] = useState([]);
   const [selectedDoctor, setSelectedDoctor] = useState(null);
   const slider = useRef(null);
 
-  const addOrUpdateDoctor = (newDoctor) => {
-    setDoctors((prevDoctors) => {
-      const index = prevDoctors.findIndex(doc => doc.name === newDoctor.name);
-      if (index > -1) {
-        const updatedDoctors = [...prevDoctors];
-        updatedDoctors[index] = newDoctor;
-        return updatedDoctors;
+  // Fetch doctors from the API on component mount
+  useEffect(() => {
+    const fetchDoctors = async () => {
+      try {
+        const data = await appServices.getAllDoctors();  // Fetch data from the API
+        setDoctors(data);  // Update state with fetched data
+      } catch (err) {
+        console.error("Error fetching doctors:", err);
       }
-      return [...prevDoctors, newDoctor];
-    });
-  };
+    };
+
+    fetchDoctors();
+  }, []);  // Empty dependency array to only run on mount
 
   const settings = {
     accessibility: true,
@@ -115,19 +67,26 @@ const DoctorsInfo = () => {
       </div>
       <div className="imagescard">
         <Slider ref={slider} {...settings}>
-          {doctors.map((e, index) => (
+          {doctors.map((doctor, index) => (
             <div className="cardimg" key={index}>
-              <img src={e.img} className="card-img-top rounded-top" alt="Doctor" />
+              <img
+                src={doctor.img || doc1}  // Use default image if no image exists
+                className="card-img-top rounded-top"
+                alt="Doctor"
+              />
               <div className="card-body">
-                <h5 className="card-title">{e.name}</h5>
-                <p className="card-text">{e.specialties}</p>
-                <button className="btn btn-primary" onClick={() => setSelectedDoctor(e)}>View Details</button>
+                <h5 className="card-title">{doctor.name}</h5>
+                <p className="card-text">{doctor.specialties}</p>
+                <button className="btn btn-primary" onClick={() => setSelectedDoctor(doctor)}>
+                  View Details
+                </button>
               </div>
             </div>
           ))}
         </Slider>
       </div>
       <DoctorModal doctor={selectedDoctor} onClose={() => setSelectedDoctor(null)} />
+      {/* Uncomment to allow adding or updating doctors */}
       {/* <div className="mt-5">
         <h2>Add or Update Doctor</h2>
         <DoctorForm addOrUpdateDoctor={addOrUpdateDoctor} />

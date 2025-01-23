@@ -13,7 +13,7 @@ import AppointmentViewById from '../component/appointment/AppointmentViewById';
 import Appointment from '../component/appointment/Appointment';
 import AppointmentUpdate from '../component/appointment/AppointmentUpdate';
 import UserStorageService from '../services/UserStorageService';
-import ServiceForm from './AddServiceForm';
+import ServiceForm from '../component/AddServiceForm';
 import { RiMicroscopeLine } from "react-icons/ri";
 import { MdHealthAndSafety } from "react-icons/md";
 import { FaHeartbeat } from "react-icons/fa";
