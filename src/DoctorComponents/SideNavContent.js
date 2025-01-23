@@ -36,10 +36,10 @@ const SideNavContent = ({ sideNavStatus, list, toggleSubmenu }) => {
 
   return (
     <div className={`side-nav-content ${sideNavStatus ? 'nav-list-open' : ''}`}>
-      <div className='mt-3'>
-      <img className='dashboard-logo-img' src={moulilogo} width={"150px"} ></img>
+      <div className='dashboard-logo-img-container mt-3 mb-2'>
+      <img className='dashboard-logo-img' src={moulilogo} width={"150px"} style={{color: "purple"}}></img>
+      <hr  style={{color:"white", height:"20px" }}></hr>
       </div>
-      <hr style={{color:"white", height:"20px"}}></hr>
       <ul className="nav-list">
         {list.map((item) => (
           <li key={item.number} className="nav-list-item sidebar-item" >
@@ -47,6 +47,7 @@ const SideNavContent = ({ sideNavStatus, list, toggleSubmenu }) => {
               <i className={`${item.icon} p-3`}></i>
               <span className="sidebar-text">{item.name}</span>
             </a>
+            
             {item.isSubitem && (
               <ul className='subitem-container' style={{
                 maxHeight: item.isExpanded ? '500px' : '0px', // Set a max value greater than expected content height
