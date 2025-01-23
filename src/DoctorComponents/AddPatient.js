@@ -123,14 +123,15 @@ function AddPatient() {
                 value={wifeName} onChange={(e) => setWifeName(e.target.value)} />
             </div>
             <div className="col-md-6">
-              <label>Number of Children:</label>
+              <label>Number of Children:
               <input
                 type="number"
                 value={numChildren}
                 onChange={(e) => setNumChildren(e.target.value)}
                 placeholder="Enter number of children"
               />
-            </label>
+              </label>
+            </div>
           </div>
         )}
 
