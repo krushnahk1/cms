@@ -10,6 +10,14 @@ const HealthcarePackages = () => {
     // Predefined packages
     const [packages, setPackages] = useState([
         {
+            locationId: 2,
+            title: "blood test Package",
+            price: "₹2420",
+            features: {
+                femalesAbove40: ["Haemogram", "Pap Smear", "Mammography", "Physician Consultation", "Stool Occult Blood", "Chest X-Ray", "USG – Abdomen & Pelvis"],
+                femalesBelow40: ["Haemogram", "Chest X-Ray", "Physician Consultation", "PAP Smear", "USG – Abdomen & Pelvis"],
+                males: ["Haemogram", "Chest X-Ray", "USG – Abdomen & Pelvis", "Physician Consultation"],
+            },
             locationId: 1,
             title: "Liver function test Package",
             price: "₹2420",
@@ -17,6 +25,25 @@ const HealthcarePackages = () => {
                 femalesAbove40: ["Haemogram", "Pap Smear", "Mammography", "Physician Consultation", "Stool Occult Blood", "Chest X-Ray", "USG – Abdomen & Pelvis"],
                 femalesBelow40: ["Haemogram", "Chest X-Ray", "Physician Consultation", "PAP Smear", "USG – Abdomen & Pelvis"],
                 males: ["Haemogram", "Chest X-Ray", "USG – Abdomen & Pelvis", "Physician Consultation"],
+            },
+        },
+        {
+            locationId: 3,
+            title: "Basic Package",
+            price: "₹2420",
+            features: {
+                femalesAbove40: ["Haemogram", "Pap Smear", "Mammography", "Physician Consultation", "Stool Occult Blood", "Chest X-Ray", "USG – Abdomen & Pelvis"],
+                
+            },
+        },
+
+        {
+            locationId: 2,
+            title: "Basic Package",
+            price: "₹2420",
+            features: {
+                femalesAbove40: ["Haemogram", "Pap Smear", "Mammography", "Physician Consultation", "Stool Occult Blood", "Chest X-Ray", "USG – Abdomen & Pelvis"],
+                
             },
         },
         // other predefined packages...

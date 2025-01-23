@@ -12,10 +12,10 @@ const AppointmentViewById = () => {
   useEffect(() => {
     AppServices.getAppointmentById(id)
       .then((response) => {
-        setTitle(response.data.title);
-        setDateTime(response.data.dateTime);
-        setDescription(response.data.description);
-        console.log(response.data);
+        setTitle(response.title);
+        setDateTime(response.dateTime);
+        setDescription(response.description);
+        console.log(response);
       })
       .catch((error) => {
         console.log(error);
