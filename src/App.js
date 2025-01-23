@@ -23,10 +23,10 @@ import NurseLoginForm from '../src/component/NurseLoginForm'
 // import AddEnquiries from '../src/DoctorComponents/AddEnquiries';
 // import AllPatient from '../src/DoctorComponents/AllPatients';
 
-// import Appointment from './component/appointment/Appointment';
-// import AppointmentsAdd from './component/appointment/AppointmentsAdd';
-// import AppointmentUpdate from './component/appointment/AppointmentUpdate';
-// import AppointmentViewById from './component/appointment/AppointmentViewById';
+import Appointment from './component/appointment/Appointment';
+import AppointmentsAdd from './component/appointment/AppointmentsAdd';
+import AppointmentUpdate from './component/appointment/AppointmentUpdate';
+import AppointmentViewById from './component/appointment/AppointmentViewById';
 // import Nursedashboard from "../src/receptionist/components/Receptionist_view";
 import About from './component/abouts';
 import Home from './component/home';
@@ -97,10 +97,10 @@ function App() {
           {/* <Route path="/create-appointment" element={<CreateAppointment />} /> */}
           {/* <Route path="/add-enquiries" element={<AddEnquiries />} />     
           <Route path="/list-appointment" element={<Appointment/>} />     
-          <Route path="/create-appointment" element={<AppointmentsAdd/>} />     
+          <Route path="/create-appointment" element={<AppointmentsAdd/>} />    */}  
           <Route path="/add-appointment" element={<AppointmentsAdd/>} />     
           <Route path="/edit-appointment/:id" element={<AppointmentUpdate/>} />     
-          <Route path="/view-appointment/:id" element={<AppointmentViewById/>} />      */}
+          <Route path="/view-appointment/:id" element={<AppointmentViewById/>} />     
         </Routes>
       </Router>
       <Router>

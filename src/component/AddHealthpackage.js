@@ -46,88 +46,88 @@ const AddPackageForm = ({ onAddPackage, locations }) => {
         }
     };
 
-    return (
-        <form onSubmit={handleSubmit} className="add-package-form">
-            <h2>Add New Package</h2>
+    // return (
+    //     <form onSubmit={handleSubmit} className="add-package-form">
+    //         <h2>Add New Package</h2>
 
-            <div>
-                <label>Title:</label>
-                <input
-                    type="text"
-                    name="title"
-                    value={newPackage.title}
-                    onChange={handleChange}
-                    required
-                />
-            </div>
+    //         <div>
+    //             <label>Title:</label>
+    //             <input
+    //                 type="text"
+    //                 name="title"
+    //                 value={newPackage.title}
+    //                 onChange={handleChange}
+    //                 required
+    //             />
+    //         </div>
 
-            <div>
-                <label>Price:</label>
-                <input
-                    type="text"
-                    name="price"
-                    value={newPackage.price}
-                    onChange={handleChange}
-                    required
-                />
-            </div>
+    //         <div>
+    //             <label>Price:</label>
+    //             <input
+    //                 type="text"
+    //                 name="price"
+    //                 value={newPackage.price}
+    //                 onChange={handleChange}
+    //                 required
+    //             />
+    //         </div>
 
-            <div>
-                <label>Location:</label>
-                <select
-                    name="locationId"
-                    value={newPackage.locationId}
-                    onChange={handleChange}
-                    required
-                >
-                    <option value="">Select Location</option>
-                    {locations.map((loc) => (
-                        <option key={loc.id} value={loc.id}>
-                            {loc.name}
-                        </option>
-                    ))}
-                </select>
-            </div>
+    //         <div>
+    //             <label>Location:</label>
+    //             <select
+    //                 name="locationId"
+    //                 value={newPackage.locationId}
+    //                 onChange={handleChange}
+    //                 required
+    //             >
+    //                 <option value="">Select Location</option>
+    //                 {locations.map((loc) => (
+    //                     <option key={loc.id} value={loc.id}>
+    //                         {loc.name}
+    //                     </option>
+    //                 ))}
+    //             </select>
+    //         </div>
 
-            <div>
-                <label>Features (General):</label>
-                <input
-                    type="text"
-                    placeholder="Feature"
-                    onBlur={(e) => handleFeatureChange(e, "general")}
-                />
-            </div>
+    //         <div>
+    //             <label>Features (General):</label>
+    //             <input
+    //                 type="text"
+    //                 placeholder="Feature"
+    //                 onBlur={(e) => handleFeatureChange(e, "general")}
+    //             />
+    //         </div>
 
-            <div>
-                <label>Features (Females Above 40):</label>
-                <input
-                    type="text"
-                    placeholder="Feature"
-                    onBlur={(e) => handleFeatureChange(e, "femalesAbove40")}
-                />
-            </div>
+    //         <div>
+    //             <label>Features (Females Above 40):</label>
+    //             <input
+    //                 type="text"
+    //                 placeholder="Feature"
+    //                 onBlur={(e) => handleFeatureChange(e, "femalesAbove40")}
+    //             />
+    //         </div>
 
-            <div>
-                <label>Features (Females Below 40):</label>
-                <input
-                    type="text"
-                    placeholder="Feature"
-                    onBlur={(e) => handleFeatureChange(e, "femalesBelow40")}
-                />
-            </div>
+    //         <div>
+    //             <label>Features (Females Below 40):</label>
+    //             <input
+    //                 type="text"
+    //                 placeholder="Feature"
+    //                 onBlur={(e) => handleFeatureChange(e, "femalesBelow40")}
+    //             />
+    //         </div>
 
-            <div>
-                <label>Features (Males):</label>
-                <input
-                    type="text"
-                    placeholder="Feature"
-                    onBlur={(e) => handleFeatureChange(e, "males")}
-                />
-            </div>
+    //         <div>
+    //             <label>Features (Males):</label>
+    //             <input
+    //                 type="text"
+    //                 placeholder="Feature"
+    //                 onBlur={(e) => handleFeatureChange(e, "males")}
+    //             />
+    //         </div>
 
-            <button type="submit">Add Package</button>
-        </form>
-    );
+    //         <button type="submit">Add Package</button>
+    //     </form>
+    // );
 };
 
 export default AddPackageForm;

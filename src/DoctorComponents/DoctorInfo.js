@@ -1,18 +1,30 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import '../CSS/Doctorinfo.css';
+import appServices from "../services/AppServices"; // Import the service to fetch doctors
+import DoctorModal from "../DoctorComponents/DoctorModel";
+import "../CSS/Doctorinfo.css"; 
 
-import DoctorModal from '../DoctorComponents/DoctorModel';
-import DoctorForm from '../DoctorComponents/AddDoctorForm'; // Import the form
-// import "../DoctorCSS/DoctorInfo.css";
-const DoctorsInfo = ({doctors, setDoctors}) => {
-  
+const DoctorsInfo = () => {
+  const [doctors, setDoctors] = useState([]); // State to hold the list of doctors
   const [selectedDoctor, setSelectedDoctor] = useState(null);
   const slider = useRef(null);
 
+  // Fetch doctors from the API when the component mounts
+  useEffect(() => {
+    const fetchDoctors = async () => {
+      try {
+        const data = await appServices.getAllDoctors(); // Fetch doctors from the API
+        setDoctors(data); // Update state with the fetched data
+      } catch (error) {
+        console.error("Error fetching doctors:", error);
+      }
+    };
+
+    fetchDoctors();
+  }, []); // Empty dependency array to run once when component mounts
 
   const settings = {
     accessibility: true,
@@ -33,7 +45,7 @@ const DoctorsInfo = ({doctors, setDoctors}) => {
 
   return (
     <div className="d-flex flex-column justify-content-center px-3 px-lg-5 pt-2">
-      <div className="d-flex flex-column align-items-center flex-lg-row justify-content-between mb-4" >
+      <div className="d-flex flex-column align-items-center flex-lg-row justify-content-between mb-4">
         <div className="text-center text-lg-start">
           <h1 className="display-4">Our Doctors</h1>
           <p className="mt-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus, quidem.</p>
@@ -49,23 +61,21 @@ const DoctorsInfo = ({doctors, setDoctors}) => {
       </div>
       <div className="imagescard">
         <Slider ref={slider} {...settings}>
-          {doctors.map((e, index) => (
+          {doctors.map((doctor, index) => (
             <div className="cardimg" key={index}>
-              <img src={e.img} className="card-img-top rounded-top" alt="Doctor" />
+              <img src={doctor.img} className="card-img-top rounded-top" alt="Doctor" />
               <div className="card-body">
-                <h5 className="card-title">{e.name}</h5>
-                <p className="card-text">{e.specialties}</p>
-                <button className="btn btn-primary" onClick={() => setSelectedDoctor(e)}>View Details</button>
+                <h5 className="card-title">{doctor.name}</h5>
+                <p className="card-text">{doctor.specialties}</p>
+                <button className="btn btn-primary" onClick={() => setSelectedDoctor(doctor)}>
+                  View Details
+                </button>
               </div>
             </div>
           ))}
         </Slider>
       </div>
       <DoctorModal doctor={selectedDoctor} onClose={() => setSelectedDoctor(null)} />
-      {/* <div className="mt-5">
-        <h2>Add or Update Doctor</h2>
-        <DoctorForm addOrUpdateDoctor={addOrUpdateDoctor} />
-      </div> */}
     </div>
   );
 };

@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import AppServices from "../../services/AppServices";
-import { Link } from "react-router-dom";
-import './appoinmentsCSS/Appointment.css'
+import { Link, useNavigate } from "react-router-dom";
+import './appoinmentsCSS/Appointment.css';
 
 const Appointment = () => {
   const [appointments, setAppointments] = useState([]);
+  const navigate = useNavigate();
 
   const fetchAppointments = () => {
-    AppServices.getAllAppointment()
+    AppServices.getAllAppointments()
       .then((response) => {
-        setAppointments(response.data);
-        // console.log(response.data);
+        setAppointments(response);
       })
       .catch((error) => {
         console.error("There was an error fetching the appointments!", error);
@@ -18,12 +18,12 @@ const Appointment = () => {
   };
 
   const deleteAppointment = (appointmentId) => {
-    AppServices.deleteAppointments(appointmentId)
-      .then((response) => {
+    AppServices.deleteAppointment(appointmentId)
+      .then(() => {
         fetchAppointments();
       })
       .catch((error) => {
-        console.log(error);
+        console.log("Error deleting appointment:", error);
       });
   };
 
@@ -34,7 +34,6 @@ const Appointment = () => {
   return (
     <div>
       <h1>Appointments List</h1>
-
       <div className="container-fluid mt-5">
         <div className="row">
           <div className="col-md-12">
@@ -56,25 +55,26 @@ const Appointment = () => {
                     <td>{appointment.dateTime}</td>
                     <td>{appointment.description}</td>
                     <td>
-                      <button
-                        className="btn btn-danger"
-                        onClick={() => deleteAppointment(appointment.id)}
-                        style={{ marginLeft: "10px" }}
-                      >
-                        Delete
-                      </button>
-                      <Link
-                        className="btn btn-info"
-                        to={`/edit-appointment/${appointment.id}`}
-                      >
-                        Update
-                      </Link>
-                      <Link
-                        className="btn btn-info"
-                        to={`/view-appointment/${appointment.id}`}
-                      >
-                        View
-                      </Link>
+                      <div className="d-flex align-items-center gap-2">
+                        <button
+                          className="btn btn-danger"
+                          onClick={() => deleteAppointment(appointment.id)}
+                        >
+                          Delete
+                        </button>
+                        <Link
+                          className="btn btn-primary"
+                          to={`/edit-appointment/${appointment.id}`}
+                        >
+                          Update
+                        </Link>
+                        <Link
+                          className="btn btn-secondary"
+                          to={`/view-appointment/${appointment.id}`}
+                        >
+                          View
+                        </Link>
+                      </div>
                     </td>
                   </tr>
                 ))}
