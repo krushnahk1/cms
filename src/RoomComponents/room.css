@@ -1,4 +1,9 @@
 /* Custom CSS for Clinic Room Management */
+.modal {
+  width: 100% !important;
+  background: rgba(0, 0, 0, 0.5);
+}
+
 .modal .modal-content {
   text-align: center;
   width: 500px;
@@ -13,6 +18,12 @@ form {
 .container {
   margin-top: 20px; /* Adjusted for better visibility */
   display: inline;
+}
+
+.modal-header .btn-close {
+  position: relative;
+    top: -70px;
+    right: -13px;
 }
 
 /* Small devices (phones, 600px and below) */

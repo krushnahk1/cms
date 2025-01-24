@@ -98,7 +98,7 @@ const ClinicRoomManagement = () => {
   };
 
   return (
-    <div className="py-5">
+    <div className="py-5 px-2">
       {/* Checkbox at the top */}
       <div className="d-flex justify-content-between align-items-center mb-4">
         <div className="form-check">
