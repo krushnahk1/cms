@@ -65,6 +65,9 @@ button {
   margin-top: 10px;
 }
 
+.search-boxes.mb-3.d-flex.gap-2 {
+  padding: 10px;
+}
 
 .patients-table {
   overflow-x: auto;
@@ -84,6 +87,8 @@ display: flex;
 th, td {
   border: 1px solid grey;
 }
+
+
 
 /* For screens with a max width of 768px (tablets, smaller screens) */
 @media (max-width: 768px) {

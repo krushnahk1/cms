@@ -16,38 +16,38 @@ const DoctorLoginForm = () => {
         const hardCodedUsername = "doctor@gmail.com";
         const hardCodedPassword = "pass123";
 
-        if (username === hardCodedUsername && password === hardCodedPassword) {
-            setMessage("Login successful!");
-            setTimeout(() => {
-                navigate('/Doctordashboard'); // Navigate to dashboard after success
-            }, 1000); // Delay for user to see the success message
-        } else {
-            setMessage("Invalid username or password.");
-        }
-        // authServices.login({"username": username, "password": password}).then((res)=>{
-        //     console.log("login successfull");
-        //     console.log(res);
+        // if (username === hardCodedUsername && password === hardCodedPassword) {
+        //     setMessage("Login successful!");
+        //     setTimeout(() => {
+        //         navigate('/Doctordashboard'); // Navigate to dashboard after success
+        //     }, 1000); // Delay for user to see the success message
+        // } else {
+        //     setMessage("Invalid username or password.");
+        // }
+        authServices.login({"username": username, "password": password}).then((res)=>{
+            console.log("login successfull");
+            console.log(res);
 
-        //     if(res.data != null){
-        //         console.log(res);
-        //         const user = {
-        //           id: res.data.username,
-        //           role: res.data.userRole
-        //         }
+            if(res.data != null){
+                console.log(res);
+                const user = {
+                  id: res.data.username,
+                  role: res.data.userRole
+                }
         
-        //         UserStorageService.saveUser(user);
-        //         UserStorageService.saveToken(res.data.jwt);
+                UserStorageService.saveUser(user);
+                UserStorageService.saveToken(res.data.jwt);
                 
-        //         if(user.role=="ADMIN"){
-        //             navigate('/DoctorDashboard');
-        //         }
-        //         else if(UserStorageService.isCustomerLoggedIn()){
-        //             navigate('/customer/rooms');
-        //         }
-        //       }
-        // }).catch((err)=>{
-        //     console.log("invalid Credintial.")
-        // });
+                if(user.role=="ADMIN"){
+                    navigate('/DoctorDashboard');
+                }
+                else if(UserStorageService.isCustomerLoggedIn()){
+                    navigate('/customer/rooms');
+                }
+              }
+        }).catch((err)=>{
+            console.log("invalid Credintial.")
+        });
     };
 
     return (

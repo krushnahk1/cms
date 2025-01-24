@@ -1,4 +1,8 @@
 /* General table styling */
+.search-bar.mt-4.mb-4 {
+  padding: 10px;
+}
+
 .table {
   width: 100%;
   margin-bottom: 1rem;
