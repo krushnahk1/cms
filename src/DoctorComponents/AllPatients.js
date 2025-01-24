@@ -85,11 +85,11 @@ function AllPatients() {
   };
 
   if (loading) {
-    return <div>Loading...</div>; // Show loading while fetching data
+    // return <div>Loading...</div>; // Show loading while fetching data
   }
 
   if (error) {
-    return <div>{error}</div>; // Show error message if there's any
+    // return <div>{error}</div>; // Show error message if there's any
   }
 
   return (

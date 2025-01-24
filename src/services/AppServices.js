@@ -2,7 +2,7 @@ import axios from "axios";
 import UserStorageService from "./UserStorageService";
 
 // Base URL for the API
-const BASE_REST_API_URL = "http://localhost:8084/api/";
+const BASE_REST_API_URL = "http://192.168.31.221:8084/api/";
 
 class AppServices {
   // Generic method to set up headers for requests
