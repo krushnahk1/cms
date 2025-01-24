@@ -172,6 +172,58 @@ class AppServices {
       throw err;
     }
   }
+
+  /**
+   * Fetch all rooms
+   * @returns {Promise} Axios response
+   */
+  async getAllRooms() {
+    try {
+      const response = await axios.get(`${BASE_REST_API_URL}/rooms`, {
+        headers: this.getHeaders(),
+      });
+      return response.data;
+    } catch (err) {
+      console.error("Error fetching rooms:", err);
+      throw err;
+    }
+  }
+
+  /**
+   * Reset all rooms
+   * @returns {Promise} Axios response
+   */
+  async resetRooms() {
+    try {
+      const response = await axios.post(`${BASE_REST_API_URL}/rooms/reset`, null, {
+        headers: this.getHeaders(),
+      });
+      return response.data;
+    } catch (err) {
+      console.error("Error resetting rooms:", err);
+      throw err;
+    }
+  }
+
+  /**
+   * Update a room by ID
+   * @param {string} roomId - ID of the room to update
+   * @param {Object} roomData - Updated room data
+   * @returns {Promise} Axios response
+   */
+  async updateRoom(roomId, roomData) {
+    try {
+      const response = await axios.put(
+        `${BASE_REST_API_URL}/rooms/${roomId}`,
+        roomData,
+        { headers: this.getHeaders() }
+      );
+      return response.data;
+    } catch (err) {
+      console.error("Error updating room:", err);
+      throw err;
+    }
+  }
 }
 
 // Exporting an instance of the service for use throughout the application
