@@ -34,7 +34,21 @@ function DashboardOverview() {
     };
 
     fetchPatientsCount();  // Fetch patients count on component mount
-  }, []);
+
+    // New effect to fetch appointments count specifically
+    const fetchAppointmentsCount = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/api/dashboard/appointments-count");  // New endpoint for appointments count
+        if (response && response.data) {
+          setAppointmentsCount(response.data.count);  // Assuming response has the count property
+        }
+      } catch (err) {
+        console.error("Error fetching appointments count:", err);
+      }
+    };
+
+    fetchAppointmentsCount();  // Fetch total appointments count on component mount
+  }, []);  // Empty dependency array to run the effect only once after mount
 
   return (
     <div className="dashboard-overview">

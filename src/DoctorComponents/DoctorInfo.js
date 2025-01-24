@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import "../CSS/Doctorinfo.css";
+import "../DoctorCSS/DoctorInfo.css";
 import AppServices from "../services/AppServices";
 
 const DoctorsInfo = () => {
@@ -165,18 +165,20 @@ const DoctorsInfo = () => {
                     </button>
                   </td>
                   <td>
-                    <button
-                      className="btn btn-warning btn-sm me-2"
-                      onClick={() => openEditModal(doctor)}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className="btn btn-danger btn-sm"
-                      onClick={() => deleteDoctor(doctor.id)}
-                    >
-                      Delete
-                    </button>
+                    <div className="d-flex gap-2">
+                      <button
+                        className="btn btn-warning btn-sm"
+                        onClick={() => openEditModal(doctor)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="btn btn-danger btn-sm"
+                        onClick={() => deleteDoctor(doctor.id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))
