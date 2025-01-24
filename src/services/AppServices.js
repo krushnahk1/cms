@@ -1,11 +1,11 @@
 import axios from "axios";
-import UserStorageService from "./UserStorageService";
+import UserStorageService from "./UserStorageService"; // Handles user token storage/retrieval
 
 // Base URL for the API
-const BASE_REST_API_URL = "http://192.168.31.221:8084/api/";
+const BASE_REST_API_URL = "http://localhost:8084/api";
 
 class AppServices {
-  // Generic method to set up headers for requests
+  // Generic method to set up headers for requests, including authentication
   getHeaders() {
     return {
       Authorization: `Bearer ${UserStorageService.getToken()}`,
@@ -17,14 +17,16 @@ class AppServices {
    * Fetch all appointments
    * @returns {Promise} Axios response
    */
-  getAllAppointments() {
-    return axios
-      .get(`${BASE_REST_API_URL}appointments`, { headers: this.getHeaders() })
-      .then((response) => response.data)
-      .catch((err) => {
-        console.error("Error fetching all appointments:", err);
-        throw err;
+  async getAllAppointments() {
+    try {
+      const response = await axios.get(`${BASE_REST_API_URL}/appointments`, {
+        headers: this.getHeaders(),
       });
+      return response.data;
+    } catch (err) {
+      console.error("Error fetching all appointments:", err);
+      throw err;
+    }
   }
 
   /**
@@ -32,16 +34,18 @@ class AppServices {
    * @param {Object} appointment - Appointment data
    * @returns {Promise} Axios response
    */
-  createAppointment(appointment) {
-    return axios
-      .post(`${BASE_REST_API_URL}appointments`, appointment, {
-        headers: this.getHeaders(),
-      })
-      .then((response) => response.data)
-      .catch((err) => {
-        console.error("Error creating appointment:", err);
-        throw err;
-      });
+  async createAppointment(appointment) {
+    try {
+      const response = await axios.post(
+        `${BASE_REST_API_URL}/appointments`,
+        appointment,
+        { headers: this.getHeaders() }
+      );
+      return response.data;
+    } catch (err) {
+      console.error("Error creating appointment:", err);
+      throw err;
+    }
   }
 
   /**
@@ -49,16 +53,17 @@ class AppServices {
    * @param {string} appointmentId - ID of the appointment to delete
    * @returns {Promise} Axios response
    */
-  deleteAppointment(appointmentId) {
-    return axios
-      .delete(`${BASE_REST_API_URL}appointments/${appointmentId}`, {
-        headers: this.getHeaders(),
-      })
-      .then((response) => response.data)
-      .catch((err) => {
-        console.error("Error deleting appointment:", err);
-        throw err;
-      });
+  async deleteAppointment(appointmentId) {
+    try {
+      const response = await axios.delete(
+        `${BASE_REST_API_URL}/appointments/${appointmentId}`,
+        { headers: this.getHeaders() }
+      );
+      return response.data;
+    } catch (err) {
+      console.error("Error deleting appointment:", err);
+      throw err;
+    }
   }
 
   /**
@@ -67,16 +72,18 @@ class AppServices {
    * @param {Object} appointment - Updated appointment data
    * @returns {Promise} Axios response
    */
-  updateAppointment(appointmentId, appointment) {
-    return axios
-      .put(`${BASE_REST_API_URL}appointments/${appointmentId}`, appointment, {
-        headers: this.getHeaders(),
-      })
-      .then((response) => response.data)
-      .catch((err) => {
-        console.error("Error updating appointment:", err);
-        throw err;
-      });
+  async updateAppointment(appointmentId, appointment) {
+    try {
+      const response = await axios.put(
+        `${BASE_REST_API_URL}/appointments/${appointmentId}`,
+        appointment,
+        { headers: this.getHeaders() }
+      );
+      return response.data;
+    } catch (err) {
+      console.error("Error updating appointment:", err);
+      throw err;
+    }
   }
 
   /**
@@ -84,32 +91,88 @@ class AppServices {
    * @param {string} appointmentId - ID of the appointment to fetch
    * @returns {Promise} Axios response
    */
-  getAppointmentById(appointmentId) {
-    return axios
-      .get(`${BASE_REST_API_URL}appointments/${appointmentId}`, {
-        headers: this.getHeaders(),
-      })
-      .then((response) => response.data)
-      .catch((err) => {
-        console.error("Error fetching appointment by ID:", err);
-        throw err;
-      });
+  async getAppointmentById(appointmentId) {
+    try {
+      const response = await axios.get(
+        `${BASE_REST_API_URL}/appointments/${appointmentId}`,
+        { headers: this.getHeaders() }
+      );
+      return response.data;
+    } catch (err) {
+      console.error("Error fetching appointment by ID:", err);
+      throw err;
+    }
   }
 
   /**
    * Fetch all doctors
    * @returns {Promise} Axios response
    */
-  getAllDoctors() {
-    return axios
-      .get(`${BASE_REST_API_URL}doctors`, { headers: this.getHeaders() })
-      .then((response) => response.data)
-      .catch((err) => {
-        console.error("Error fetching all doctors:", err);
-        throw err;
+  async getAllDoctors() {
+    try {
+      const response = await axios.get(`${BASE_REST_API_URL}/doctors`, {
+        headers: this.getHeaders(),
       });
+      return response.data;
+    } catch (err) {
+      console.error("Error fetching all doctors:", err);
+      throw err;
+    }
+  }
+
+  /**
+   * Create a new doctor
+   * @param {Object} doctor - Doctor data
+   * @returns {Promise} Axios response
+   */
+  async createDoctor(doctor) {
+    try {
+      const response = await axios.post(
+        `${BASE_REST_API_URL}/doctors`,
+        doctor,
+        { headers: this.getHeaders() }
+      );
+      return response.data;
+    } catch (err) {
+      console.error("Error creating doctor:", err);
+      throw err;
+    }
+  }
+
+  /**
+   * Fetch the count of patients
+   * @returns {Promise} Axios response
+   */
+  async getPatientsCount() {
+    try {
+      const response = await axios.get(
+        `${BASE_REST_API_URL}/dashboard/patients-count`,
+        { headers: this.getHeaders() }
+      );
+      return response.data;
+    } catch (err) {
+      console.error("Error fetching patients count:", err);
+      throw err;
+    }
+  }
+
+  /**
+   * Fetch the count of pending approvals
+   * @returns {Promise} Axios response
+   */
+  async getPendingApprovalsCount() {
+    try {
+      const response = await axios.get(
+        `${BASE_REST_API_URL}/appointments/pending-count`,
+        { headers: this.getHeaders() }
+      );
+      return response.data;
+    } catch (err) {
+      console.error("Error fetching pending approvals count:", err);
+      throw err;
+    }
   }
 }
 
-// Exporting the AppServices instance for use in other parts of the application
+// Exporting an instance of the service for use throughout the application
 export default new AppServices();

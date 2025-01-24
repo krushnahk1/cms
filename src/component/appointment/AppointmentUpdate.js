@@ -40,7 +40,7 @@ const EditAppointment = () => {
 
     AppServices.updateAppointment(id, updatedAppointment)
       .then(() => {
-        navigate("/list-appointment");
+        navigate("/DoctorDashboard/list-appointment");
       })
       .catch((error) => {
         console.error("Error updating appointment:", error);

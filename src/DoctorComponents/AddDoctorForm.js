@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import Cropper from 'react-cropper';
 import 'cropperjs/dist/cropper.css';
 
-const DoctorForm = () => {
+const DoctorForm = ({ refreshDoctors }) => {
   const [doctor, setDoctor] = useState({
     img: '',
     name: '',
@@ -58,6 +58,9 @@ const DoctorForm = () => {
       if (response.ok) {
         alert('Doctor saved successfully');
         setDoctor({ img: '', name: '', specialties: '', inTime: '', outTime: '', days: '' });
+
+        // Call the refreshDoctors function to refresh the doctor list
+        refreshDoctors();
       } else {
         alert('Failed to save doctor');
       }

@@ -74,7 +74,7 @@ const AppointmentViewById = () => {
                 </div>
 
                 <div className="d-flex justify-content-center">
-                  <Link to="/list-appointment" className="btn btn-danger">
+                  <Link to="/DoctorDashboard/list-appointment" className="btn btn-danger">
                     Back to List
                   </Link>
                 </div>
