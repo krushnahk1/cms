@@ -41,13 +41,15 @@ function Navbar({ changeSideNavStatus }) {
                                             <ul>
                                                 <li>Profile</li>
                                                 <li>Settings</li>
-                                                <li>Logout</li>
+                                            
                                             </ul>
                                            
                                         </div>
-                                        <button className='logout-btn'>
-                                                Logout
-                                        </button>
+                                        <Link to="/">
+                                            <button className='logout-btn'>
+                                                    Logout
+                                            </button>
+                                        </Link>
                                         
                                 </div>
                             </div>
