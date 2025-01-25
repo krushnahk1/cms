@@ -25,7 +25,7 @@ const Login = () => {
     
     <div className="container nlf-container">
       
-      <form onSubmit={handleLogin}>
+      <form onSubmit={handleLogin} className='nurse-login-form'>
       <h2>Nurse Login</h2>
         <div className="mb-3">
           <label htmlFor="email" className="form-labelemail">Email</label>

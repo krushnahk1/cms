@@ -9,7 +9,8 @@
 /* Card Style */
 .card {
   width: 100%; 
-  max-width: 300px; /* Limit the card width */
+  max-width: 70%; /* Limit the card width */
+  min-height: 70%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;

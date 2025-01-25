@@ -42,7 +42,7 @@ const AddRoom = () => {
   return (
     <div className="container mt-4">
       <h2>Add New Room</h2>
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit} className="add-room-form">
         <div className="mb-3">
           <label htmlFor="patient" className="form-label">Patient Name</label>
           <input

@@ -5,7 +5,7 @@ import "./room.css";
 
 const Room = ({ bed, openModal, handleDischarge }) => {
   return (
-    <div className="col d-flex justify-content-center">
+    <div className="room-card-col">
       <div
         className={`card clinic-card ${
           bed.status === "Available" ? "bg-light" : "bg-danger text-white"
@@ -167,8 +167,8 @@ const ClinicRoomManagement = () => {
 
   return (
     <div className="py-5">
-      <div className="container">
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+      <div className="container px-3">
+        <div className="rooms-card-list g-3">
           {beds.map((bed) => (
             <Room
               key={bed.id}

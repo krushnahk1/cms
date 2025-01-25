@@ -6,7 +6,7 @@
     background-color: var(--background, #f8f9fa); /* Default background */
 }
 
-form {
+.nurse-login-form {
     background: var(--primary-color, #ffffff); /* Default primary color */
     padding: 2rem;
     border-radius: 10px;
@@ -41,7 +41,7 @@ h2 {
 
 /* Media Query for Small Screens */
 @media (max-width: 576px) {
-    form {
+    .nurse-login-form {
         padding: 1.5rem;
     }
 
@@ -57,7 +57,7 @@ h2 {
         padding: 0.5rem;
         font-size: 0.9rem;
     }
-    form {
+    .nurse-login-form {
         background: var(--primary-color, #ffffff); /* Default primary color */
         padding: 2rem;
         border-radius: 10px;
@@ -71,8 +71,8 @@ h2 {
 }
 
 /* Media Query for Large Screens */
-@media (min-width: 992px) {
-    form {
+@media (max-width: 992px) {
+    .nurse-login-form {
         padding: 3rem;
         max-width: 500px;
         
@@ -86,7 +86,7 @@ h2 {
        
         font-size: 1.25rem;
     }
-    form {
+    .nurse-login-form {
         background: var(--primary-color, #ffffff); /* Default primary color */
         padding: 2rem;
         border-radius: 10px;
