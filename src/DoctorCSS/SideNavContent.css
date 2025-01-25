@@ -58,7 +58,7 @@
     padding: 10px;
 }
 .nav-list-item a:hover {
-    background-color: #664c72;
+    background-color: #4c1e61;
 
 }
 
@@ -88,20 +88,20 @@
     border-left: 4px solid #32213a;
     border-right: 4px solid #32213a;
     /* background-color: #381a46; */
-    background-color: #1d0329;
+    background-color: #7a27a0;
 
     width: 100%;
     /* border-radius: 10px; */
     transition: max-height 0.4s ease-in-out,
 }
 .subitem-container:hover {
-    background-color: #664c72;
+    background-color: #eb3f05;
 }
 
 .sidebar-link-subitem {
     display: inline-block;
     width: 100%;
-    background-color: #32213a;
+    background-color: #8339a5;
 
 }
 
