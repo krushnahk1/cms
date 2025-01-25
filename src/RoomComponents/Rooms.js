@@ -1,20 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./room.css";
 
 const Room = ({ bed, openModal, handleDischarge }) => {
+  const isOccupied = bed.patient && bed.patient.trim() !== ""; // Updated check for status
+
+  // const [bed, setBe]
+
   return (
     <div className="col d-flex justify-content-center">
       <div
         className={`card clinic-card ${
-          bed.status === "Available" ? "bg-light" : "bg-danger text-white"
+          isOccupied ? "bg-danger text-white" : "bg-light"
         }`}
       >
         <div className="card-body">
           <h5 className="card-title clinic-title">Bed {bed.id}</h5>
-          <p className="card-text">Status: {bed.status}</p>
-          {bed.status === "Occupied" && (
+          <p className="card-text">Status: {isOccupied ? "Occupied" : "Available"}</p>
+          {isOccupied && (
             <>
               <p className="card-text">Patient: {bed.patient}</p>
               <p className="card-text">Address: {bed.address}</p>
@@ -25,7 +29,7 @@ const Room = ({ bed, openModal, handleDischarge }) => {
           )}
         </div>
         <div className="card-footer">
-          {bed.status === "Available" ? (
+          {!isOccupied ? (
             <button
               className="btn btn-primary btn-sm"
               onClick={() => openModal(bed.id)}
@@ -47,20 +51,7 @@ const Room = ({ bed, openModal, handleDischarge }) => {
 };
 
 const ClinicRoomManagement = () => {
-  const [beds, setBeds] = useState(
-    Array.from({ length: 40 }, (_, index) => ({
-      id: index + 1,
-      status: "Available",
-      patient: "",
-      address: "",
-      problem: "",
-      mobileNumber: "",
-      admissionTime: null,
-      occupiedTime: null,
-      dischargeTime: null,
-    }))
-  );
-
+  const [beds, setBeds] = useState([]);
   const [modalData, setModalData] = useState({
     show: false,
     id: null,
@@ -69,6 +60,25 @@ const ClinicRoomManagement = () => {
     patientProblem: "",
     mobileNumber: "",
   });
+
+  // Fetch bed data from the database
+  useEffect(() => {
+    const fetchBeds = async () => {
+      try {
+        const response = await axios.get("http://localhost:8084/api/beds");
+        const updatedBeds = response.data.map((bed) => ({
+          ...bed,
+          status: bed.patient && bed.patient.trim() !== "" ? "Occupied" : "Available",
+        }));
+        setBeds(updatedBeds);
+      } catch (error) {
+        console.error("Error fetching bed data:", error);
+        alert("Failed to load bed data.");
+      }
+    };
+
+    fetchBeds();
+  }, []);
 
   const openModal = (id) => {
     setModalData({
@@ -104,17 +114,14 @@ const ClinicRoomManagement = () => {
 
     if (patientName && patientAddress && patientProblem && mobileNumber) {
       try {
-        // API call to save patient data in the database
         const response = await axios.post("http://localhost:8084/api/beds/assign", {
           id,
           patientName,
           patientAddress,
           patientProblem,
           mobileNumber,
-          // occupiedTime: new Date().toLocaleString(),
         });
 
-        // Update the UI after successful API call
         setBeds((prevBeds) =>
           prevBeds.map((bed) =>
             bed.id === id
@@ -141,7 +148,6 @@ const ClinicRoomManagement = () => {
 
   const handleDischarge = async (id) => {
     try {
-      // API call to update the bed status to available in the database
       await axios.post("http://localhost:8084/api/beds/discharge", { id });
       setBeds((prevBeds) =>
         prevBeds.map((bed) =>

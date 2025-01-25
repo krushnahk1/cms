@@ -13,9 +13,12 @@
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "cors": "^2.8.5",
     "cra-template": "1.2.0",
     "cropperjs": "^1.6.2",
+    "express": "^4.21.2",
     "font-awesome": "^4.7.0",
+    "mysql": "^2.18.1",
     "netlify": "^13.3.0",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.7",
@@ -60,5 +63,18 @@
   },
   "resolutions": {
     "ajv": "^8.17.1"
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "postcss.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krushnahk1/cms.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krushnahk1/cms/issues"
+  },
+  "homepage": "https://github.com/krushnahk1/cms#readme"
 }
