@@ -167,7 +167,7 @@ const ClinicRoomManagement = () => {
 
   return (
     <div className="py-5">
-      <div className="container px-3">
+      <div className="px-3">
         <div className="rooms-card-list g-3">
           {beds.map((bed) => (
             <Room

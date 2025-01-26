@@ -78,6 +78,21 @@
   margin-top: 3rem;
 }
 
+.doctor-info-table-div {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  overflow-x: scroll;
+}
+/* .doctor-info-table thead, tbody tr{
+  display: flex;
+  width: 100%;
+}
+.doctor-info-table thead, tbody tr td{
+  display: block;
+  width: 100%;
+} */
+
 /* Responsive Styles */
 @media (max-width: 1200px) {
   .col-lg-4 {

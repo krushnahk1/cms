@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import "../DoctorCSS/DoctorInfo.css";
 import AppServices from "../services/AppServices";
+import axios from "axios";
+import UserStorageService from "../services/UserStorageService";
 
 const DoctorsInfo = () => {
   const [doctors, setDoctors] = useState([]);
@@ -31,11 +33,30 @@ const DoctorsInfo = () => {
 
   const enabledDoctors = doctors.filter((doctor) => doctor.isEnabled);
 
-  const toggleDoctorStatus = (id) => {
-    const updatedDoctors = doctors.map((doctor) =>
-      doctor.id === id ? { ...doctor, isEnabled: !doctor.isEnabled } : doctor
-    );
-    setDoctors(updatedDoctors);
+  const toggleDoctorStatus = async (id) => {
+    const updatedDoctor = doctors.find((doctor) => doctor.id === id);
+
+  if (updatedDoctor) {
+    updatedDoctor.status = updatedDoctor.status === "ENABLED" ? "DISABLED" : "ENABLED";
+  }
+    
+    console.log(updatedDoctor);
+    try {
+      const response = await axios.post(`http://localhost:8084/api/doctors`, updatedDoctor, {
+        headers: {
+          Authorization: `Bearer ${UserStorageService.getToken()}`,
+          "Content-Type": "application/json",
+        }
+      });
+      setDoctors(doctors.map((doctor)=>doctor.id === id ? updatedDoctor : doctor));
+    } catch (err) {
+      console.error("Error fetching all appointments:", err);
+      throw err;
+    }
+    // const updatedDoctors = doctors.map((doctor) =>
+    //   doctor.id === id ? { ...doctor, isEnabled: !doctor.isEnabled } : doctor
+    // );
+    // setDoctors(updatedDoctors);
   };
 
   const deleteDoctor = async (id) => {
@@ -131,7 +152,8 @@ const DoctorsInfo = () => {
 
       <div className="doctors-table mt-5">
         <h3 className="mb-3">Doctors Information</h3>
-        <table className="table table-bordered table-hover">
+        <div className="doctor-info-table-div">
+        <table className="table table-bordered table-hover doctor-info-table">
           <thead className="table-dark">
             <tr>
               <th>#</th>
@@ -157,11 +179,11 @@ const DoctorsInfo = () => {
                   <td>
                     <button
                       className={`btn ${
-                        doctor.isEnabled ? "btn-success" : "btn-danger"
+                        doctor.status == "ENABLED" ? "btn-success" : "btn-danger"
                       } btn-sm`}
                       onClick={() => toggleDoctorStatus(doctor.id)}
                     >
-                      {doctor.isEnabled ? "Disable" : "Enable"}
+                      {doctor.status == "ENABLED" ? "Disable" : "Enable"}
                     </button>
                   </td>
                   <td>
@@ -191,6 +213,7 @@ const DoctorsInfo = () => {
             )}
           </tbody>
         </table>
+        </div>
       </div>
 
       {/* Modal for Editing Doctor */}

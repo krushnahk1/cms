@@ -139,6 +139,20 @@ class AppServices {
     }
   }
 
+  async updateDoctor(doctor) {
+    try {
+      const response = await axios.post(
+        `${BASE_REST_API_URL}/doctors`,
+        doctor,
+        { headers: this.getHeaders() }
+      );
+      return response.data;
+    } catch (err) {
+      console.error("Error creating doctor:", err);
+      throw err;
+    }
+  }
+
   /**
    * Fetch the count of patients
    * @returns {Promise} Axios response
