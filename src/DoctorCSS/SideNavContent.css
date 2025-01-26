@@ -85,8 +85,8 @@
 
 .subitem-container {
     padding-left: 0px;
-    border-left: 4px solid #32213a;
-    border-right: 4px solid #32213a;
+    /* border-left: 4px solid #000000;
+    border-right: 4px solid #000000; */
     /* background-color: #381a46; */
     background-color: hsl(280, 27%, 96%);
 

@@ -36,14 +36,12 @@ const AppointmentsAdd = () => {
   };
 
   return (
-    <>
+    <div>
       <h1 className="text-center mt-5">Add Appointments</h1>
-      <div className="container-fluid">
-        <div className="row justify-content-center">
-          <div className="card">
-            <div className="card-body">
-              <form>
-                {/* Title Input */}
+      <div className="appointments-add-container">
+          <div className="card-container">
+            <div className="form-card-body">
+              <form className="appointments-add-form" style={{gap:"20px"}}>
                 <div className="form-group mb-3">
                   <label className="form-label">Name:</label>
                   <input
@@ -127,13 +125,18 @@ const AppointmentsAdd = () => {
                   <Link to="/DoctorDashboard" className="btn btn-danger">
                     Cancel
                   </Link>
+                  <button
+                    className="btn btn-danger"
+                    onClick={(e) => saveAppointment(e)}
+                  >
+                    Submit
+                  </button>
                 </div>
               </form>
             </div>
           </div>
-        </div>
       </div>
-    </>
+    </div>
   );
 };
 

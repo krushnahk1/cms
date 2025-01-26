@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PatientEdit from "./PatientEdit"; // Import PatientEdit
 import "../DoctorCSS/AllPatients.css";
+import UserStorageService from "../services/UserStorageService";
 
 function AllPatients() {
   const [patients, setPatients] = useState([]);
@@ -39,7 +40,12 @@ function AllPatients() {
 
   const handleDelete = async (patientId) => {
     try {
-      await axios.delete(`http://localhost:8084/api/patients/${patientId}`);
+      await axios.delete(`http://localhost:8084/api/patients/${patientId}`, {
+        headers: {
+          Authorization: `Bearer ${UserStorageService.getToken()}`,
+          "Content-Type": "application/json"
+        }
+      });
       setPatients(patients.filter((patient) => patient.id !== patientId));
       setFilteredPatients(filteredPatients.filter((patient) => patient.id !== patientId));
     } catch (error) {

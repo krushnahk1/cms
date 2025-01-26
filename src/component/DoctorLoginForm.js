@@ -62,7 +62,7 @@ const DoctorLoginForm = () => {
             <div className="position-absolute shape"></div>
             <div className="position-absolute shape"></div>
 
-            <form onSubmit={handleLogin} className="p-4 bg-white bg-opacity-25 rounded shadow-lg" style={{ backdropFilter: 'blur(10px)', maxWidth: '400px' }}>
+            <form onSubmit={handleLogin} className="doctor-login-form p-4 bg-white bg-opacity-25 rounded shadow-lg" style={{ backdropFilter: 'blur(10px)', maxWidth: '400px' }}>
                 <h3 className="text-center mb-4">Doctor Login</h3>
 
                 <div className="mb-3">

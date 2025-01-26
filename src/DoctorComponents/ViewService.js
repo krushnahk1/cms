@@ -61,7 +61,7 @@ const ViewServices = ({servicesData, setServicesData}) => {
           {servicesData.services.map((service) => (
             <div className="col-lg-4" key={service.id}>
               <div className="card text-center h-100 shadow-sm">
-                <div className="card-body">
+                <div className="card-body service-card-body">
                   {service.img ? (
                     <img
                       src={service.img}

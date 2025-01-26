@@ -28,7 +28,7 @@ function Navbar({ changeSideNavStatus }) {
                     </div>
                     <div className='user-icon'>
                         <a onClick={expandedUserFunc}>
-                            <i class="fa-regular fa-circle-user" ></i>
+                            <i className="fa-regular fa-circle-user" ></i>
                         </a>
                         {isExpandedUser && (
                             <div className='user-info-popup'>

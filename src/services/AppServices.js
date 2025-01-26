@@ -128,23 +128,12 @@ class AppServices {
     );
   }
 
-  /**
-   * Reset all rooms
-   * @returns {Promise<Object>} Confirmation of reset
-   */
-  async resetRooms() {
-    return this.handleRequest(() =>
-      axios.post(`${BASE_REST_API_URL}/rooms/reset`, null, {
-        headers: this.getHeaders(),
-      })
-    );
-  }
+  
 
   /**
-   * Update a room by ID
-   * @param {string} roomId - Room ID
-   * @param {Object} roomData - Updated room data
-   * @returns {Promise<Object>} Updated room
+   * Create a new doctor
+   * @param {Object} doctor - Doctor data
+   * @returns {Promise} Axios response
    */
   async updateRoom(roomId, roomData) {
     return this.handleRequest(() =>
@@ -152,6 +141,20 @@ class AppServices {
         headers: this.getHeaders(),
       })
     );
+  }
+
+  async updateDoctor(doctor) {
+    try {
+      const response = await axios.post(
+        `${BASE_REST_API_URL}/doctors`,
+        doctor,
+        { headers: this.getHeaders() }
+      );
+      return response.data;
+    } catch (err) {
+      console.error("Error creating doctor:", err);
+      throw err;
+    }
   }
 
   /**
