@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Modal, Button, Form } from "react-bootstrap";
 import "../DoctorCSS/DoctorInfo.css";
 import AppServices from "../services/AppServices";
 import axios from "axios";
@@ -7,27 +6,20 @@ import UserStorageService from "../services/UserStorageService";
 
 const DoctorsInfo = () => {
   const [doctors, setDoctors] = useState([]);
-  const [showModal, setShowModal] = useState(false);
-  const [editDoctorData, setEditDoctorData] = useState({
-    id: "",
-    name: "",
-    specialties: "",
-    days: [],
-    inTime: "",
-    outTime: "",
-  });
+  const [viewMode, setViewMode] = useState("card"); // "card" or "list"
+
+  // Fetch doctors from the database
+  const fetchDoctors = async () => {
+    try {
+      const data = await AppServices.getAllDoctors(); // Fetch from the backend
+      setDoctors(data);
+    } catch (error) {
+      console.error("Error fetching doctors:", error);
+      alert("Failed to fetch doctors' information.");
+    }
+  };
 
   useEffect(() => {
-    const fetchDoctors = async () => {
-      try {
-        const data = await AppServices.getAllDoctors();
-        setDoctors(data);
-      } catch (error) {
-        console.error("Error fetching doctors:", error);
-        alert("Failed to fetch doctors' information.");
-      }
-    };
-
     fetchDoctors();
   }, []);
 
@@ -63,7 +55,7 @@ const DoctorsInfo = () => {
     if (window.confirm("Are you sure you want to delete this doctor?")) {
       try {
         await AppServices.deleteDoctor(id); // Replace with your API call to delete
-        setDoctors(doctors.filter((doctor) => doctor.id !== id));
+        fetchDoctors(); // Re-fetch doctors to reflect the changes
       } catch (error) {
         console.error("Error deleting doctor:", error);
         alert("Failed to delete doctor.");
@@ -71,45 +63,7 @@ const DoctorsInfo = () => {
     }
   };
 
-  const openEditModal = (doctor) => {
-    setEditDoctorData({
-      ...doctor,
-      days: Array.isArray(doctor.days) ? doctor.days : doctor.days.split(", "),
-    });
-    setShowModal(true);
-  };
-
-  const closeEditModal = () => {
-    setShowModal(false);
-  };
-
-  const handleEditFormChange = (e) => {
-    const { name, value } = e.target;
-    setEditDoctorData({
-      ...editDoctorData,
-      [name]: value,
-    });
-  };
-
-  const handleEditFormSubmit = async () => {
-    try {
-      // Replace with your API call to update doctor info
-      const updatedDoctor = await AppServices.updateDoctor(editDoctorData.id, {
-        ...editDoctorData,
-        days: editDoctorData.days,
-      });
-
-      setDoctors(
-        doctors.map((doctor) =>
-          doctor.id === updatedDoctor.id ? updatedDoctor : doctor
-        )
-      );
-      setShowModal(false);
-    } catch (error) {
-      console.error("Error updating doctor:", error);
-      alert("Failed to update doctor.");
-    }
-  };
+  // Filter doctors based on the viewMode
 
   return (
     <div className="d-flex flex-column justify-content-center px-3 px-lg-5 pt-5">
@@ -190,7 +144,7 @@ const DoctorsInfo = () => {
                     <div className="d-flex gap-2">
                       <button
                         className="btn btn-warning btn-sm"
-                        onClick={() => openEditModal(doctor)}
+                        // onClick={() => openEditModal(doctor)}
                       >
                         Edit
                       </button>
@@ -216,74 +170,23 @@ const DoctorsInfo = () => {
         </div>
       </div>
 
-      {/* Modal for Editing Doctor */}
-      <Modal show={showModal} onHide={closeEditModal} centered>
-        <Modal.Header closeButton>
-          <Modal.Title>Edit Doctor Information</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3">
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type="text"
-                name="name"
-                value={editDoctorData.name}
-                onChange={handleEditFormChange}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Specialty</Form.Label>
-              <Form.Control
-                type="text"
-                name="specialties"
-                value={editDoctorData.specialties}
-                onChange={handleEditFormChange}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Working Days</Form.Label>
-              <Form.Control
-                type="text"
-                name="days"
-                value={editDoctorData.days.join(", ")}
-                onChange={(e) =>
-                  setEditDoctorData({
-                    ...editDoctorData,
-                    days: e.target.value.split(", "),
-                  })
-                }
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Working Hours</Form.Label>
-              <Form.Control
-                type="text"
-                name="inTime"
-                value={editDoctorData.inTime}
-                onChange={handleEditFormChange}
-                placeholder="Start Time"
-              />
-              <Form.Control
-                type="text"
-                name="outTime"
-                className="mt-2"
-                value={editDoctorData.outTime}
-                onChange={handleEditFormChange}
-                placeholder="End Time"
-              />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={closeEditModal}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleEditFormSubmit}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      {/* Check if doctors array is empty */}
+      {/* {doctors.length === 0 ? (
+        <div className="text-center mt-5">
+          <p className="text-muted">No doctors available.</p>
+        </div>
+      ) : viewMode === "card" ? (
+        <DoctorsCardView
+          doctors={enabledDoctors} // Only enabled doctors
+          toggleDoctorStatus={toggleDoctorStatus}
+        />
+      ) : (
+        <DoctorsListView
+          doctors={doctors} // All doctors (for list view)
+          toggleDoctorStatus={toggleDoctorStatus}
+          deleteDoctor={deleteDoctor}
+        />
+      )} */}
     </div>
   );
 };

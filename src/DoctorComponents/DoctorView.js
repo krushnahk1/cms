@@ -21,6 +21,8 @@ import "../DoctorCSS/DoctorView.css";
 import ViewServices from './ViewService';
 import AddDoctorForm from "./AddDoctorForm"
 import DoctorInfo from "./DoctorInfo";
+import ViewPatientDise from './ViewPatientdiseage'
+import AllPatientDise from '../DoctorComponents/AddPatientDiseage'
 import doc1 from '../assets/img/doc1.jpg';
 import doc2 from '../assets/img/doc2.jpg';
 import doc3 from '../assets/img/doc3.jpg';
@@ -34,8 +36,11 @@ function DoctorView() {
 
     const subpatient = [
         { number: '1', name: 'Add patient', icon: 'fas fa-user-plus', url: '/DoctorDashboard/add-patient', isSubitem:false, },
-        { number: '2', name: 'view patient', icon: 'fas fa-user', url: '/DoctorDashboard/AllPatient' },
-    ]
+        { number: '2', name: 'view-patient-info', icon: 'fas fa-user', url: '/DoctorDashboard/AllPatient' },
+        { number: '3', name: 'add-patient-desa', icon: 'fas fa-user', url: '/DoctorDashboard/AllPatientDise' },
+        { number: '4', name: 'view-patient-desa', icon: 'fas fa-user', url: '/DoctorDashboard/viewPatientDise' },
+
+      ]
     const subappointment = [
         { number: '4', name: 'Create Appointment', icon: 'fas fa-calendar-check', url: '/DoctorDashboard/create-appointment' },
         { number: '5', name: 'View-Appointment', icon: 'fas fa-calendar-check', url: '/DoctorDashboard/list-appointment' },
@@ -199,6 +204,10 @@ function DoctorView() {
                                 <Route path="/" element={<DashboardOverview />} />
                                 <Route path="/DashboardOverview" element={<DashboardOverview />} />
                                 <Route path="/AllPatient" element={<AllPatients />} />
+
+                                <Route path="/AllPatientDise" element={<AllPatientDise />} />
+                                <Route path="/ViewPatientDise" element={<ViewPatientDise />} />
+
                                 <Route path="/add-patient" element={<AddPatient />} />
                                 <Route path="/create-appointment" element={<AppointmentsAdd />} />
                                 <Route path="/list-appointment" element={<Appointment />} />
