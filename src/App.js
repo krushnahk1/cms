@@ -15,6 +15,7 @@ import DoctorLoginForm from './component/DoctorLoginForm'
 import Login from './component/DoctorLoginForm';
 import Doctordashboard from './DoctorComponents/DoctorView';
 import NurseLoginForm from '../src/component/NurseLoginForm'
+import Map from './component/enquiries&Map'
 // import NurseDashboard from '../src/component/Nursedashboard'
 // import DoctorsInfo from './component/DoctorsInfo'
 // import DashboardOverview from '../src/DoctorComponents/DashboardOverview';
@@ -82,6 +83,7 @@ function App() {
               <div ref={whyChooseRef}>
                 <WhyChoose />
               </div> 
+              <Map/>
               <Footer/>
 
               
