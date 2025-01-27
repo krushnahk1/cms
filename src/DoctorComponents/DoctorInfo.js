@@ -4,7 +4,6 @@ import "../DoctorCSS/DoctorInfo.css";
 import AppServices from "../services/AppServices";
 import axios from "axios";
 import UserStorageService from "../services/UserStorageService";
-import { useNavigate } from "react-router-dom";
 
 const DoctorsInfo = () => {
   const [doctors, setDoctors] = useState([]);
@@ -21,7 +20,17 @@ const DoctorsInfo = () => {
       alert("Failed to fetch doctors' information.");
     }
   };
-
+  const deleteDoctor = async (id) => {
+    if (window.confirm("Are you sure you want to delete this doctor?")) {
+      try {
+        await AppServices.deleteDoctor(id); // Replace this with your actual API call
+        fetchDoctors(); // Refresh the list of doctors after deletion
+      } catch (error) {
+        console.error("Error deleting doctor:", error);
+        alert("Failed to delete doctor.");
+      }
+    }
+  };
   useEffect(() => {
     fetchDoctors();
     const role = UserStorageService.getUserRole(); // Get user role
