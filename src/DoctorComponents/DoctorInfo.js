@@ -3,6 +3,7 @@ import "../DoctorCSS/DoctorInfo.css";
 import AppServices from "../services/AppServices";
 import axios from "axios";
 import UserStorageService from "../services/UserStorageService";
+import { useNavigate } from "react-router-dom";
 
 const DoctorsInfo = () => {
   const [doctors, setDoctors] = useState([]);
@@ -23,7 +24,7 @@ const DoctorsInfo = () => {
     fetchDoctors();
   }, []);
 
-  const enabledDoctors = doctors.filter((doctor) => doctor.isEnabled);
+  const enabledDoctors = doctors.filter((doctor) => doctor.status=="ENABLED");
 
   const toggleDoctorStatus = async (id) => {
     const updatedDoctor = doctors.find((doctor) => doctor.id === id);
@@ -67,7 +68,7 @@ const DoctorsInfo = () => {
 
   return (
     <div className="d-flex flex-column justify-content-center px-3 px-lg-5 pt-5">
-      <div className="text-center">
+      {/* <div className="text-center">
         <h1 className="display-4">Our Doctors</h1>
         <p className="mt-2">
           Manage the doctors' availability and explore detailed information about them.
@@ -75,34 +76,28 @@ const DoctorsInfo = () => {
       </div>
 
       <div className="imagescard mt-4">
-        <div className="row">
-          {enabledDoctors.length > 0 ? (
-            enabledDoctors.map((doctor) => (
-              <div className="col-lg-4 col-md-6 mb-4" key={doctor.id}>
-                <div className="card h-100">
-                  <img
-                    src={doctor.img || "default-doctor-img.jpg"}
-                    className="card-img-top"
-                    alt={doctor.name}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">{doctor.name}</h5>
-                    <p className="card-text">{doctor.specialties}</p>
-                    <p>
-                      <strong>Availability:</strong> {doctor.days.join(", ")}
-                    </p>
-                    <p>
-                      <strong>Working Hours:</strong> {doctor.inTime} - {doctor.outTime}
-                    </p>
-                  </div>
+      <div className="doctor-list-container">
+        {doctors.length > 0 ? (
+          doctors.map((doctor) => (
+            <div className="doctor-list-item" key={doctor.id}>
+              <div className="doctor-list-item-card">
+                <img
+                  src={doctor.img || "default-doctor-img.jpg"}
+                  className="card-img-top"
+                  alt={doctor.name}
+                />
+                <div className="card-body">
+                  <h5 className="card-title">{doctor.name}</h5>
+                  <p className="card-text">{doctor.specialties}</p>
                 </div>
               </div>
-            ))
-          ) : (
-            <p className="text-center">No doctors enabled.</p>
-          )}
-        </div>
+            </div>
+          ))
+        ) : (
+          <p className="text-center">No doctors ENABLED.</p>
+        )}
       </div>
+    </div> */}
 
       <div className="doctors-table mt-5">
         <h3 className="mb-3">Doctors Information</h3>
@@ -133,7 +128,7 @@ const DoctorsInfo = () => {
                   <td>
                     <button
                       className={`btn ${
-                        doctor.status == "ENABLED" ? "btn-success" : "btn-danger"
+                        doctor.status == "DISABLED" ? "btn-success" : "btn-danger"
                       } btn-sm`}
                       onClick={() => toggleDoctorStatus(doctor.id)}
                     >

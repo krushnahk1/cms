@@ -1,4 +1,14 @@
 /* Container that holds the cards */
+
+.doctor-list-container {
+  display: flex;
+  
+}
+.doctor-list-item-card {
+  padding: 20px;
+  /* width: 300px; */
+}
+
 .imagescard {
   display: flex;
   flex-wrap: wrap;
@@ -7,9 +17,10 @@
 }
 
 /* Card Style */
-.card {
+.doctor-list-item-card {
+  
   width: 100%; 
-  max-width: 70%; /* Limit the card width */
+  max-width: 70%; 
   min-height: 70%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;

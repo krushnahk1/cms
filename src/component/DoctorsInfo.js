@@ -1,19 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import AppServices from "../services/AppServices";
 
-const DoctorsCardView = ({ doctors = [], toggleDoctorStatus }) => {
-  // Filter enabled doctors
-  const enabledDoctors = Array.isArray(doctors)
-    ? doctors.filter((doctor) => doctor.isEnabled)
-    : [];
+import "../CSS/DoctorsInfo.css";
+
+const DoctorsCardView = () => {
+
+  const [doctors, setDoctors] = useState([]);
+  const [viewMode, setViewMode] = useState("card"); // "card" or "list"
+
+  // Fetch doctors from the database
+  const fetchDoctors = async () => {
+    try {
+      const data = await AppServices.getAllDoctors(); // Fetch from the backend
+      setDoctors(data.filter((doctor)=>doctor.status=="ENABLED"));
+    } catch (error) {
+      console.error("Error fetching doctors:", error);
+      alert("Failed to fetch doctors' information.");
+    }
+  };
+
+  useEffect(() => {
+    fetchDoctors();
+  }, []);
 
   return (
     <div className="imagescard mt-4">
-      <div className="row">
-        {enabledDoctors.length > 0 ? (
-          enabledDoctors.map((doctor) => (
-            <div className="col-lg-4 col-md-6 mb-4" key={doctor.id}>
-              <div className="card h-100">
+      <div className="doctor-list-container">
+        {doctors.length > 0 ? (
+          doctors.map((doctor) => (
+            <div className="doctor-list-item" key={doctor.id}>
+              <div className="doctor-list-item-card">
                 <img
                   src={doctor.img || "default-doctor-img.jpg"}
                   className="card-img-top"
@@ -22,57 +39,39 @@ const DoctorsCardView = ({ doctors = [], toggleDoctorStatus }) => {
                 <div className="card-body">
                   <h5 className="card-title">{doctor.name}</h5>
                   <p className="card-text">{doctor.specialties}</p>
-                  <p>
-                    <strong>Availability:</strong>{" "}
-                    {doctor.days ? doctor.days.join(", ") : "N/A"}
-                  </p>
-                  <p>
-                    <strong>Working Hours:</strong>{" "}
-                    {doctor.inTime && doctor.outTime
-                      ? `${doctor.inTime} - ${doctor.outTime}`
-                      : "N/A"}
-                  </p>
-                  <button
-                    className={`btn ${
-                      doctor.isEnabled ? "btn-success" : "btn-danger"
-                    } btn-sm`}
-                    onClick={() => toggleDoctorStatus(doctor.id)}
-                  >
-                    {doctor.isEnabled ? "Disable" : "Enable"}
-                  </button>
                 </div>
               </div>
             </div>
           ))
         ) : (
-          <p className="text-center">No doctors enabled.</p>
+          <p className="text-center">No doctors ENABLED.</p>
         )}
       </div>
     </div>
   );
 };
 
-// Default props
-DoctorsCardView.defaultProps = {
-  doctors: [],
-  toggleDoctorStatus: () => {},
-};
+// // Default props
+// DoctorsCardView.defaultProps = {
+//   doctors: [],
+//   toggleDoctorStatus: () => {},
+// };
 
-// Prop validation
-DoctorsCardView.propTypes = {
-  doctors: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      specialties: PropTypes.string,
-      days: PropTypes.arrayOf(PropTypes.string),
-      inTime: PropTypes.string,
-      outTime: PropTypes.string,
-      isEnabled: PropTypes.bool,
-      img: PropTypes.string,
-    })
-  ),
-  toggleDoctorStatus: PropTypes.func,
-};
+// // Prop validation
+// DoctorsCardView.propTypes = {
+//   doctors: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.string.isRequired,
+//       name: PropTypes.string.isRequired,
+//       specialties: PropTypes.string,
+//       days: PropTypes.arrayOf(PropTypes.string),
+//       inTime: PropTypes.string,
+//       outTime: PropTypes.string,
+//       isENABLED: PropTypes.bool,
+//       img: PropTypes.string,
+//     })
+//   ),
+//   toggleDoctorStatus: PropTypes.func,
+// };
 
 export default DoctorsCardView;
