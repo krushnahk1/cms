@@ -16,7 +16,7 @@ const Appointment = () => {
     try {
       const response = await AppServices.getAllAppointments();
       setAppointments(response);
-      setFilteredAppointments(response); // Initialize filtered appointments
+      setFilteredAppointments(response);
     } catch (err) {
       setError("There was an error fetching the appointments.");
     } finally {
@@ -37,9 +37,18 @@ const Appointment = () => {
   const deleteAppointment = async (appointmentId) => {
     try {
       await AppServices.deleteAppointment(appointmentId);
-      fetchAppointments(); // Refresh the list after deletion
+      fetchAppointments();
     } catch (err) {
       console.error("Error deleting appointment:", err);
+    }
+  };
+
+  const updateAppointmentStatus = async (appointmentId, status) => {
+    try {
+      await AppServices.updateAppointmentStatus(appointmentId, { status });
+      fetchAppointments();
+    } catch (err) {
+      console.error("Error updating appointment status:", err);
     }
   };
 
@@ -53,7 +62,7 @@ const Appointment = () => {
   return (
     <div>
       <h1>Appointments List</h1>
-      
+
       {/* Search Bar */}
       <div className="search-bar mt-4 mb-4">
         <input
@@ -75,6 +84,9 @@ const Appointment = () => {
                   <th scope="col">Title</th>
                   <th scope="col">DateTime</th>
                   <th scope="col">Description</th>
+                  <th scope="col">Mobile Number</th>
+                  <th scope="col">Doctor</th>
+                  <th scope="col">Status</th>
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
@@ -86,6 +98,24 @@ const Appointment = () => {
                       <td>{appointment.title}</td>
                       <td>{appointment.dateTime}</td>
                       <td>{appointment.description}</td>
+                      <td>{appointment.mobileNumber}</td>
+                      <td>{appointment.doctor}</td>
+                      <td>
+                        <select
+                          className="form-select"
+                          value={appointment.status || "Pending"}
+                          onChange={(e) =>
+                            updateAppointmentStatus(
+                              appointment.id,
+                              e.target.value
+                            )
+                          }
+                        >
+                          <option value="Pending">Pending</option>
+                          <option value="Approve">Approve</option>
+                          <option value="Reject">Reject</option>
+                        </select>
+                      </td>
                       <td>
                         <div className="d-flex align-items-center gap-2">
                           <button
@@ -100,19 +130,19 @@ const Appointment = () => {
                           >
                             Update
                           </Link>
-                          <Link
+                          {/* <Link
                             className="btn btn-secondary"
                             to={`/view-appointment/${appointment.id}`}
                           >
                             View
-                          </Link>
+                          </Link> */}
                         </div>
                       </td>
                     </tr>
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="5" className="text-center">
+                    <td colSpan="8" className="text-center">
                       No appointments found.
                     </td>
                   </tr>

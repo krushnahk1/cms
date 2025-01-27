@@ -272,6 +272,7 @@ function AddPatient() {
         )}
 
         {/* Submit button disabled if form is invalid */}
+        <Link to="/DoctorDashboard">
         <button
           type="submit"
           className="btn btn-primary w-100"
@@ -279,6 +280,7 @@ function AddPatient() {
         >
           Submit
         </button>
+        </Link>
       </form>
     </div>
   );
