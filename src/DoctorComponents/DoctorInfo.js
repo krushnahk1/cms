@@ -4,6 +4,7 @@ import "../DoctorCSS/DoctorInfo.css";
 import AppServices from "../services/AppServices";
 import axios from "axios";
 import UserStorageService from "../services/UserStorageService";
+import { useNavigate } from "react-router-dom";
 
 const DoctorsInfo = () => {
   const [doctors, setDoctors] = useState([]);
@@ -26,6 +27,8 @@ const DoctorsInfo = () => {
     const role = UserStorageService.getUserRole(); // Get user role
     setUserRole(role); // Store the role
   }, []);
+
+  const enabledDoctors = doctors.filter((doctor) => doctor.status=="ENABLED");
 
   const toggleDoctorStatus = async (id) => {
     const updatedDoctor = doctors.find((doctor) => doctor.id === id);
@@ -60,79 +63,100 @@ const DoctorsInfo = () => {
 
   return (
     <div className="d-flex flex-column justify-content-center px-3 px-lg-5 pt-5">
-      <div className="text-center">
+      {/* <div className="text-center">
         <h1 className="display-4">Our Doctors</h1>
         <p className="mt-2">
           Manage the doctors' availability and explore detailed information about them.
         </p>
       </div>
 
+      <div className="imagescard mt-4">
+      <div className="doctor-list-container">
+        {doctors.length > 0 ? (
+          doctors.map((doctor) => (
+            <div className="doctor-list-item" key={doctor.id}>
+              <div className="doctor-list-item-card">
+                <img
+                  src={doctor.img || "default-doctor-img.jpg"}
+                  className="card-img-top"
+                  alt={doctor.name}
+                />
+                <div className="card-body">
+                  <h5 className="card-title">{doctor.name}</h5>
+                  <p className="card-text">{doctor.specialties}</p>
+                </div>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p className="text-center">No doctors ENABLED.</p>
+        )}
+      </div>
+    </div> */}
+
       <div className="doctors-table mt-5">
         <h3 className="mb-3">Doctors Information</h3>
         <div className="doctor-info-table-div">
-          <table className="table table-bordered table-hover doctor-info-table">
-            <thead className="table-dark">
-              <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Specialty</th>
-                <th>Working Days</th>
-                <th>Working Hours</th>
-                <th>Status</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {doctors.length > 0 ? (
-                doctors.map((doctor, index) => (
-                  <tr key={doctor.id}>
-                    <td>{index + 1}</td>
-                    <td>{doctor.name}</td>
-                    <td>{doctor.specialties}</td>
-                    <td>{doctor.days.join(", ")}</td>
-                    <td>
-                      {doctor.inTime} - {doctor.outTime}
-                    </td>
-                    <td>
+        <table className="table table-bordered table-hover doctor-info-table">
+          <thead className="table-dark">
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Specialty</th>
+              <th>Working Days</th>
+              <th>Working Hours</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {doctors.length > 0 ? (
+              doctors.map((doctor, index) => (
+                <tr key={doctor.id}>
+                  <td>{index + 1}</td>
+                  <td>{doctor.name}</td>
+                  <td>{doctor.specialties}</td>
+                  <td>{doctor.days.join(", ")}</td>
+                  <td>
+                    {doctor.inTime} - {doctor.outTime}
+                  </td>
+                  <td>
+                    <button
+                      className={`btn ${
+                        doctor.status == "DISABLED" ? "btn-success" : "btn-danger"
+                      } btn-sm`}
+                      onClick={() => toggleDoctorStatus(doctor.id)}
+                    >
+                      {doctor.status == "ENABLED" ? "Disable" : "Enable"}
+                    </button>
+                  </td>
+                  <td>
+                    <div className="d-flex gap-2">
                       <button
-                        className={`btn ${
-                          doctor.status === "ENABLED"
-                            ? "btn-success"
-                            : "btn-danger"
-                        } btn-sm`}
-                        onClick={() => toggleDoctorStatus(doctor.id)}
-                        disabled={userRole !== "ADMIN"} // Disable button if the user is not an admin
+                        className="btn btn-warning btn-sm"
+                        // onClick={() => openEditModal(doctor)}
                       >
-                        {doctor.status === "ENABLED" ? "Disable" : "Enable"}
+                        Edit
                       </button>
-                    </td>
-                    <td>
-                      <div className="d-flex gap-2">
-                        <button
-                          className="btn btn-warning btn-sm"
-                          disabled={userRole !== "ADMIN"} // Disable edit button if not an admin
-                        >
-                          Edit
-                        </button>
-                        <button
-                          className="btn btn-danger btn-sm"
-                          disabled={userRole !== "ADMIN"} // Disable delete button if not an admin
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="7" className="text-center">
-                    No doctors available.
+                      <button
+                        className="btn btn-danger btn-sm"
+                        onClick={() => deleteDoctor(doctor.id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </td>
                 </tr>
-              )}
-            </tbody>
-          </table>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="7" className="text-center">
+                  No doctors available.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
         </div>
       </div>
 
