@@ -37,8 +37,8 @@ const DoctorsCardView = () => {
                   alt={doctor.name}
                 />
                 <div className="card-body">
-                  <h5 className="card-title">{doctor.name}</h5>
-                  <p className="card-text">{doctor.specialties}</p>
+                  <h5 className="card-title">Name:- {doctor.name}</h5>
+                  <p className="card-text">Specialties:-{doctor.specialties}</p>
                 </div>
               </div>
             </div>

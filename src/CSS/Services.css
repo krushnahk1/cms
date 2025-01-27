@@ -1,3 +1,81 @@
+/* Add transition effects to the Services section */
+
+.services-section {
+  padding: 5rem 0;
+  opacity: 0;
+  transform: scale(0.9); /* Starts slightly smaller */
+  animation: fadeInScale 1s forwards; /* Fade and scale in effect */
+}
+
+.text {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.display {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.servicebutton {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.servicebutton:hover {
+  background-color: #0056b3;
+}
+
+.service-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Add a fade-in and scale effect for the service cards */
+.card {
+  opacity: 0;
+  transform: scale(0.9); /* Initially smaller */
+  transition: opacity 0.5s, transform 0.5s ease-out; /* Smooth transition */
+}
+
+.card-body {
+  transition: transform 0.3s ease-out;
+}
+
+.card-body:hover {
+  transform: translateY(-5px); /* Slight hover effect */
+}
+
+/* Keyframes for fade-in and scale-in effect */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.9); /* Starts small */
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1); /* Ends at normal size */
+  }
+}
+
+/* Adding the "visible" class for the card animation */
+.card.visible {
+  opacity: 1;
+  transform: scale(1); /* Scale to normal size */
+}
+
+.card-body:hover {
+  transform: translateY(-5px);
+}
+
+
 .services-section {
   height: 100%;
   background: #fbfafa;
