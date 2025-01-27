@@ -8,8 +8,8 @@ const EnabledDoctors = () => {
   return (
     <div className="container py-5">
       <div className="text-center mb-4">
-        <h1 className="display-4">Yours Doctors</h1>
-        <p className="lead">List of doctors currently available.</p>
+        <h1 className="display-4">Enabled Doctors</h1>
+        <p className="lead">List of doctors currently enabled.</p>
       </div>
 
       {enabledDoctors.length > 0 ? (
@@ -40,11 +40,11 @@ const EnabledDoctors = () => {
         <p className="text-center">No enabled doctors available.</p>
       )}
 
-      {/* <div className="text-center mt-4">
+      <div className="text-center mt-4">
         <Link to="/DoctorDashboard/view-doctor" className="btn btn-secondary">
           Back to Doctor Info
         </Link>
-      </div> */}
+      </div>
     </div>
   );
 };

@@ -23,6 +23,7 @@ import AddDoctorForm from "./AddDoctorForm"
 import DoctorInfo from "./DoctorInfo";
 import ViewPatientDise from './ViewPatientdiseage'
 import AllPatientDise from '../DoctorComponents/AddPatientDiseage'
+import EnabledDoctors from './EnabledDoctors'
 import doc1 from '../assets/img/doc1.jpg';
 import doc2 from '../assets/img/doc2.jpg';
 import doc3 from '../assets/img/doc3.jpg';
@@ -52,6 +53,7 @@ function DoctorView() {
     const subdoctor = [
         { number: '1', name: 'Add Doctor', icon: 'fas fa-calendar-check', url: '/DoctorDashboard/add-doctor' },
         { number: '2', name: 'View Doctor', icon: 'fas fa-calendar-check', url: '/DoctorDashboard/view-doctor' },
+        { number: '4', name: 'View Active Doctor', icon: 'fas fa-calendar-check', url: '/DoctorDashboard/view-active-doctor' },
     ]
 
     const [menuItems, setMenuItems] = useState([
@@ -217,6 +219,7 @@ function DoctorView() {
                                 <Route path="/Room" element={<Room />} />
                                 <Route path="/add-doctor" element={<AddDoctorForm addOrUpdateDoctor={addOrUpdateDoctor} />} />
                                 <Route path="/view-doctor" element={<DoctorInfo doctors={doctors} setDoctors={setDoctors}/>} />
+                                <Route path="/view-active-doctor" element={<EnabledDoctors/>} />
                                 <Route path="/view-service" element={<ViewServices servicesData={servicesData} setServicesData={setServicesData} />} />
                                 <Route path="/create-service" element={  <ServiceForm addOrUpdateService={addOrUpdateService} />
                                 
