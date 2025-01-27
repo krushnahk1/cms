@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../DoctorCSS/DoctorInfo.css";
 import AppServices from "../services/AppServices";
 import axios from "axios";
@@ -7,7 +8,8 @@ import { useNavigate } from "react-router-dom";
 
 const DoctorsInfo = () => {
   const [doctors, setDoctors] = useState([]);
-  const [viewMode, setViewMode] = useState("card"); // "card" or "list"
+  const [userRole, setUserRole] = useState(""); // State to store the user's role
+  const navigate = useNavigate();
 
   // Fetch doctors from the database
   const fetchDoctors = async () => {
@@ -22,6 +24,8 @@ const DoctorsInfo = () => {
 
   useEffect(() => {
     fetchDoctors();
+    const role = UserStorageService.getUserRole(); // Get user role
+    setUserRole(role); // Store the role
   }, []);
 
   const enabledDoctors = doctors.filter((doctor) => doctor.status=="ENABLED");
@@ -29,42 +33,33 @@ const DoctorsInfo = () => {
   const toggleDoctorStatus = async (id) => {
     const updatedDoctor = doctors.find((doctor) => doctor.id === id);
 
-  if (updatedDoctor) {
-    updatedDoctor.status = updatedDoctor.status === "ENABLED" ? "DISABLED" : "ENABLED";
-  }
-    
-    console.log(updatedDoctor);
+    if (updatedDoctor) {
+      updatedDoctor.status =
+        updatedDoctor.status === "ENABLED" ? "DISABLED" : "ENABLED";
+    }
+
     try {
-      const response = await axios.post(`http://localhost:8084/api/doctors`, updatedDoctor, {
-        headers: {
-          Authorization: `Bearer ${UserStorageService.getToken()}`,
-          "Content-Type": "application/json",
+      const response = await axios.post(
+        `http://localhost:8084/api/doctors`,
+        updatedDoctor,
+        {
+          headers: {
+            Authorization: `Bearer ${UserStorageService.getToken()}`,
+            "Content-Type": "application/json",
+          },
         }
-      });
-      setDoctors(doctors.map((doctor)=>doctor.id === id ? updatedDoctor : doctor));
+      );
+      setDoctors(doctors.map((doctor) => (doctor.id === id ? updatedDoctor : doctor)));
     } catch (err) {
-      console.error("Error fetching all appointments:", err);
-      throw err;
-    }
-    // const updatedDoctors = doctors.map((doctor) =>
-    //   doctor.id === id ? { ...doctor, isEnabled: !doctor.isEnabled } : doctor
-    // );
-    // setDoctors(updatedDoctors);
-  };
-
-  const deleteDoctor = async (id) => {
-    if (window.confirm("Are you sure you want to delete this doctor?")) {
-      try {
-        await AppServices.deleteDoctor(id); // Replace with your API call to delete
-        fetchDoctors(); // Re-fetch doctors to reflect the changes
-      } catch (error) {
-        console.error("Error deleting doctor:", error);
-        alert("Failed to delete doctor.");
-      }
+      console.error("Error updating doctor status:", err);
+      alert("You do not have permission to change this doctor's status.");
     }
   };
 
-  // Filter doctors based on the viewMode
+  const viewEnabledDoctors = () => {
+    const enabledDoctors = doctors.filter((doctor) => doctor.status === "ENABLED");
+    navigate("/", { state: { enabledDoctors } });
+  };
 
   return (
     <div className="d-flex flex-column justify-content-center px-3 px-lg-5 pt-5">
@@ -165,23 +160,11 @@ const DoctorsInfo = () => {
         </div>
       </div>
 
-      {/* Check if doctors array is empty */}
-      {/* {doctors.length === 0 ? (
-        <div className="text-center mt-5">
-          <p className="text-muted">No doctors available.</p>
-        </div>
-      ) : viewMode === "card" ? (
-        <DoctorsCardView
-          doctors={enabledDoctors} // Only enabled doctors
-          toggleDoctorStatus={toggleDoctorStatus}
-        />
-      ) : (
-        <DoctorsListView
-          doctors={doctors} // All doctors (for list view)
-          toggleDoctorStatus={toggleDoctorStatus}
-          deleteDoctor={deleteDoctor}
-        />
-      )} */}
+      <div className="mt-4 text-center">
+        <button className="btn btn-primary" onClick={viewEnabledDoctors}>
+          View Enabled Doctors
+        </button>
+      </div>
     </div>
   );
 };

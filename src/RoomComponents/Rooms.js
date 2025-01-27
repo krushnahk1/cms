@@ -17,7 +17,6 @@ const Room = ({ bed, openModal, handleDischarge }) => {
           {bed.status === "Occupied" && (
             <>
               <p className="card-text">Patient: {bed.patient}</p>
-              <p className="card-text">Address: {bed.address}</p>
               <p className="card-text">Problem: {bed.problem}</p>
               <p className="card-text">Mobile Number: {bed.mobileNumber}</p>
               <p className="card-text">Occupied Time: {bed.occupiedTime}</p>
@@ -28,7 +27,7 @@ const Room = ({ bed, openModal, handleDischarge }) => {
           {bed.status === "Available" ? (
             <button
               className="btn btn-primary btn-sm"
-              onClick={() => openModal(bed.id)}
+              onClick={() => openModal(bed)}
             >
               Assign Patient
             </button>
@@ -52,10 +51,8 @@ const ClinicRoomManagement = () => {
       id: index + 1,
       status: "Available",
       patient: "",
-      address: "",
       problem: "",
       mobileNumber: "",
-      admissionTime: null,
       occupiedTime: null,
       dischargeTime: null,
     }))
@@ -65,19 +62,19 @@ const ClinicRoomManagement = () => {
     show: false,
     id: null,
     patientName: "",
-    patientAddress: "",
     patientProblem: "",
     mobileNumber: "",
+    occupiedTime: "",
   });
 
-  const openModal = (id) => {
+  const openModal = (bed) => {
     setModalData({
       show: true,
-      id,
+      id: bed.id,
       patientName: "",
-      patientAddress: "",
       patientProblem: "",
       mobileNumber: "",
+      occupiedTime: new Date().toLocaleString(), // Automatically assign the current time
     });
   };
 
@@ -86,9 +83,9 @@ const ClinicRoomManagement = () => {
       show: false,
       id: null,
       patientName: "",
-      patientAddress: "",
       patientProblem: "",
       mobileNumber: "",
+      occupiedTime: "",
     });
   };
 
@@ -99,19 +96,17 @@ const ClinicRoomManagement = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    const { id, patientName, patientAddress, patientProblem, mobileNumber } =
-      modalData;
+    const { id, patientName, patientProblem, mobileNumber, occupiedTime } = modalData;
 
-    if (patientName && patientAddress && patientProblem && mobileNumber) {
+    if (patientName && patientProblem && mobileNumber) {
       try {
         // API call to save patient data in the database
         const response = await axios.post("http://localhost:8084/api/beds/assign", {
           id,
           patientName,
-          patientAddress,
           patientProblem,
           mobileNumber,
-          // occupiedTime: new Date().toLocaleString(),
+          occupiedTime, // Send the occupiedTime automatically
         });
 
         // Update the UI after successful API call
@@ -122,20 +117,21 @@ const ClinicRoomManagement = () => {
                   ...bed,
                   status: "Occupied",
                   patient: patientName,
-                  address: patientAddress,
                   problem: patientProblem,
                   mobileNumber,
-                  occupiedTime: response.data.occupiedTime,
+                  occupiedTime: response.data.occupiedTime || new Date().toLocaleString(),
                 }
               : bed
           )
         );
         alert("Patient assigned successfully!");
+        closeModal();
       } catch (error) {
         console.error("Error assigning patient:", error);
         alert("Failed to assign patient. Please try again.");
       }
-      closeModal();
+    } else {
+      alert("All fields are required!");
     }
   };
 
@@ -143,6 +139,8 @@ const ClinicRoomManagement = () => {
     try {
       // API call to update the bed status to available in the database
       await axios.post("http://localhost:8084/api/beds/discharge", { id });
+
+      // Update UI after successful discharge
       setBeds((prevBeds) =>
         prevBeds.map((bed) =>
           bed.id === id
@@ -150,7 +148,6 @@ const ClinicRoomManagement = () => {
                 ...bed,
                 status: "Available",
                 patient: "",
-                address: "",
                 problem: "",
                 mobileNumber: "",
                 dischargeTime: new Date().toLocaleString(),
@@ -184,7 +181,7 @@ const ClinicRoomManagement = () => {
             <div className="modal-dialog" role="document">
               <div className="modal-content">
                 <div className="modal-header">
-                  <h5 className="modal-title">Assign Patient to Bed {modalData.id}</h5>
+                  <p className="modal-title">Assign Patient to Bed {modalData.id}</p>
                   <button
                     type="button"
                     className="btn-close"
@@ -204,20 +201,6 @@ const ClinicRoomManagement = () => {
                         id="patientName"
                         name="patientName"
                         value={modalData.patientName}
-                        onChange={handleInputChange}
-                        required
-                      />
-                    </div>
-                    <div className="mb-3">
-                      <label htmlFor="patientAddress" className="form-label">
-                        Address
-                      </label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        id="patientAddress"
-                        name="patientAddress"
-                        value={modalData.patientAddress}
                         onChange={handleInputChange}
                         required
                       />
@@ -250,6 +233,19 @@ const ClinicRoomManagement = () => {
                         required
                       />
                     </div>
+                    <div className="mb-3">
+                      <label htmlFor="occupiedTime" className="form-label">
+                        Occupied Time
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="occupiedTime"
+                        name="occupiedTime"
+                        value={modalData.occupiedTime}
+                        readOnly
+                      />
+                    </div>
                   </div>
                   <div className="modal-footer">
                     <button
@@ -260,7 +256,7 @@ const ClinicRoomManagement = () => {
                       Close
                     </button>
                     <button type="submit" className="btn btn-primary">
-                      Save changes
+                      Assign Patient
                     </button>
                   </div>
                 </form>

@@ -33,6 +33,8 @@ import About from './component/abouts';
 import Home from './component/home';
 import Services from './component/Services'
 import DoctorInfo from './component/DoctorsInfo'
+import EnabledDoctors from "./component/DoctorsInfo";
+
 import Scroll from './component/ScrollingTitle'
 
 
@@ -83,7 +85,7 @@ function App() {
               <div ref={whyChooseRef}>
                 <WhyChoose />
               </div> 
-              <Map/>
+              {/* <Map/> */}
               <Footer/>
 
               
@@ -102,7 +104,8 @@ function App() {
           <Route path="/create-appointment" element={<AppointmentsAdd/>} />    */}  
           <Route path="/add-appointment" element={<AppointmentsAdd/>} />     
           <Route path="/edit-appointment/:id" element={<AppointmentUpdate/>} />     
-          <Route path="/view-appointment/:id" element={<AppointmentViewById/>} />     
+          <Route path="/view-appointment/:id" element={<AppointmentViewById/>} />
+          <Route path="/" element={<EnabledDoctors />} />     
         </Routes>
       </Router>
       <Router>
